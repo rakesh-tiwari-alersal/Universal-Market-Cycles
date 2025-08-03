@@ -23,4 +23,5 @@ All empirical results in the whitepaper's Appendix B were generated using:
 - Historical data used from 1980-2025 (not included due to size)
 - Produces a .csv file with cycle matches and corresponding delta
 
-[Link to whitepaper] - https://alersal.us/AlersalWhitepaper.pdf
+# Link to whitepaper
+- https://alersal.us/AlersalWhitepaper.pdf
