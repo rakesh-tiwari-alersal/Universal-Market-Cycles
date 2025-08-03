@@ -5,7 +5,7 @@ This repository contains code and data for the whitepaper:
 
 ## Structure
 ```
-code/                   - Python implementation of PSD cycle detection and match against Universal Cycle Table
+code/                   - Python implementation of PSD cycle detection and matching algorithm
 instrument_data/        - Instrument lists by asset class (eq-Equity, co-Commodity, ix-Index, fx-Forex, cr-Crypto)
 psd_results/            - Cycle matching results (86% CAR)
 
