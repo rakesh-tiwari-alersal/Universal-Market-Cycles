@@ -1,0 +1,21 @@
+Category,Instrument,Ticker
+Commodity,Gold,GC=F
+Commodity,Silver,SI=F
+Commodity,Crude Oil (WTI),CL=F
+Commodity,Brent Crude,BZ=F
+Commodity,Natural Gas,NG=F
+Commodity,Copper,HG=F
+Commodity,Aluminum,ALI=F
+Commodity,Zinc,ZNC=F
+Commodity,Wheat,ZW=F
+Commodity,Corn,ZC=F
+Commodity,Soybeans,ZS=F
+Commodity,Soybean Meal,ZM=F
+Commodity,Cotton,CT=F
+Commodity,Sugar,SB=F
+Commodity,Coffee,KC=F
+Commodity,Cocoa,CC=F
+Commodity,Live Cattle,LE=F
+Commodity,Feeder Cattle,GF=F
+Commodity,Lean Hogs,HE=F
+Commodity,Platinum,PL=F

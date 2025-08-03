@@ -1,0 +1,201 @@
+Category,Instrument,Ticker
+Equity,Apple,AAPL
+Equity,Microsoft,MSFT
+Equity,Amazon,AMZN
+Equity,Tesla,TSLA
+Equity,JPMorgan Chase,JPM
+Equity,Johnson & Johnson,JNJ
+Equity,UnitedHealth,UNH
+Equity,Visa,V
+Equity,Procter & Gamble,PG
+Equity,NVIDIA,NVDA
+Equity,Alibaba,BABA
+Equity,Toyota,TM
+Equity,Samsung,005930.KS
+Equity,Nestlé,NSRGY
+Equity,Shell,SHEL
+Equity,Walmart,WMT
+Equity,Mastercard,MA
+Equity,ASML Holding,ASML
+Equity,LVMH,LVMUY
+Equity,Tencent,TCEHY
+Equity,TSMC,TSM
+Equity,Roche Holding,RHHBY
+Equity,Berkshire Hathaway,BRK-B
+Equity,Novartis,NVS
+Equity,Rio Tinto,RIO
+Equity,Exxon Mobil,XOM
+Equity,Johnson Controls,JCI
+Equity,Intel,INTC
+Equity,Coca-Cola,KO
+Equity,Merck,MRK
+Equity,Home Depot,HD
+Equity,Oracle,ORCL
+Equity,PayPal,PYPL
+Equity,Netflix,NFLX
+Equity,Salesforce,CRM
+Equity,Adobe,ADBE
+Equity,Lockheed Martin,LMT
+Equity,Pfizer,PFE
+Equity,Disney,DIS
+Equity,Starbucks,SBUX
+Equity,Caterpillar,CAT
+Equity,Deere & Company,DE
+Equity,Boeing,BA
+Equity,3M,MMM
+Equity,Goldman Sachs,GS
+Equity,Morgan Stanley,MS
+Equity,IBM,IBM
+Equity,AT&T,T
+Equity,Verizon,VZ
+Equity,McDonald's,MCD
+Equity,Nike,NKE
+Equity,Sony,SONY
+Equity,BP,BP
+Equity,Unilever,UL
+Equity,Honda,HMC
+Equity,BHP Group,BHP
+Equity,Siemens,SIEGY
+Equity,BASF,BASFY
+Equity,Banco Santander,SAN
+Equity,Infosys,INFY
+Equity,ICBC,IDCBY
+Equity,Novo Nordisk,NVO
+Equity,Thermo Fisher Scientific,TMO
+Equity,AbbVie,ABBV
+Equity,Comcast,CMCSA
+Equity,Accenture,ACN
+Equity,Linde,LIN
+Equity,Texas Instruments,TXN
+Equity,Union Pacific,UNP
+Equity,NextEra Energy,NEE
+Equity,Medtronic,MDT
+Equity,Costco,COST
+Equity,Amgen,AMGN
+Equity,T-Mobile,TMUS
+Equity,Philip Morris,PM
+Equity,Lowe's,LOW
+Equity,Schlumberger,SLB
+Equity,BlackRock,BLK
+Equity,Stryker,SYK
+Equity,Booking Holdings,BKNG
+Equity,Canadian Natural Resources,CNQ
+Equity,Enbridge,ENB
+Equity,Royal Bank of Canada,RY
+Equity,SAP,SAP
+Equity,TotalEnergies,TTE
+Equity,Sanofi,SNY
+Equity,AstraZeneca,AZN
+Equity,GlaxoSmithKline,GSK
+Equity,HSBC,HSBC
+Equity,Mitsubishi UFJ Financial,MUFG
+Equity,NTT,NTTYY
+Equity,Hitachi,HTHIY
+Equity,Hyundai,HYMTF
+Equity,Baidu,BIDU
+Equity,JD.com,JD
+Equity,Meituan,MPNGF
+Equity,Reliance Industries,RELIANCE.NS
+Equity,Vale,VALE
+Equity,Petrobras,PBR
+Equity,Ambev,ABEV
+Equity,China Construction Bank,CICHY
+Equity,Nintendo,NTDOY
+Equity,Bridgestone,BRDCY
+Equity,SoftBank,SFTBY
+Equity,Anglo American,NGLOY
+Equity,Commonwealth Bank,CBAUF
+Equity,CSL,CSLLY
+Equity,Wesfarmers,WFAFF
+Equity,Woolworths,WOLWF
+Equity,American Express,AXP
+Equity,Shopify,SHOP
+Equity,ServiceNow,NOW
+Equity,Workday,WDAY
+Equity,Intuit,INTU
+Equity,Vertex Pharmaceuticals,VRTX
+Equity,Regeneron,REGN
+Equity,Moderna,MRNA
+Equity,Zoetis,ZTS
+Equity,Charles Schwab,SCHW
+Equity,Blackstone,BX
+Equity,S&P Global,SPGI
+Equity,Moody's,MCO
+Equity,Intercontinental Exchange,ICE
+Equity,Cboe Global Markets,CBOE
+Equity,CME Group,CME
+Equity,Nasdaq,NDAQ
+Equity,General Electric,GE
+Equity,Ford,F
+Equity,Chevron,CVX
+Equity,Citigroup,C
+Equity,Wells Fargo,WFC
+Equity,Bank of America,BAC
+Equity,Target,TGT
+Equity,PepsiCo,PEP
+Equity,Kraft Heinz,KHC
+Equity,Eli Lilly,LLY
+Equity,Gilead Sciences,GILD
+Equity,Honeywell,HON
+Equity,Raytheon Technologies,RTX
+Equity,Northrop Grumman,NOC
+Equity,FedEx,FDX
+Equity,United Parcel Service,UPS
+Equity,CSX,CSX
+Equity,Norfolk Southern,NSC
+Equity,Waste Management,WM
+Equity,Duke Energy,DUK
+Equity,Southern Company,SO
+Equity,American Electric Power,AEP
+Equity,Charter Communications,CHTR
+Equity,Anheuser-Busch InBev,BUD
+Equity,Marriott International,MAR
+Equity,Hilton Worldwide,HLT
+Equity,Kroger,KR
+Equity,Abbott Laboratories,ABT
+Equity,Bristol-Myers Squibb,BMY
+Equity,Exelon,EXC
+Equity,General Dynamics,GD
+Equity,Lockheed Martin,LMT
+Equity,Northrop Grumman,NOC
+Equity,Raytheon Technologies,RTX
+Equity,Deere,DE
+Equity,Caterpillar,CAT
+Equity,Newmont Corporation,NEM
+Equity,Air Products & Chemicals,APD
+Equity,Linde,LIN
+Equity,DuPont,DD
+Equity,Broadcom Inc.,AVGO
+Equity,Qualcomm Inc.,QCOM
+Equity,Applied Materials,AMAT
+Equity,Lam Research,LRCX
+Equity,Micron Technology,MU
+Equity,KLA Corporation,KLAC
+Equity,Microchip Technology,MCHP
+Equity,ConocoPhillips,COP
+Equity,Occidental Petroleum,OXY
+Equity,Phillips 66,PSX
+Equity,Marathon Petroleum,MPC
+Equity,Valero Energy,VLO
+Equity,Tata Consultancy Services,TCS.NS
+Equity,HDFC Bank,HDB
+Equity,Keyence Corp.,KYCCF
+Equity,Recruit Holdings,RCRRF
+Equity,Shin-Etsu Chemical,SHECF
+Equity,Itau Unibanco,ITUB
+Equity,Banco Bradesco,BBD
+Equity,FEMSA,FMX
+Equity,Progressive Corp.,PGR
+Equity,AIG,AIG
+Equity,Allstate,ALL
+Equity,MetLife,MET
+Equity,Prudential Financial,PRU
+Equity,State Street,STT
+Equity,SK Hynix Inc,000660.KS
+Equity,Kakao Corp,035720.KS
+Equity,Cigna ,CI
+Equity,Illumina,ILMN
+Equity,HCA Healthcare,HCA
+Equity,Airbus ,AIR.PA
+Equity,Vodafone Group,VOD
+Equity,Vinci SA,DG.PA
