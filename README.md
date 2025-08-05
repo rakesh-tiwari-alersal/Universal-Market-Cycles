@@ -18,7 +18,7 @@ psd_results/            - Cycle matching results (86% CAR)
    Example: `python code/compute_match_psd.py eq`
 
 ## Verification
-All empirical results in the whitepaper's Appendix B were generated using:
+All empirical results in the whitepaper's Appendix D were generated using:
 - `compute_match_psd.py`
 - Instrument metadata in folder `instrument_data`
 - Historical data used from 1980-2025 (not included due to size)
