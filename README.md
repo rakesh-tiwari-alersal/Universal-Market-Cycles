@@ -25,4 +25,4 @@ All empirical results in the whitepaper's Appendix D were generated using:
 - Produces a .csv file with cycle matches and corresponding delta
 
 # Link to whitepaper
-- https://alersal.us/AlersalWhitepaper.pdf
+#- https://alersal.us/AlersalWhitepaper.pdf
