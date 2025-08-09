@@ -1,0 +1,201 @@
+Category,Instrument,Ticker,Cycle1,Cycle1_Match,Cycle1_Delta,Cycle2,Cycle2_Match,Cycle2_Delta
+Equity,Apple,AAPL,230,237,7,184,183,1
+Equity,Microsoft,MSFT,198,196,2,184,183,1
+Equity,Amazon,AMZN,197,196,1,338,331,7
+Equity,Tesla,TSLA,223,220,3,421,416,5
+Equity,JPMorgan Chase,JPM,249,250,1,229,237,8
+Equity,Johnson & Johnson,JNJ,287,291,4,198,196,2
+Equity,UnitedHealth,UNH,270,268,2,411,408,3
+Equity,Visa,V,230,237,7,208,206,2
+Equity,Procter & Gamble,PG,217,220,3,250,250,0
+Equity,NVIDIA,NVDA,208,206,2,445,439,6
+Equity,Alibaba,BABA,195,196,1,341,345,4
+Equity,Toyota,TM,293,291,2,184,183,1
+Equity,Samsung,005930.KS,246,243,3,356,355,1
+Equity,Nestlé,NSRGY,380,385,5,226,220,6
+Equity,Shell,SHEL,222,220,2,372,368,4
+Equity,Walmart,WMT,225,220,5,182,183,1
+Equity,Mastercard,MA,344,345,1,193,196,3
+Equity,ASML Holding,ASML,364,362,2,218,220,2
+Equity,LVMH,LVMUY,196,196,0,350,345,5
+Equity,Tencent,TCEHY,356,355,1,245,243,2
+Equity,TSMC,TSM,250,250,0,291,291,0
+Equity,Roche Holding,RHHBY,368,368,0,276,273,3
+Equity,Berkshire Hathaway,BRK-B,216,220,4,188,189,1
+Equity,Novartis,NVS,278,273,5,328,331,3
+Equity,Rio Tinto,RIO,227,220,7,368,368,0
+Equity,Exxon Mobil,XOM,188,189,1,250,250,0
+Equity,Johnson Controls,JCI,329,331,2,280,273,7
+Equity,Intel,INTC,408,408,0,229,237,8
+Equity,Coca-Cola,KO,221,220,1,371,368,3
+Equity,Merck,MRK,221,220,1,267,268,1
+Equity,Home Depot,HD,307,308,1,460,457,3
+Equity,Oracle,ORCL,382,385,3,184,183,1
+Equity,PayPal,PYPL,281,273,8,211,206,5
+Equity,Netflix,NFLX,194,196,2,254,250,4
+Equity,Salesforce,CRM,197,196,1,221,220,1
+Equity,Adobe,ADBE,327,331,4,228,220,8
+Equity,Lockheed Martin,LMT,182,183,1,209,206,3
+Equity,Pfizer,PFE,267,268,1,295,291,4
+Equity,Disney,DIS,250,250,0,198,196,2
+Equity,Starbucks,SBUX,463,457,6,214,220,6
+Equity,Caterpillar,CAT,310,308,2,250,250,0
+Equity,Deere & Company,DE,250,250,0,182,183,1
+Equity,Boeing,BA,202,202,0,359,362,3
+Equity,3M,MMM,319,322,3,348,345,3
+Equity,Goldman Sachs,GS,367,368,1,314,314,0
+Equity,Morgan Stanley,MS,227,220,7,371,368,3
+Equity,IBM,IBM,182,183,1,221,220,1
+Equity,AT&T,T,318,314,4,184,183,1
+Equity,Verizon,VZ,477,480,3,420,416,4
+Equity,McDonald's,MCD,310,308,2,217,220,3
+Equity,Nike,NKE,322,322,0,230,237,7
+Equity,Sony,SONY,182,183,1,250,250,0
+Equity,BP,BP,371,368,3,221,220,1
+Equity,Unilever,UL,369,368,1,279,273,6
+Equity,Honda,HMC,369,368,1,293,291,2
+Equity,BHP Group,BHP,224,220,4,194,196,2
+Equity,Siemens,SIEGY,380,385,5,289,291,2
+Equity,BASF,BASFY,361,362,1,301,308,7
+Equity,Banco Santander,SAN,368,368,0,218,220,2
+Equity,Infosys,INFY,229,237,8,276,273,3
+Equity,ICBC,IDCBY,260,260,0,355,355,0
+Equity,Novo Nordisk,NVO,398,403,5,328,331,3
+Equity,Thermo Fisher Scientific,TMO,233,237,4,336,331,5
+Equity,AbbVie,ABBV,287,291,4,211,206,5
+Equity,Comcast,CMCSA,229,237,8,266,268,2
+Equity,Accenture,ACN,336,331,5,302,308,6
+Equity,Linde,LIN,232,237,5,194,196,2
+Equity,Texas Instruments,TXN,230,237,7,396,403,7
+Equity,Union Pacific,UNP,442,439,3,295,291,4
+Equity,NextEra Energy,NEE,359,362,3,310,308,2
+Equity,Medtronic,MDT,328,331,3,230,237,7
+Equity,Costco,COST,307,308,1,234,237,3
+Equity,Amgen,AMGN,236,237,1,247,250,3
+Equity,T-Mobile,TMUS,219,220,1,354,355,1
+Equity,Philip Morris,PM,437,439,2,336,331,5
+Equity,Lowe's,LOW,249,250,1,229,237,8
+Equity,Schlumberger,SLB,,,,,,
+Equity,BlackRock,BLK,433,439,6,309,308,1
+Equity,Stryker,SYK,197,196,1,229,237,8
+Equity,Booking Holdings,BKNG,368,368,0,201,202,1
+Equity,Canadian Natural Resources,CNQ,217,220,3,286,291,5
+Equity,Enbridge,ENB,372,368,4,298,291,7
+Equity,Royal Bank of Canada,RY,220,220,0,312,314,2
+Equity,SAP,SAP,228,220,8,193,196,3
+Equity,TotalEnergies,TTE,224,220,4,369,368,1
+Equity,Sanofi,SNY,387,385,2,276,273,3
+Equity,AstraZeneca,AZN,270,268,2,253,250,3
+Equity,GlaxoSmithKline,GSK,408,408,0,200,202,2
+Equity,HSBC,HSBC,298,291,7,364,362,2
+Equity,Mitsubishi UFJ Financial,MUFG,306,308,2,470,470,0
+Equity,NTT,NTTYY,235,237,2,250,250,0
+Equity,Hitachi,HTHIY,202,202,0,185,183,2
+Equity,Hyundai,HYMTF,197,196,1,414,416,2
+Equity,Baidu,BIDU,264,260,4,193,196,3
+Equity,JD.com,JD,216,220,4,312,314,2
+Equity,Meituan,MPNGF,239,237,2,,,
+Equity,Reliance Industries,RELIANCE.NS,391,385,6,186,183,3
+Equity,Vale,VALE,218,220,2,196,196,0
+Equity,Petrobras,PBR,216,220,4,190,189,1
+Equity,Ambev,ABEV,420,416,4,298,291,7
+Equity,China Construction Bank,CICHY,245,243,2,392,385,7
+Equity,Nintendo,NTDOY,226,220,6,361,362,1
+Equity,Bridgestone,BRDCY,230,237,7,392,385,7
+Equity,SoftBank,SFTBY,202,202,0,242,243,1
+Equity,Anglo American,NGLOY,263,260,3,376,368,8
+Equity,Commonwealth Bank,CBAUF,414,416,2,197,196,1
+Equity,CSL,CSLLY,280,273,7,218,220,2
+Equity,Wesfarmers,WFAFF,286,291,5,196,196,0
+Equity,Woolworths,WOLWF,321,322,1,428,426,2
+Equity,American Express,AXP,310,308,2,182,183,1
+Equity,Shopify,SHOP,285,291,6,197,196,1
+Equity,ServiceNow,NOW,329,331,2,219,220,1
+Equity,Workday,WDAY,357,355,2,230,237,7
+Equity,Intuit,INTU,240,237,3,194,196,2
+Equity,Vertex Pharmaceuticals,VRTX,199,196,3,245,243,2
+Equity,Regeneron,REGN,216,220,4,332,331,1
+Equity,Moderna,MRNA,333,331,2,,,
+Equity,Zoetis,ZTS,285,291,6,209,206,3
+Equity,Charles Schwab,SCHW,367,368,1,298,291,7
+Equity,Blackstone,BX,268,268,0,379,385,6
+Equity,S&P Global,SPGI,182,183,1,217,220,3
+Equity,Moody's,MCO,221,220,1,336,331,5
+Equity,Intercontinental Exchange,ICE,198,196,2,354,355,1
+Equity,Cboe Global Markets,CBOE,190,189,1,254,250,4
+Equity,CME Group,CME,356,355,1,196,196,0
+Equity,Nasdaq,NDAQ,264,260,4,223,220,3
+Equity,General Electric,GE,,,,,,
+Equity,Ford,F,217,220,3,230,237,7
+Equity,Chevron,CVX,221,220,1,250,250,0
+Equity,Citigroup,C,295,291,4,230,237,7
+Equity,Wells Fargo,WFC,,,,,,
+Equity,Bank of America,BAC,230,237,7,221,220,1
+Equity,Target,TGT,234,237,3,255,250,5
+Equity,PepsiCo,PEP,396,403,7,221,220,1
+Equity,Kraft Heinz,KHC,211,206,5,316,314,2
+Equity,Eli Lilly,LLY,,,,,,
+Equity,Gilead Sciences,GILD,234,237,3,325,322,3
+Equity,Honeywell,HON,250,250,0,310,308,2
+Equity,Raytheon Technologies,RTX,250,250,0,442,439,3
+Equity,Northrop Grumman,NOC,183,183,0,366,368,2
+Equity,FedEx,FDX,328,331,3,195,196,1
+Equity,United Parcel Service,UPS,231,237,6,308,308,0
+Equity,CSX,CSX,313,314,1,376,368,8
+Equity,Norfolk Southern,NSC,231,237,6,311,308,3
+Equity,Waste Management,WM,301,308,7,234,237,3
+Equity,Duke Energy,DUK,394,385,9,318,314,4
+Equity,Southern Company,SO,229,237,8,250,250,0
+Equity,American Electric Power,AEP,383,385,2,310,308,2
+Equity,Charter Communications,CHTR,261,260,1,356,355,1
+Equity,Anheuser-Busch InBev,BUD,404,403,1,289,291,2
+Equity,Marriott International,MAR,313,314,1,362,362,0
+Equity,Hilton Worldwide,HLT,365,362,3,244,243,1
+Equity,Kroger,KR,396,403,7,239,237,2
+Equity,Abbott Laboratories,ABT,408,408,0,286,291,5
+Equity,Bristol-Myers Squibb,BMY,287,291,4,182,183,1
+Equity,Exelon,EXC,221,220,1,459,457,2
+Equity,General Dynamics,GD,383,385,2,239,237,2
+Equity,Lockheed Martin,LMT,182,183,1,209,206,3
+Equity,Northrop Grumman,NOC,183,183,0,366,368,2
+Equity,Raytheon Technologies,RTX,250,250,0,442,439,3
+Equity,Deere,DE,250,250,0,182,183,1
+Equity,Caterpillar,CAT,310,308,2,250,250,0
+Equity,Newmont Corporation,NEM,293,291,2,220,220,0
+Equity,Air Products & Chemicals,APD,357,355,2,254,250,4
+Equity,Linde,LIN,232,237,5,194,196,2
+Equity,DuPont,DD,310,308,2,295,291,4
+Equity,Broadcom Inc.,AVGO,335,331,4,236,237,1
+Equity,Qualcomm Inc.,QCOM,192,189,3,235,237,2
+Equity,Applied Materials,AMAT,249,250,1,229,237,8
+Equity,Lam Research,LRCX,192,189,3,231,237,6
+Equity,Micron Technology,MU,196,196,0,451,457,6
+Equity,KLA Corporation,KLAC,297,291,6,230,237,7
+Equity,Microchip Technology,MCHP,291,291,0,226,220,6
+Equity,ConocoPhillips,COP,220,220,0,250,250,0
+Equity,Occidental Petroleum,OXY,250,250,0,422,426,4
+Equity,Phillips 66,PSX,371,368,3,223,220,3
+Equity,Marathon Petroleum,MPC,354,355,1,197,196,1
+Equity,Valero Energy,VLO,250,250,0,229,237,8
+Equity,Tata Consultancy Services,TCS.NS,317,314,3,219,220,1
+Equity,HDFC Bank,HDB,403,403,0,224,220,4
+Equity,Keyence Corp.,KYCCF,349,345,4,226,220,6
+Equity,Recruit Holdings,RCRRF,249,250,1,,,
+Equity,Shin-Etsu Chemical,SHECF,413,416,3,248,250,2
+Equity,Itau Unibanco,ITUB,218,220,2,295,291,4
+Equity,Banco Bradesco,BBD,413,416,3,289,291,2
+Equity,FEMSA,FMX,403,403,0,326,322,4
+Equity,Progressive Corp.,PGR,229,237,8,249,250,1
+Equity,AIG,AIG,319,322,3,371,368,3
+Equity,Allstate,ALL,368,368,0,324,322,2
+Equity,MetLife,MET,212,206,6,354,355,1
+Equity,Prudential Financial,PRU,212,206,6,313,314,1
+Equity,State Street,STT,381,385,4,327,331,4
+Equity,SK Hynix Inc,000660.KS,237,237,0,221,220,1
+Equity,Kakao Corp,035720.KS,398,403,5,255,250,5
+Equity,Cigna ,CI,390,385,5,321,322,1
+Equity,Illumina,ILMN,233,237,4,370,368,2
+Equity,HCA Healthcare,HCA,213,206,7,278,273,5
+Equity,Airbus ,AIR.PA,236,237,1,219,220,1
+Equity,Vodafone Group,VOD,243,243,0,356,355,1
+Equity,Vinci SA,DG.PA,365,362,3,253,250,3
