@@ -9,7 +9,7 @@ from scipy.signal import welch, find_peaks, periodogram
 # Validate command-line arguments
 if len(sys.argv) < 2:
     print("Error: Asset class argument required (eq/ix/cr/co/fx)")
-    print("Usage: python compute_match_psd.py <asset_class> [threshold]")
+    print("Usage: python compute_match_psd.py <asset_class>")
     sys.exit(1)
 
 asset_class = sys.argv[1].lower()
@@ -17,30 +17,6 @@ valid_classes = ['eq', 'ix', 'cr', 'co', 'fx']
 if asset_class not in valid_classes:
     print(f"Error: Invalid asset class '{asset_class}'. Valid options: {', '.join(valid_classes)}")
     sys.exit(1)
-
-# Constants
-
-THRESHOLD_PER_CLASS = {
-    'eq': 0.30,
-    'co': 0.60,
-    'ix': 0.60,
-    'cr': 0.60,
-    'fx': 0.60
-}
-
-# Set default threshold based on asset class
-DEFAULT_THRESHOLD = THRESHOLD_PER_CLASS[asset_class]
-threshold = DEFAULT_THRESHOLD
-
-if len(sys.argv) >= 3:
-    try:
-        threshold = float(sys.argv[2])
-        if not 0 < threshold < 1:
-            raise ValueError
-        print(f"Using custom threshold: {threshold}")
-    except ValueError:
-        print(f"Invalid threshold value '{sys.argv[2]}'. Using default {DEFAULT_THRESHOLD}")
-        threshold = DEFAULT_THRESHOLD
 
 # Asset-specific configuration
 PERIOD_RANGES = {
@@ -51,7 +27,7 @@ PERIOD_RANGES = {
     'fx': (179, 511)
 }
 
-# Updated unified cycle table (removed first 3 elements, formatted in 8 columns)
+# Unified cycle reference table
 TABLE_CYCLES = [
     179, 183, 189, 196, 202, 206, 220, 237,
     243, 250, 260, 268, 273, 291, 308, 314,
@@ -72,7 +48,7 @@ MIN_PERIOD, MAX_PERIOD = PERIOD_RANGES[asset_class]
 
 # Output files
 final_output_path = os.path.join(OUTPUT_DIR, f"match_psd_results_{asset_class}.csv")
-log_path = os.path.join(OUTPUT_DIR, "psd_processing_log.csv")  # Single log file
+log_path = os.path.join(OUTPUT_DIR, "psd_processing_log.csv")
 
 # Initialize log file only if it doesn't exist
 if not os.path.exists(log_path):
@@ -89,7 +65,7 @@ with open(final_output_path, 'w', newline='') as f:
         'Cycle2', 'Cycle2_Match', 'Cycle2_Delta'
     ])
 
-# Get instrument metadata
+# Load instrument metadata
 instruments = []
 metadata_file = f'instrument_data_{asset_class}.csv'
 try:
@@ -103,18 +79,18 @@ except FileNotFoundError:
     sys.exit(1)
 
 print(f"Starting PSD computation and cycle matching for {asset_class.upper()} instruments...")
-print(f"Period range: {MIN_PERIOD}-{MAX_PERIOD} days | Threshold: {threshold}")
+print(f"Period range: {MIN_PERIOD}-{MAX_PERIOD} days")
 start_time = time.time()
 processed_count = 0
 
 def log_entry(timestamp, asset_class, category, instrument, ticker, status, message):
-    """Log processing status to file"""
+    """Log processing status to central log file"""
     with open(log_path, 'a', newline='') as f:
         writer = csv.writer(f)
         writer.writerow([timestamp, asset_class, category, instrument, ticker, status, message])
 
 def find_closest_cycle(period, cycle_table):
-    """Find closest cycle and absolute delta in days"""
+    """Find closest reference cycle and calculate delta"""
     if period is None or period == '':
         return None, None
     
@@ -126,9 +102,9 @@ def find_closest_cycle(period, cycle_table):
     except (ValueError, TypeError):
         return None, None
 
-def find_dominant_cycles(frequencies, psd, min_period=MIN_PERIOD, max_period=MAX_PERIOD, threshold=threshold):
-    """Identify dominant cycles in the specified period range (up to 2 cycles)"""
-    # Exclude zero frequency
+def find_dominant_cycles(frequencies, psd, min_period=MIN_PERIOD, max_period=MAX_PERIOD):
+    """Identify dominant cycles with 41-day minimum separation"""
+    # Filter out zero frequency
     non_zero_mask = frequencies > 0
     frequencies = frequencies[non_zero_mask]
     psd = psd[non_zero_mask]
@@ -136,10 +112,10 @@ def find_dominant_cycles(frequencies, psd, min_period=MIN_PERIOD, max_period=MAX
     if len(frequencies) == 0:
         return []
     
-    # Convert to periods
+    # Convert frequencies to periods
     periods = 1 / frequencies
     
-    # Filter for period range
+    # Apply asset-specific period range filter
     period_mask = (periods >= min_period) & (periods <= max_period)
     filtered_periods = periods[period_mask]
     filtered_psd = psd[period_mask]
@@ -147,54 +123,71 @@ def find_dominant_cycles(frequencies, psd, min_period=MIN_PERIOD, max_period=MAX
     if len(filtered_psd) == 0:
         return []
     
-    # Find peaks
+    # Detect spectral peaks
     peak_indices, _ = find_peaks(filtered_psd, height=0.001 * np.max(filtered_psd), distance=1)
     
     if len(peak_indices) == 0:
         return []
     
-    # Get peak data
+    # Extract peak data
     peak_periods = filtered_periods[peak_indices]
     peak_powers = filtered_psd[peak_indices]
     
-    # Create DataFrame for sorting
+    # Sort peaks by power (descending)
     peaks_df = pd.DataFrame({'period': peak_periods, 'power': peak_powers})
     peaks_df = peaks_df.sort_values('power', ascending=False)
   
-    # Get top 10 cycles
+    # Get top 10 candidate cycles
     top_10_cycles = peaks_df.head(10)
     
     if top_10_cycles.empty:
         return []
-    
-    # Calculate total power
-    total_power = top_10_cycles['power'].sum()
-    
-    if total_power == 0:
-        return []
-    
-    
-    # Determine how many cycles to include based on threshold (up to 2 cycles)
-    n_cycles = len(top_10_cycles)
-    cum_power = 0.0
-    selected_cycles = []
-    
-    # Check if we should include cycles based on threshold
-    # Case 2: Threshold met by first two cycles
-    if n_cycles >= 2:
-        if (top_10_cycles.iloc[0]['power'] + top_10_cycles.iloc[1]['power']) >= threshold * total_power:
-            selected_cycles.append(top_10_cycles.iloc[0])
-            selected_cycles.append(top_10_cycles.iloc[1])
 
-    # Case 3: Threshold met by first cycle alone (treat same as first two)
-    elif n_cycles >= 1:
-        if top_10_cycles.iloc[0]['power'] >= threshold * total_power:
-            selected_cycles.append(top_10_cycles.iloc[0])
+    # ============== CYCLE SELECTION CORE LOGIC ==============
+    MIN_CYCLE_DISTANCE = 41  # Minimum separation between cycles (days)
+    all_peaks = []
+    
+    # Prepare peak objects for processing
+    for _, row in top_10_cycles.iterrows():
+        all_peaks.append({
+            'period': row['period'],
+            'power': row['power']
+        })
+    
+    # Case 1: Fewer than 3 peaks - use all available
+    if len(all_peaks) <= 2:
+        candidate_periods = [p['period'] for p in all_peaks]
+    
+    # Case 2: More than 2 peaks - apply separation logic
+    else:
+        candidate_periods = []
+        
+        # Always include strongest peak
+        candidate_periods.append(all_peaks[0]['period'])
+        
+        # Find next strongest peak meeting separation requirement
+        found_valid = False
+        for i in range(1, len(all_peaks)):
+            valid = True
+            # Check against all selected cycles
+            for existing in candidate_periods:
+                if abs(all_peaks[i]['period'] - existing) < MIN_CYCLE_DISTANCE:
+                    valid = False
+                    break
+            if valid:
+                candidate_periods.append(all_peaks[i]['period'])
+                found_valid = True
+                break
+        
+        # Fallback: use second strongest if no valid peak found
+        if not found_valid:
+            candidate_periods.append(all_peaks[1]['period'])
+    
+    # Return integer periods (max 2 cycles)
+    return [int(round(p)) for p in candidate_periods[:2]]
 
-    # Return only period values, limited to 2 cycles
-    return [int(round(p['period'])) for p in selected_cycles][:2]
 
-
+# Main processing loop
 for inst in instruments:
     instrument_start = time.time()
     ticker = inst['Ticker']
@@ -203,7 +196,7 @@ for inst in instruments:
     safe_ticker = ticker.replace('^', '').replace('=', '').replace('/', '_')
     file_path = os.path.join(DATA_DIR, f"{safe_ticker}.csv")
     
-    # Initialize result dictionary for final output (only 2 cycles)
+    # Initialize result container
     result = {
         'Category': category,
         'Instrument': instrument_name,
@@ -223,7 +216,7 @@ for inst in instruments:
     print(f"[{processed_count+1}/{len(instruments)}] Processing {ticker}...")
     
     try:
-        # Validate and load data
+        # Validate and load price data
         if not os.path.exists(file_path):
             raise FileNotFoundError(f"Data file not found: {os.path.abspath(file_path)}")
         
@@ -232,27 +225,28 @@ for inst in instruments:
         
         data = data.sort_values('Date')
         
+        # Validate data sufficiency
         if len(data) < 1000:
             raise ValueError(f"Insufficient data ({len(data)} rows < 1000)")
         
-        # Calculate returns
+        # Calculate log returns
         closes = data['close'].values
         if np.any(closes <= 0):
             raise ValueError("Non-positive closing prices detected")
         
         log_returns = np.log(closes[1:]) - np.log(closes[:-1])
         
-        # Compute PSD
+        # Compute power spectral density
         frequencies, psd = periodogram(log_returns, fs=1, scaling='density', window='hann')
         
-        # Find dominant cycles (up to 2)
-        peak_periods = find_dominant_cycles(frequencies, psd, threshold=threshold)
+        # Detect dominant market cycles
+        peak_periods = find_dominant_cycles(frequencies, psd)
         print(f"  Found {len(peak_periods)} cycles: {peak_periods}")
         
-        # Store cycles in result
+        # Match to reference cycles
         if peak_periods:
             for i, period in enumerate(peak_periods):
-                if i < 2:  # Only store up to 2 cycles
+                if i < 2:  # Store max 2 cycles
                     result[f'Cycle{i+1}'] = period
                     match, delta = find_closest_cycle(period, TABLE_CYCLES)
                     result[f'Cycle{i+1}_Match'] = match
@@ -263,10 +257,9 @@ for inst in instruments:
         message = str(e)
         print(f"  {status}: {message}")
     
-    # Log and save
+    # Log and save results
     log_entry(timestamp, asset_class, category, instrument_name, ticker, status, message)
     
-    # Write final results (only 2 cycles)
     with open(final_output_path, 'a', newline='') as f:
         writer = csv.writer(f)
         writer.writerow([
