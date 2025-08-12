@@ -8,14 +8,17 @@ This repository contains code and data for the whitepaper:
 ```
 code/                   - Python implementation of PSD cycle detection and matching algorithm
 instrument_data/        - Instrument lists by asset class (eq-Equity, co-Commodity, ix-Index, fx-Forex, cr-Crypto)
-psd_results/            - Cycle matching results (86% CAR)
+psd_results/            - Cycle matching results (78% CAR)
+misc_files/             - Market correction history (.xls)
 
 ## Reproducing Results
 1. Install requirements:  
    `pip install pandas numpy scipy csv`
-2. Run cycle detection:  
+2. Run cycle detection with eq|ix|co|cr|fx as argument one-by-one
    `python code/compute_match_psd.py <asset_class>`  
    Example: `python code/compute_match_psd.py eq`
+3. Run to generate p-value
+   Example: `python code/CAR.py`
 
 ## Verification
 All empirical results in the whitepaper's Appendix D were generated using:
@@ -25,4 +28,4 @@ All empirical results in the whitepaper's Appendix D were generated using:
 - Produces a .csv file with cycle matches and corresponding delta
 
 # Link to whitepaper
-#- https://alersal.us/AlersalWhitepaper.pdf
+#- TBD
