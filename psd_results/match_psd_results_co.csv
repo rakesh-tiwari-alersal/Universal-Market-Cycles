@@ -16,6 +16,6 @@ Commodity,Sugar,SB=F,425,426,1,290,291,1
 Commodity,Coffee,KC=F,427,426,1,291,291,0
 Commodity,Cocoa,CC=F,356,355,1,267,268,1
 Commodity,Live Cattle,LE=F,382,385,3,322,322,0
-Commodity,Feeder Cattle,GF=F,320,322,2,358,355,3
+Commodity,Feeder Cattle,GF=F,320,322,2,468,470,2
 Commodity,Lean Hogs,HE=F,386,385,1,344,345,1
 Commodity,Platinum,PL=F,314,314,0,448,439,9

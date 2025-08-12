@@ -11,6 +11,6 @@ Index,Nikkei 225,^N225,487,487,0,386,385,1
 Index,Hang Seng,^HSI,635,636,1,433,439,6
 Index,Shanghai Composite,000001.SS,453,457,4,618,622,4
 Index,S&P/ASX 200,^AXJO,486,487,1,359,362,3
-Index,TSX Composite,^GSPTSE,,,,,,
+Index,TSX Composite,^GSPTSE,520,528,8,381,385,4
 Index,Bovespa Index,^BVSP,532,534,2,363,362,1
-Index,US Dollar Index,DX-Y.NYB,415,416,1,375,368,7
+Index,US Dollar Index,DX-Y.NYB,415,416,1,553,551,2
