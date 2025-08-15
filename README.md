@@ -6,7 +6,7 @@ This repository contains code and data for the whitepaper:
 
 ## Structure
 ```
-code/                   - Python implementation of PSD cycle detection and matching algorithm
+code/                   - Python implementation of PSD cycle detection and matching algorithm, CAR calculations
 instrument_data/        - Instrument lists by asset class (eq-Equity, co-Commodity, ix-Index, fx-Forex, cr-Crypto)
 psd_results/            - Cycle matching results (78% CAR)
 misc_files/             - Market correction history (.xls)
@@ -17,15 +17,15 @@ misc_files/             - Market correction history (.xls)
 2. Run cycle detection with eq|ix|co|cr|fx as argument one-by-one
    `python code/compute_match_psd.py <asset_class>`  
    Example: `python code/compute_match_psd.py eq`
-3. Run to generate p-value
+3. Run to generate p-value -t 1|2|3 (tolerance, default=2)
    Example: `python code/CAR.py`
 
 ## Verification
 All empirical results in the whitepaper's Appendix D were generated using:
-- `compute_match_psd.py`
+- `compute_match_psd.py` and `CAR.py` 
 - Instrument metadata in folder `instrument_data`
 - Historical data used from 1980-2025 (not included due to size)
 - Produces a .csv file with cycle matches and corresponding delta
 
 # Link to whitepaper
-#- TBD
+#- NA
