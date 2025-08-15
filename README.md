@@ -11,17 +11,17 @@ This repository contains code and data for the whitepaper:
 - misc_files/             - Market correction history (.xls)
 
 ## Reproducing Results
-1. Install requirements:  
+- Install requirements:  
    - `pip install pandas numpy scipy csv`
-2. Run cycle detection with eq|ix|co|cr|fx as argument one-by-one
+- Run cycle detection with eq|ix|co|cr|fx as argument one-by-one
    - `python code/compute_match_psd.py <asset_class>`  
    - Example: `python code/compute_match_psd.py eq`
-3. Run to generate CAR and p-value -t 1|2|3 (tolerance, default=2)
+- Run to generate CAR and p-value -t 1|2|3 (tolerance, default=2)
    - Example: `python code/CAR.py`
    - Expected Output:
-      53 universal cycles derived from plastic number mathematics
-      78% coverage across 255 instruments (equities, commodities, forex, crypto)
-      Statistically significant: p<0.01 at tolerance=±1
+      - 53 universal cycles derived from plastic number mathematics
+      - 78% coverage across 255 instruments (equities, commodities, forex, crypto)
+      - Statistically significant: p<0.01 at tolerance=±1
 
 ## Verification
 All empirical results in the whitepaper's Appendix D were generated using:
