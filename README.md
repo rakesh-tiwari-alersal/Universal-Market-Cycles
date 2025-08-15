@@ -24,9 +24,13 @@ This repository contains code and data for the whitepaper:
    `pip install pandas numpy scipy csv`
 2. Run cycle detection with eq|ix|co|cr|fx as argument one-by-one
    python code/compute_match_psd.py eq  # Equities
+   
    python code/compute_match_psd.py ix  # Indices
+   
    python code/compute_match_psd.py co  # Commodities
+   
    python code/compute_match_psd.py fx  # Forex
+   
    python code/compute_match_psd.py cr  # Crypto
    Expected Output:
       psd_results/match_psd_results_<asset_class>.csv
