@@ -3,10 +3,10 @@
 
 This repository contains code and data for the whitepaper:  
 **"Deriving Market Cycles from the Plastic Number to Model Volatility"**
-code/                   - Python implementation of PSD cycle detection and matching algorithm, CAR calculations
-instrument_data/        - Instrument lists by asset class (eq-Equity, co-Commodity, ix-Index, fx-Forex, cr-Crypto)
-psd_results/            - Cycle matching results (78% CAR)
-misc_files/             - Market correction history (.xls)
+- code/                   - Python implementation of PSD cycle detection and matching algorithm, CAR calculations
+- instrument_data/        - Instrument lists by asset class (eq-Equity, co-Commodity, ix-Index, fx-Forex, cr-Crypto)
+- psd_results/            - Cycle matching results (78% CAR)
+- misc_files/             - Market correction history (.xls)
 
 ## Reproducing Results
 1. Install requirements:  
