@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from scipy.stats import binomtest
 import os
-import argparse  # Added for command-line argument handling
+import argparse
 
 # Universal cycle table parameters
 TABLE_CYCLES = [
@@ -14,7 +14,6 @@ TABLE_CYCLES = [
     605, 622, 636, 645, 653, 659, 676, 694,
     699, 707, 717, 730, 747
 ]
-TOLERANCE = 2
 MIN_PERIOD = 179
 MAX_PERIOD = 747
 METHOD_RESULT_PATHS = {
@@ -23,7 +22,7 @@ METHOD_RESULT_PATHS = {
     'pacf': "pacf_results/match_pacf_results_{asset_class}.csv"
 }
 
-def calculate_car(results_df, method='psd'):
+def calculate_car(results_df, method='psd', tolerance=2):
     """
     Calculate Coverage Acceptance Ratio (CAR) with statistical significance
     Handles multiple analysis methods (PSD, DFT, PACF)
@@ -34,9 +33,9 @@ def calculate_car(results_df, method='psd'):
     
     # Identify covered instruments (at least one delta <= tolerance)
     results_df['Covered'] = results_df.apply(
-        lambda row: (row['Cycle1_Delta'] <= TOLERANCE) or 
+        lambda row: (row['Cycle1_Delta'] <= tolerance) or 
                    (pd.notna(row['Cycle2_Delta']) and 
-                   (row['Cycle2_Delta'] <= TOLERANCE)), 
+                   (row['Cycle2_Delta'] <= tolerance)), 
         axis=1
     )
     
@@ -48,8 +47,8 @@ def calculate_car(results_df, method='psd'):
     # Calculate exact covered days with merging
     intervals = []
     for c in TABLE_CYCLES:
-        low = max(MIN_PERIOD, c - TOLERANCE)
-        high = min(MAX_PERIOD, c + TOLERANCE)
+        low = max(MIN_PERIOD, c - tolerance)
+        high = min(MAX_PERIOD, c + tolerance)
         intervals.append((low, high))
     
     # Merge overlapping intervals
@@ -121,15 +120,17 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Calculate CAR for cycle analysis methods')
     parser.add_argument('method', nargs='?', default='psd', choices=['psd', 'dft', 'pacf'],
                         help='Analysis method (psd, dft, pacf). Default: psd')
+    parser.add_argument('-t', '--tolerance', type=int, default=2, choices=[1,2,3],
+                        help='Tolerance value for cycle matching (1, 2, or 3). Default: 2')
     args = parser.parse_args()
 
     # Load and process specified method
     try:
         results_df = load_results(args.method)
-        car_result = calculate_car(results_df, args.method)
+        car_result = calculate_car(results_df, args.method, args.tolerance)
         
         # Print results
-        print(f"{args.method.upper()} Results (n={car_result['total']}):")
+        print(f"{args.method.upper()} Results (tolerance={args.tolerance}, n={car_result['total']}):")
         print(f"CAR: {car_result['car']:.2%} ({car_result['covered']} instruments)")
         print(f"Expected random coverage: {car_result['expected_random']:.1f} instruments")
         print(f"Excess coverage: {car_result['excess_coverage']:.2%} points")
