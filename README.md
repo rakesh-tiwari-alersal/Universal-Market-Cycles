@@ -28,7 +28,7 @@ All empirical results in the whitepaper's Appendix D were generated using:
 - `compute_match_psd.py` and `CAR.py` in folder `code`
 - Input instrument metadata in folder `instrument_data`
 - Input historical data used from 1980-2025 (not included due to size)
-- Output *.csv files with cycle matches and corresponding delta in folder `psd_results`
+- Output match_psd_results_*.csv files with cycle matches and corresponding delta in folder `psd_results`
 - CAR output :
   - PSD Results (tolerance=2, n=255):
   - CAR: 76.86% (196 instruments)
