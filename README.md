@@ -13,7 +13,7 @@ This repository contains code and data for the whitepaper:
 ## Reproducing Results
 - Install requirements:  
    - `pip install pandas numpy scipy csv`
-- Run cycle detection with eq|ix|co|cr|fx as argument one-by-one
+- Run cycle detection with eq | ix | co | cr | fx as argument one-by-one
    - `python code/compute_match_psd.py <asset_class>`  
    - Example: `python code/compute_match_psd.py eq`
 - Run to generate CAR and p-value -t 1|2|3 (tolerance, default is -t=2)
