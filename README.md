@@ -19,9 +19,9 @@ This repository contains code and data for the whitepaper:
 - Run to generate CAR and p-value -t 1|2|3 (tolerance, default is -t=2)
    - Example: `python code/CAR.py`
    - Output:
-      -PSD Results (tolerance=2, n=255):
-      -CAR: 76.86% (196 instruments)
-      -Statistical significance: z=2.29, p=1.19e-02
+      - PSD Results (tolerance=2, n=255):
+      - CAR: 76.86% (196 instruments)
+      - Statistical significance: z=2.29, p=1.19e-02
 
 ## Verification
 All empirical results in the whitepaper's Appendix D were generated using:
