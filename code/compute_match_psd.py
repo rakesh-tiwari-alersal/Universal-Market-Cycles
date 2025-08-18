@@ -18,15 +18,6 @@ if asset_class not in valid_classes:
     print(f"Error: Invalid asset class '{asset_class}'. Valid options: {', '.join(valid_classes)}")
     sys.exit(1)
 
-# Asset-specific configuration
-PERIOD_RANGES = {
-    'eq': (179, 511),
-    'co': (249, 511),
-    'ix': (342, 718),
-    'cr': (179, 511),
-    'fx': (179, 511)
-}
-
 # Unified cycle reference table
 TABLE_CYCLES = [
     179, 183, 189, 196, 202, 206, 220, 237,
@@ -43,8 +34,9 @@ DATA_DIR = "historical_data"
 OUTPUT_DIR = "psd_results"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-# Set range based on asset class
-MIN_PERIOD, MAX_PERIOD = PERIOD_RANGES[asset_class]
+# Set range for universal cycle detection
+MIN_PERIOD = 179
+MAX_PERIOD = 747
 
 # Output files
 final_output_path = os.path.join(OUTPUT_DIR, f"match_psd_results_{asset_class}.csv")
