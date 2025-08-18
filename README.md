@@ -14,10 +14,13 @@ This repository contains code and data for the whitepaper:
 - Install requirements:  
    - `pip install pandas numpy scipy csv`
 - Run cycle detection with eq | ix | co | cr | fx as argument one-by-one
-   - `python code/compute_match_psd.py <asset_class>`  
-   - Example: `python code/compute_match_psd.py eq`
+   - `python code/compute_match_psd.py eq`
+   - `python code/compute_match_psd.py ix`
+   - `python code/compute_match_psd.py co`
+   - `python code/compute_match_psd.py cr`
+   - `python code/compute_match_psd.py fx`
 - Run to generate CAR and p-value -t 1|2|3 (tolerance, default is -t=2)
-   - Example: `python code/CAR.py`
+   - `python code/CAR.py`
    - Output:
       - PSD Results (tolerance=2, n=255):
       - CAR: 76.86% (196 instruments)
