@@ -30,6 +30,6 @@ All empirical results in the whitepaper's Appendix D were generated using:
 - Input historical data used from 1980-2025 (not included due to size)
 - Output *.csv files with cycle matches and corresponding delta in folder `psd_results`
 - CAR output :
-      - PSD Results (tolerance=2, n=255):
-      - CAR: 76.86% (196 instruments)
-      - Statistical significance: z=2.29, p=1.19e-02
+  - PSD Results (tolerance=2, n=255):
+  - CAR: 76.86% (196 instruments)
+  - Statistical significance: z=2.29, p=1.19e-02
