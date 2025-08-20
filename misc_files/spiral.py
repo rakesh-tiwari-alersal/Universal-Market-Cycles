@@ -24,7 +24,7 @@ r_plastic_red = rho ** (2 * theta_red / np.pi)
 ax.plot(theta_red, r_plastic_red, color='red', lw=4) # Changed lw from 2 to 4
 
 # LIGHTENED CONCENTRIC RINGS (hex #f0f0f0)
-ax.grid(color='#cccccc', alpha=0.8, linestyle='-', linewidth=0.8)
+ax.grid(color='#b0b0b0', alpha=0.8, linestyle='-', linewidth=0.8)
 
 # Angular labels
 ax.set_xticks(np.deg2rad([0, 90, 180, 270]))
