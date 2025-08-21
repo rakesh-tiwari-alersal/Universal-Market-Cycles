@@ -156,14 +156,8 @@ Equity,Abbott Laboratories,ABT
 Equity,Bristol-Myers Squibb,BMY
 Equity,Exelon,EXC
 Equity,General Dynamics,GD
-Equity,Lockheed Martin,LMT
-Equity,Northrop Grumman,NOC
-Equity,Raytheon Technologies,RTX
-Equity,Deere,DE
-Equity,Caterpillar,CAT
 Equity,Newmont Corporation,NEM
 Equity,Air Products & Chemicals,APD
-Equity,Linde,LIN
 Equity,DuPont,DD
 Equity,Broadcom Inc.,AVGO
 Equity,Qualcomm Inc.,QCOM
@@ -199,3 +193,4 @@ Equity,HCA Healthcare,HCA
 Equity,Airbus ,AIR.PA
 Equity,Vodafone Group,VOD
 Equity,Vinci SA,DG.PA
+Equity ,PNC Financial Services ,PNC
