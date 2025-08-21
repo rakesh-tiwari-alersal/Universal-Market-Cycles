@@ -9,7 +9,7 @@ This repository contains code and data for the whitepaper:
 - instrument_data/        - 245 instrument lists by asset class (eq-Equity, co-Commodity, ix-Index, fx-Forex, cr-Crypto)
 - psd_results/            - PSD match results (77% CAR)
 - pacf_results/           - PACF match results (71% CAR)
-- misc_files/             - Auxiliary files (spiral.py), CAR output for various tests/Table 3
+- misc_files/             - Auxiliary files (spiral.py, CAR output for Table 3)
 
 ## Reproducing Results
 - Install requirements:  
@@ -20,7 +20,7 @@ This repository contains code and data for the whitepaper:
    - `python code/compute_match_psd.py co`
    - `python code/compute_match_psd.py cr`
    - `python code/compute_match_psd.py fx`
-- Run to generate CAR and p-value -t 1|2|3 (tolerance, default is -t=2)
+- Run to generate CAR and p-value -t 1 | 2 | 3 (tolerance, default is -t=2)
    - `python code/CAR.py`
 
 ## Verification
@@ -30,6 +30,9 @@ All empirical results in the whitepaper's Appendix D were generated using:
 - Input historical data used from 1980-2025 (not included due to size)
 - Output match_psd_results_*.csv files in folder `psd_results`, each file contains universal cycle matches and corresponding deltas 
 - CAR output :
-  - PSD Results (tolerance=2, n=255):
-  - CAR: 76.86% (196 instruments)
-  - Statistical significance: z=2.29, p=1.19e-02
+   - PSD Results (tolerance=2):
+   - Instruments with cycles detected: 245
+   - CAR: 76.73% (188 instruments)
+   - Expected random coverage: 172.3 instruments
+   - Excess coverage: 6.42% points
+   - Statistical significance: z=2.20, p=1.51e-02
