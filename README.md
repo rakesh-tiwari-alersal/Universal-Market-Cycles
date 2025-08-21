@@ -9,7 +9,7 @@ This repository contains code and data for the whitepaper:
 - instrument_data/        - 255 instrument lists by asset class (eq-Equity, co-Commodity, ix-Index, fx-Forex, cr-Crypto)
 - psd_results/            - PSD match results (77% CAR)
 - pacf_results/           - PACF match results (71% CAR)
-- misc_files/             - Auxiliary files (spiral.py), CAR output for various tests
+- misc_files/             - Auxiliary files (spiral.py), CAR output for various tests/Table 3
 
 ## Reproducing Results
 - Install requirements:  
@@ -22,7 +22,6 @@ This repository contains code and data for the whitepaper:
    - `python code/compute_match_psd.py fx`
 - Run to generate CAR and p-value -t 1|2|3 (tolerance, default is -t=2)
    - `python code/CAR.py`
-
 
 ## Verification
 All empirical results in the whitepaper's Appendix D were generated using:
