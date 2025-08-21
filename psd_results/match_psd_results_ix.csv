@@ -1,16 +1,16 @@
 Category,Instrument,Ticker,Cycle1,Cycle1_Match,Cycle1_Delta,Cycle2,Cycle2_Match,Cycle2_Delta
-Index,S&P 500,^GSPC,182,183,1,522,528,6
-Index,Nasdaq Composite,^IXIC,182,183,1,499,493,6
-Index,Dow Jones Industrial Average,^DJI,313,314,1,367,368,1
-Index,Russell 2000,^RUT,227,220,7,367,368,1
-Index,FTSE 100,^FTSE,328,331,3,194,196,2
-Index,DAX Performance Index,^GDAXI,500,493,7,317,314,3
-Index,CAC 40,^FCHI,183,183,0,500,493,7
-Index,Euro Stoxx 50,^STOXX50E,510,510,0,353,355,2
-Index,Nikkei 225,^N225,193,196,3,303,308,5
-Index,Hang Seng,^HSI,353,355,2,635,636,1
-Index,Shanghai Composite,000001.SS,453,457,4,618,622,4
-Index,S&P/ASX 200,^AXJO,184,183,1,318,314,4
-Index,TSX Composite,^GSPTSE,520,528,8,194,196,2
-Index,Bovespa Index,^BVSP,190,189,1,532,534,2
-Index,US Dollar Index,DX-Y.NYB,187,189,2,415,416,1
+Index,S&P 500,^GSPC,183,183,0,516,510,6
+Index,Nasdaq Composite,^IXIC,183,183,0,516,510,6
+Index,Dow Jones Industrial Average,^DJI,320,322,2,361,362,1
+Index,Russell 2000,^RUT,229,237,8,495,493,2
+Index,FTSE 100,^FTSE,518,510,8,324,322,2
+Index,DAX Performance Index,^GDAXI,492,493,1,234,237,3
+Index,CAC 40,^FCHI,491,493,2,184,183,1
+Index,Euro Stoxx 50,^STOXX50E,556,551,5,194,196,2
+Index,Nikkei 225,^N225,194,196,2,307,308,1
+Index,Hang Seng,^HSI,361,362,1,426,426,0
+Index,Shanghai Composite,000001.SS,476,480,4,666,659,7
+Index,S&P/ASX 200,^AXJO,312,314,2,477,480,3
+Index,TSX Composite,^GSPTSE,182,183,1,514,510,4
+Index,Bovespa Index,^BVSP,191,189,2,523,528,5
+Index,US Dollar Index,DX-Y.NYB,188,189,1,410,408,2
