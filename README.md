@@ -6,7 +6,7 @@ This repository contains code and data for the whitepaper:
 
 ## Directory Structure
 - code/                   - Python implementation of PSD/PACF cycle detection and matching algorithm, CAR/p-value calculations
-- instrument_data/        - 255 instrument lists by asset class (eq-Equity, co-Commodity, ix-Index, fx-Forex, cr-Crypto)
+- instrument_data/        - 245 instrument lists by asset class (eq-Equity, co-Commodity, ix-Index, fx-Forex, cr-Crypto)
 - psd_results/            - PSD match results (77% CAR)
 - pacf_results/           - PACF match results (71% CAR)
 - misc_files/             - Auxiliary files (spiral.py), CAR output for various tests/Table 3
