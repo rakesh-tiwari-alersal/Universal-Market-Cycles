@@ -1,3 +1,91 @@
-PSD Results (tolerance=2, n=255):
-CAR: 76.86% (196 instruments)
-Statistical significance: z=2.29, p=1.19e-02
+#PACF
+PACF Results (tolerance=1):
+Instruments with cycles detected: 244
+CAR: 50.41% (123 instruments)
+Expected random coverage: 116.1 instruments
+Excess coverage: 2.84% points
+Statistical significance: z=0.89, p=2.05e-01
+
+PACF Results (tolerance=2):
+Instruments with cycles detected: 244
+CAR: 70.90% (173 instruments)
+Expected random coverage: 171.6 instruments
+Excess coverage: 0.58% points
+Statistical significance: z=0.20, p=4.52e-01
+
+PACF Results (tolerance=3):
+Instruments with cycles detected: 244
+CAR: 86.89% (212 instruments)
+Expected random coverage: 206.2 instruments
+Excess coverage: 2.38% points
+Statistical significance: z=1.03, p=1.74e-01 
+
+
+#1980-2024
+PSD Results (tolerance=1):
+Instruments with cycles detected: 245
+CAR: 50.61% (124 instruments)
+Expected random coverage: 116.5 instruments
+Excess coverage: 3.04% points
+Statistical significance: z=0.95, p=1.87e-01
+
+PSD Results (tolerance=2):
+Instruments with cycles detected: 245
+CAR: 76.73% (188 instruments)
+Expected random coverage: 172.3 instruments
+Excess coverage: 6.42% points
+Statistical significance: z=2.20, p=1.51e-02
+
+PSD Results (tolerance=3):
+Instruments with cycles detected: 245
+CAR: 91.84% (225 instruments)
+Expected random coverage: 207.0 instruments
+Excess coverage: 7.33% points
+Statistical significance: z=3.17, p=4.69e-04
+
+
+#1990-2024
+PSD Results (tolerance=1):
+Instruments with cycles detected: 245
+CAR: 48.57% (119 instruments)
+Expected random coverage: 116.5 instruments
+Excess coverage: 1.00% points
+Statistical significance: z=0.31, p=4.01e-01
+
+PSD Results (tolerance=2):
+Instruments with cycles detected: 245
+CAR: 75.10% (184 instruments)
+Expected random coverage: 172.3 instruments
+Excess coverage: 4.78% points
+Statistical significance: z=1.64, p=5.65e-02
+
+PSD Results (tolerance=3):
+Instruments with cycles detected: 245
+CAR: 87.35% (214 instruments)
+Expected random coverage: 207.0 instruments
+Excess coverage: 2.84% points
+Statistical significance: z=1.23, p=1.25e-01
+PS C:\Users\y_baj\Desktop\Alersal Whitepaper\Data Validation Work> 
+
+
+#2000-2024
+PSD Results (tolerance=1):
+Instruments with cycles detected: 245
+CAR: 45.31% (111 instruments)
+Expected random coverage: 116.5 instruments
+Excess coverage: -2.27% points
+Statistical significance: z=-0.71, p=7.80e-01
+
+PSD Results (tolerance=2):
+Instruments with cycles detected: 245
+CAR: 66.94% (164 instruments)
+Expected random coverage: 172.3 instruments
+Excess coverage: -3.38% points
+Statistical significance: z=-1.16, p=8.89e-01
+
+PSD Results (tolerance=3):
+Instruments with cycles detected: 245
+CAR: 86.12% (211 instruments)
+Expected random coverage: 207.0 instruments
+Excess coverage: 1.62% points
+Statistical significance: z=0.70, p=2.74e-01
