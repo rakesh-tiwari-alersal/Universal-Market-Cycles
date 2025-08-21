@@ -26,23 +26,33 @@ def calculate_car(results_df, method='psd', tolerance=2):
     """
     Calculate Coverage Acceptance Ratio (CAR) with statistical significance
     Handles multiple analysis methods (PSD, DFT, PACF)
+
+    Args:
+        results_df: DataFrame with analysis results
+        method: Analysis method name
+        tolerance: Tolerance for cycle matching
     """
     # Convert delta columns to numeric, handling missing values
     for col in ['Cycle1_Delta', 'Cycle2_Delta']:
         results_df[col] = pd.to_numeric(results_df[col], errors='coerce')
     
+    # Remove rows where both cycles are NaN (no cycle detected)
+    # Use .copy() to avoid SettingWithCopyWarning
+    results_df = results_df.dropna(subset=['Cycle1_Delta', 'Cycle2_Delta'], how='all').copy()
+    
     # Identify covered instruments (at least one delta <= tolerance)
-    results_df['Covered'] = results_df.apply(
+    # Use .loc to avoid SettingWithCopyWarning
+    results_df.loc[:, 'Covered'] = results_df.apply(
         lambda row: (row['Cycle1_Delta'] <= tolerance) or 
                    (pd.notna(row['Cycle2_Delta']) and 
                    (row['Cycle2_Delta'] <= tolerance)), 
         axis=1
     )
     
-    # Calculate CAR
+    # Calculate CAR based on instruments with at least one cycle detected
     covered = results_df['Covered'].sum()
-    total = len(results_df)
-    car = covered / total
+    processed_count = len(results_df)
+    car = covered / processed_count if processed_count > 0 else 0.0
     
     # Calculate exact covered days with merging
     intervals = []
@@ -72,22 +82,22 @@ def calculate_car(results_df, method='psd', tolerance=2):
     p_single_match = total_covered_days / coverage_range
     p_at_least_one = min(1.0, 1 - (1 - p_single_match)**2)
     
-    # Binomial test
-    binom_result = binomtest(covered, total, p_at_least_one, alternative='greater')
+    # Binomial test uses processed_count (instruments with cycles detected) as n
+    binom_result = binomtest(covered, processed_count, p_at_least_one, alternative='greater')
     
     # Calculate excess coverage
-    expected_random = total * p_at_least_one
+    expected_random = processed_count * p_at_least_one
     excess_coverage = car - p_at_least_one
     
     # Calculate z-score
-    std_dev = np.sqrt(total * p_at_least_one * (1 - p_at_least_one))
+    std_dev = np.sqrt(processed_count * p_at_least_one * (1 - p_at_least_one))
     z_score = (covered - expected_random) / std_dev if std_dev > 0 else 0
     
     return {
         'method': method,
         'car': car,
         'covered': covered,
-        'total': total,
+        'processed': processed_count,
         'p_value': binom_result.pvalue,
         'z_score': z_score,
         'excess_coverage': excess_coverage,
@@ -130,7 +140,8 @@ if __name__ == "__main__":
         car_result = calculate_car(results_df, args.method, args.tolerance)
         
         # Print results
-        print(f"{args.method.upper()} Results (tolerance={args.tolerance}, n={car_result['total']}):")
+        print(f"{args.method.upper()} Results (tolerance={args.tolerance}):")
+        print(f"Instruments with cycles detected: {car_result['processed']}")
         print(f"CAR: {car_result['car']:.2%} ({car_result['covered']} instruments)")
         print(f"Expected random coverage: {car_result['expected_random']:.1f} instruments")
         print(f"Excess coverage: {car_result['excess_coverage']:.2%} points")

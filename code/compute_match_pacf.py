@@ -51,8 +51,15 @@ def main():
     OUTPUT_DIR = "pacf_results"
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     
-    # Output file path
+    # Output file paths
     final_output_path = os.path.join(OUTPUT_DIR, f"match_pacf_results_{asset_class}.csv")
+    log_path = os.path.join(OUTPUT_DIR, "pacf_processing_log.csv")
+    
+    # Initialize log file only if it doesn't exist
+    if not os.path.exists(log_path):
+        with open(log_path, 'w', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow(['Timestamp', 'AssetClass', 'Category', 'Instrument', 'Ticker', 'Status', 'Message'])
     
     # Initialize final output file with column names matching CAR.py expectations
     with open(final_output_path, 'w', newline='') as f:
@@ -84,6 +91,12 @@ def main():
     # 99% confidence level (z=2.576)
     CONFIDENCE_Z = 2.576
     
+    def log_entry(timestamp, asset_class, category, instrument, ticker, status, message):
+        """Log processing status to central log file"""
+        with open(log_path, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([timestamp, asset_class, category, instrument, ticker, status, message])
+    
     # Process each instrument
     for inst in instruments:
         instrument_start = time.time()
@@ -107,6 +120,8 @@ def main():
         }
         
         status = "SUCCESS"
+        message = ""
+        timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
         print(f"[{processed_count+1}/{len(instruments)}] Processing {ticker}...")
         
         try:
@@ -121,16 +136,16 @@ def main():
             # Ensure data is sorted chronologically
             data = data.sort_values('Date')
             
-            # Check minimum data requirement (need at least 2*MAX_LAG for reliable PACF)
-            if len(data) < MAX_LAG * 2:
-                raise ValueError(f"Insufficient data ({len(data)} rows < {MAX_LAG*2})")
+            # Check minimum data requirement (changed to 1000 to match PSD)
+            if len(data) < 1000:
+                raise ValueError(f"Insufficient data ({len(data)} rows < 1000)")
             
             # Calculate log returns
             closes = data['close'].values
             valid_mask = closes > 0
             valid_closes = closes[valid_mask]
             
-            if len(valid_closes) < MAX_LAG * 2:
+            if len(valid_closes) < 1000:
                 raise ValueError("Insufficient positive closing prices")
                 
             log_returns = np.log(valid_closes[1:]) - np.log(valid_closes[:-1])
@@ -171,8 +186,12 @@ def main():
             print(f"  Found {len(significant_lags)} significant lags, top 2: {top_lags}")
             
         except Exception as e:
-            status = f"ERROR: {str(e)}"
-            print(f"  {status}")
+            status = "ERROR"
+            message = str(e)
+            print(f"  {status}: {message}")
+        
+        # Log processing status
+        log_entry(timestamp, asset_class, category, instrument_name, ticker, status, message)
         
         # Write final matched results directly to output file
         with open(final_output_path, 'a', newline='') as f:
@@ -190,6 +209,7 @@ def main():
     
     print(f"\nPACF computation and cycle matching complete for {asset_class.upper()} instruments!")
     print(f"Final results: {final_output_path}")
+    print(f"Logs: {log_path}")
     print(f"Total time: {(time.time()-start_time)//60:.0f}m {(time.time()-start_time)%60:.0f}s")
 
 if __name__ == "__main__":
