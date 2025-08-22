@@ -1,0 +1,11 @@
+Category,Instrument,Ticker,Cycle1,Cycle1_Match,Cycle1_Delta,Cycle2,Cycle2_Match,Cycle2_Delta
+Crypto,Bitcoin,BTC-USD,500,493,7,305,308,3
+Crypto,Ethereum,ETH-USD,298,291,7,253,250,3
+Crypto,Tether,USDT-USD,349,345,4,336,331,5
+Crypto,BNB,BNB-USD,704,707,3,626,622,4
+Crypto,Cardano,ADA-USD,341,345,4,253,250,3
+Crypto,XRP,XRP-USD,709,707,2,,,
+Crypto,Dogecoin,DOGE-USD,204,202,2,423,426,3
+Crypto,Solana,SOL-USD,718,717,1,329,331,2
+Crypto,Polkadot,DOT-USD,746,747,1,739,747,8
+Crypto,Polygon,MATIC-USD,666,659,7,199,196,3
