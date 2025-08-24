@@ -29,7 +29,7 @@ This repository contains code and data for the whitepaper:
    - `python code/CAR.py psd -t 2`
      
 ### 3. For PACF Analysis
-- Similarily, run cycle detection command with eq | ix | co | cr | fx as argument one-by-one
+- Similarly, run cycle detection command with eq | ix | co | cr | fx as argument one-by-one
    - `python code/compute_match_pacf.py eq`
    - `python code/compute_match_pacf.py ix`
    - `python code/compute_match_pacf.py co`
@@ -53,4 +53,4 @@ All empirical results in the whitepaper's Appendix D were generated using:
    - Excess coverage: 6.32% points
    - Statistical significance: z=2.18, p=1.60e-02
 - CAR Results For PACF (tolerance=2):
-   - CAR=70.25%, p=0.609 (not significant)."
+   - CAR=70.25%, p=0.609 (not significant).
