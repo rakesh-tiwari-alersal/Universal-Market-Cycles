@@ -24,8 +24,7 @@ This repository contains code and data for the whitepaper:
    - `python code/compute_match_psd.py cr`
    - `python code/compute_match_psd.py fx`
    - This generates match_psd_results_*.csv files in the psd_results/ directory.
-     
-#### For PSD results (default tolerance=2)
+- For PSD results (default tolerance=2)
    - Run to generate CAR and p-value -t 1 | 2 | 3 (tolerance, default is -t=2)
    - `python code/CAR.py psd -t 2`
      
@@ -36,8 +35,7 @@ This repository contains code and data for the whitepaper:
    - `python code/compute_match_pacf.py cr`
    - `python code/compute_match_pacf.py fx`
    - This generates match_pacf_results_*.csv files in the pacf_results/ directory.
-     
-#### For PACF results (example with tolerance=2)
+- For PACF results (example with tolerance=2)
    - `python code/CAR.py pacf -t 2`
 
 ## Verification
