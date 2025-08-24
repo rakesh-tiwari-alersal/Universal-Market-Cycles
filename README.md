@@ -38,6 +38,7 @@ This repository contains code and data for the whitepaper:
    - This generates match_pacf_results_*.csv files in the pacf_results/ directory.
 - Calculate CAR and p-values (example with tolerance=2)
    - `python code/CAR.py pacf -t 2`
+   - CAR for PACF is approximately 70% but is not statistically significant (p=0.609 for tolerance=2), indicating that cycles detected via PACF may not be reliable without further validation.
 
 ## Verification
 All empirical results in the whitepaper's Appendix D were generated using:
@@ -45,10 +46,11 @@ All empirical results in the whitepaper's Appendix D were generated using:
 - Input instrument metadata in folder `instrument_data`
 - Input historical data used from 1980-2025 (not included due to size)
 - Output match_psd_results_*.csv files in folder `psd_results`, each file contains universal cycle matches and corresponding deltas 
-- CAR output :
-   - PSD Results (tolerance=2):
+- CAR Results For PSD (tolerance=2):
    - Instruments with cycles detected: 245
    - CAR: 77.14% (189 instruments)
    - Expected random coverage: 173.5 instruments
    - Excess coverage: 6.32% points
    - Statistical significance: z=2.18, p=1.60e-02
+- CAR Results For PACF (tolerance=2):
+   - CAR=70.25%, p=0.609 (not significant)."
