@@ -13,7 +13,7 @@ This repository contains code and data for the whitepaper:
 
 ## Reproducing Results
 ### 1. Install Requirements
-   Ensure you have Python 3.7+ installed. Then install the required packages:
+   - Ensure you have Python 3.7+ installed. Then install the required packages:
    - `bash pip install pandas numpy scipy statsmodels`
 
 ### 2. For PSD Analysis
