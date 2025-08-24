@@ -14,9 +14,8 @@ This repository contains code and data for the whitepaper:
 ## Reproducing Results
 ### 1. Install Requirements
    Ensure you have Python 3.7+ installed. Then install the required packages:
-```bash pip install pandas numpy scipy statsmodels
-- Install requirements:  
-   - `pip install pandas numpy scipy csv`
+   `bash pip install pandas numpy scipy statsmodels`
+
 ### 2. For PSD Analysis
 - Run cycle detection command with eq | ix | co | cr | fx as argument one-by-one
    - `python code/compute_match_psd.py eq`
@@ -32,9 +31,9 @@ This repository contains code and data for the whitepaper:
    - `python code/compute_match_pacf.py cr`
    - `python code/compute_match_pacf.py fx`
 ### For PSD results (default tolerance=2)
-   -  python code/CAR.py psd -t 2
+   -  `python code/CAR.py psd -t 2`
 ### For PACF results (example with tolerance=2)
-   - python code/CAR.py pacf -t 2
+   - `python code/CAR.py pacf -t 2`
 - Run to generate CAR and p-value -t 1 | 2 | 3 (tolerance, default is -t=2)
    - `python code/CAR.py`
 
