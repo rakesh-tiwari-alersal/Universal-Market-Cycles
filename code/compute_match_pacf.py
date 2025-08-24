@@ -31,9 +31,9 @@ def main():
         print(f"Error: Invalid asset class '{asset_class}'. Valid options: {', '.join(valid_classes)}")
         sys.exit(1)
     
-    # Universal cycle range matching PSD analysis (179-747 days)
+    # Universal cycle range matching PSD analysis (179-676 days)
     MIN_LAG = 179
-    MAX_LAG = 747
+    MAX_LAG = 676
     
     # Unified cycle table (53 elements - matches PSD version)
     TABLE_CYCLES = [
@@ -42,8 +42,7 @@ def main():
         322, 331, 345, 355, 362, 368, 385, 403,
         408, 416, 426, 439, 457, 470, 480, 487,
         493, 510, 528, 534, 541, 551, 564, 582,
-        605, 622, 636, 645, 653, 659, 676, 694,
-        699, 707, 717, 730, 747
+        605, 622, 636, 645, 653, 659, 676
     ]   
     
     # Configuration
@@ -88,9 +87,10 @@ def main():
     start_time = time.time()
     processed_count = 0
     
-    # 99% confidence level (z=2.576)
-    CONFIDENCE_Z = 2.576
-    
+    # 95% confidence level (z=1.96)
+    CONFIDENCE_Z = 1.96
+    MIN_CYCLE_DISTANCE = 71  # Minimum separation between cycles (days)
+
     def log_entry(timestamp, asset_class, category, instrument, ticker, status, message):
         """Log processing status to central log file"""
         with open(log_path, 'a', newline='') as f:
@@ -148,12 +148,13 @@ def main():
             if len(valid_closes) < 1000:
                 raise ValueError("Insufficient positive closing prices")
                 
-            log_returns = np.log(valid_closes[1:]) - np.log(valid_closes[:-1])
-            n = len(log_returns)
+            # Apply differencing (Yt - Yt-1) once
+            diff_series = valid_closes[1:] - valid_closes[:-1]
+            n = len(diff_series)
             
             # Compute PACF with maximum lag set to MAX_LAG
-            pacf_vals = pacf(log_returns, nlags=MAX_LAG, method='ols')
-            
+            pacf_vals = pacf(diff_series, nlags=MAX_LAG, method='ols')
+                   
             # Calculate 99% confidence threshold
             ci_threshold = CONFIDENCE_Z / np.sqrt(n)
             
@@ -166,12 +167,26 @@ def main():
                 if abs(pacf_val) > ci_threshold:
                     significant_lags.append((lag, abs(pacf_val)))
             
-            # Sort by significance (absolute PACF value)
+            # Sort by significance
             significant_lags.sort(key=lambda x: x[1], reverse=True)
             
-            # Get top 2 lags only
-            top_lags = [lag for lag, _ in significant_lags[:2]]
-            
+            # Get top 2 lags with minimum 71-day separation
+            top_lags = []
+            if significant_lags:
+                # Add strongest peak
+                top_lags.append(significant_lags[0][0])
+                
+                # Find next strongest peak with minimum separation
+                for lag, significance in significant_lags[1:]:
+                    if all(abs(lag - existing_lag) >= MIN_CYCLE_DISTANCE for existing_lag in top_lags):
+                        top_lags.append(lag)
+                        if len(top_lags) >= 2:
+                            break
+                
+                # If we couldn't find a sufficiently separated second peak, use the second strongest anyway
+                if len(top_lags) == 1 and len(significant_lags) > 1:
+                    top_lags.append(significant_lags[1][0])
+                                
             # Store and match PACF results
             if top_lags:
                 match_result['Cycle1'] = top_lags[0] if len(top_lags) > 0 else None

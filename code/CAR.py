@@ -11,11 +11,10 @@ TABLE_CYCLES = [
     322, 331, 345, 355, 362, 368, 385, 403,
     408, 416, 426, 439, 457, 470, 480, 487,
     493, 510, 528, 534, 541, 551, 564, 582,
-    605, 622, 636, 645, 653, 659, 676, 694,
-    699, 707, 717, 730, 747
+    605, 622, 636, 645, 653, 659, 676
 ]
 MIN_PERIOD = 179
-MAX_PERIOD = 747
+MAX_PERIOD = 676
 METHOD_RESULT_PATHS = {
     'psd': "psd_results/match_psd_results_{asset_class}.csv",
     'dft': "dft_results/match_dft_results_{asset_class}.csv",

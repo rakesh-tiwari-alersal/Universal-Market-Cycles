@@ -25,8 +25,7 @@ TABLE_CYCLES = [
     322, 331, 345, 355, 362, 368, 385, 403,
     408, 416, 426, 439, 457, 470, 480, 487,
     493, 510, 528, 534, 541, 551, 564, 582,
-    605, 622, 636, 645, 653, 659, 676, 694,
-    699, 707, 717, 730, 747
+    605, 622, 636, 645, 653, 659, 676
 ]
 
 # Configuration
@@ -36,7 +35,7 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # Set range for universal cycle detection
 MIN_PERIOD = 179
-MAX_PERIOD = 747
+MAX_PERIOD = 676
 
 # Output files
 final_output_path = os.path.join(OUTPUT_DIR, f"match_psd_results_{asset_class}.csv")
@@ -95,7 +94,6 @@ def find_closest_cycle(period, cycle_table):
         return None, None
 
 def find_dominant_cycles(frequencies, psd, min_period=MIN_PERIOD, max_period=MAX_PERIOD):
-    """Identify dominant cycles with 41-day minimum separation"""
     # Filter out zero frequency
     non_zero_mask = frequencies > 0
     frequencies = frequencies[non_zero_mask]
@@ -136,7 +134,7 @@ def find_dominant_cycles(frequencies, psd, min_period=MIN_PERIOD, max_period=MAX
         return []
 
     # ============== CYCLE SELECTION CORE LOGIC ==============
-    MIN_CYCLE_DISTANCE = 41  # Minimum separation between cycles (days)
+    MIN_CYCLE_DISTANCE = 71  # Minimum separation between cycles (days)
     all_peaks = []
     
     # Prepare peak objects for processing
