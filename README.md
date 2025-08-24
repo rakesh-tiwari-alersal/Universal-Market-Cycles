@@ -32,7 +32,7 @@ All empirical results in the whitepaper's Appendix D were generated using:
 - CAR output :
    - PSD Results (tolerance=2):
    - Instruments with cycles detected: 245
-   - CAR: 76.73% (188 instruments)
-   - Expected random coverage: 172.3 instruments
-   - Excess coverage: 6.42% points
-   - Statistical significance: z=2.20, p=1.51e-02
+   - CAR: 77.14% (189 instruments)
+   - Expected random coverage: 173.5 instruments
+   - Excess coverage: 6.32% points
+   - Statistical significance: z=2.18, p=1.60e-02
