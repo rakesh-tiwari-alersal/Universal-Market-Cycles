@@ -31,12 +31,10 @@ Ensure you have Python 3.7+ installed. Then install the required packages:
    - `python code/compute_match_pacf.py co`
    - `python code/compute_match_pacf.py cr`
    - `python code/compute_match_pacf.py fx`
-
 ### For PSD results (default tolerance=2)
-python code/CAR.py psd -t 2
-
+   -  python code/CAR.py psd -t 2
 ### For PACF results (example with tolerance=2)
-python code/CAR.py pacf -t 2
+   - python code/CAR.py pacf -t 2
 - Run to generate CAR and p-value -t 1 | 2 | 3 (tolerance, default is -t=2)
    - `python code/CAR.py`
 
