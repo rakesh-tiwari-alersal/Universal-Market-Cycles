@@ -35,7 +35,7 @@ def main():
     MIN_LAG = 179
     MAX_LAG = 676
     
-    # Unified cycle table (53 elements - matches PSD version)
+    # Unified cycle table
     TABLE_CYCLES = [
         179, 183, 189, 196, 202, 206, 220, 237,
         243, 250, 260, 268, 273, 291, 308, 314,
