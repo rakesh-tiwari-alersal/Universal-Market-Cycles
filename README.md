@@ -7,8 +7,8 @@ This repository contains code and data for the whitepaper:
 ## Directory Structure
 - code/                   - Python implementation of PSD/PACF cycle detection and matching algorithm, CAR/p-value calculations
 - instrument_data/        - 245 instrument lists by asset class (eq-Equity, co-Commodity, ix-Index, fx-Forex, cr-Crypto)
-- psd_results/            - PSD match results (79% CAR, statistically significant)
-- pacf_results/           - PACF match results (71% CAR, not statistically significant)
+- psd_results/            - PSD match results (78.78% CAR, statistically significant)
+- pacf_results/           - PACF match results (71.19% CAR, not statistically significant)
 - misc_files/             - Auxiliary files (spiral.py, CAR output for Table 3)
 
 ## Reproducing Results
@@ -38,7 +38,7 @@ This repository contains code and data for the whitepaper:
    - This generates match_pacf_results_*.csv files in the pacf_results/ directory.
 - Calculate CAR and p-values (example with tolerance=2)
    - `python code/CAR.py pacf -t 2`
-   - CAR for PACF is approximately 71% but is not statistically significant (p=0.491 for tolerance=2), indicating that cycles detected via PACF may not be reliable without further validation.
+   - CAR for PACF is 71.19% but is not statistically significant (p=0.491 for tolerance=2), indicating that cycles detected via PACF may not be reliable without further validation.
 
 ## Verification
 All empirical results in the whitepaper's Appendix D were generated using:
