@@ -34,8 +34,8 @@ OUTPUT_DIR = "psd_results"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # Set range for universal cycle detection
-MIN_PERIOD = 179
-MAX_PERIOD = 676
+MIN_PERIOD = 175
+MAX_PERIOD = 680
 
 # Output files
 final_output_path = os.path.join(OUTPUT_DIR, f"match_psd_results_{asset_class}.csv")

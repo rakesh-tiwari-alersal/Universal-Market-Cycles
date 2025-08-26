@@ -32,8 +32,8 @@ def main():
         sys.exit(1)
     
     # Universal cycle range matching PSD analysis (179-676 days)
-    MIN_LAG = 179
-    MAX_LAG = 676
+    MIN_LAG = 175
+    MAX_LAG = 680
     
     # Unified cycle table
     TABLE_CYCLES = [
