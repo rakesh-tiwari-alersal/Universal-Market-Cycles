@@ -11,6 +11,6 @@ Commodity,Corn,ZC=F,205,206,1,522,528,6
 Commodity,Soybeans,ZS=F,251,250,1,506,510,4
 Commodity,Soybean Meal,ZM=F,252,250,2,351,355,4
 Commodity,Cotton,CT=F,184,183,1,502,510,8
-Commodity,Sugar,SB=F,343,345,2,204,202,2
+Commodity,Sugar,SB=F,178,179,1,343,345,2
 Commodity,Coffee,KC=F,525,528,3,613,605,8
 Commodity,Platinum,PL=F,614,622,8,245,243,2

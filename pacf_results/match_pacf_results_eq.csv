@@ -9,16 +9,16 @@ Equity,UnitedHealth,UNH,539,541,2,423,426,3
 Equity,Visa,V,605,605,0,499,493,6
 Equity,Procter & Gamble,PG,497,493,4,664,659,5
 Equity,NVIDIA,NVDA,601,605,4,674,676,2
-Equity,Alibaba,BABA,338,331,7,210,206,4
+Equity,Alibaba,BABA,338,331,7,178,179,1
 Equity,Toyota,TM,228,220,8,592,582,10
-Equity,Samsung,005930.KS,541,541,0,655,653,2
+Equity,Samsung,005930.KS,541,541,0,678,676,2
 Equity,Nestlé,NSRGY,275,273,2,362,362,0
 Equity,Shell,SHEL,296,291,5,582,582,0
 Equity,Walmart,WMT,597,605,8,430,426,4
 Equity,Mastercard,MA,295,291,4,569,564,5
 Equity,ASML Holding,ASML,617,622,5,454,457,3
 Equity,LVMH,LVMUY,578,582,4,287,291,4
-Equity,Tencent,TCEHY,525,528,3,389,385,4
+Equity,Tencent,TCEHY,525,528,3,678,676,2
 Equity,TSMC,TSM,637,636,1,227,220,7
 Equity,Roche Holding,RHHBY,354,355,1,483,480,3
 Equity,Berkshire Hathaway,BRK-B,660,659,1,539,541,2
@@ -31,7 +31,7 @@ Equity,Coca-Cola,KO,644,645,1,468,470,2
 Equity,Merck,MRK,394,385,9,586,582,4
 Equity,Home Depot,HD,204,202,2,472,470,2
 Equity,Oracle,ORCL,314,314,0,189,189,0
-Equity,PayPal,PYPL,338,331,7,258,260,2
+Equity,PayPal,PYPL,338,331,7,177,179,2
 Equity,Netflix,NFLX,563,564,1,472,470,2
 Equity,Salesforce,CRM,536,534,2,431,426,5
 Equity,Adobe,ADBE,636,636,0,439,439,0
@@ -65,7 +65,7 @@ Equity,Thermo Fisher Scientific,TMO,510,510,0,366,368,2
 Equity,AbbVie,ABBV,531,528,3,650,653,3
 Equity,Comcast,CMCSA,321,322,1,495,493,2
 Equity,Accenture,ACN,660,659,1,504,510,6
-Equity,Linde,LIN,568,564,4,293,291,2
+Equity,Linde,LIN,568,564,4,677,676,1
 Equity,Texas Instruments,TXN,418,416,2,514,510,4
 Equity,Union Pacific,UNP,329,331,2,415,416,1
 Equity,NextEra Energy,NEE,607,605,2,473,470,3
@@ -75,7 +75,7 @@ Equity,Amgen,AMGN,185,183,2,650,653,3
 Equity,T-Mobile,TMUS,403,403,0,641,645,4
 Equity,Philip Morris,PM,478,480,2,622,622,0
 Equity,Lowe's,LOW,337,331,6,579,582,3
-Equity,Schlumberger,SLB,299,291,8,581,582,1
+Equity,Schlumberger,SLB,299,291,8,177,179,2
 Equity,BlackRock,BLK,279,273,6,534,534,0
 Equity,Stryker,SYK,507,510,3,592,582,10
 Equity,Booking Holdings,BKNG,642,645,3,304,308,4
@@ -89,11 +89,11 @@ Equity,AstraZeneca,AZN,619,622,3,303,308,5
 Equity,GlaxoSmithKline,GSK,361,362,1,571,564,7
 Equity,HSBC,HSBC,445,439,6,193,196,3
 Equity,Mitsubishi UFJ Financial,MUFG,349,345,4,481,480,1
-Equity,NTT,NTTYY,629,622,7,401,403,2
+Equity,NTT,NTTYY,175,179,4,629,622,7
 Equity,Hitachi,HTHIY,592,582,10,316,314,2
 Equity,Hyundai,HYMTF,377,385,8,663,659,4
 Equity,Baidu,BIDU,428,426,2,302,308,6
-Equity,JD.com,JD,651,653,2,192,189,3
+Equity,JD.com,JD,178,179,1,651,653,2
 Equity,Meituan,MPNGF,648,645,3,507,510,3
 Equity,Reliance Industries,RELIANCE.NS,458,457,1,632,636,4
 Equity,Vale,VALE,263,260,3,342,345,3
@@ -102,11 +102,11 @@ Equity,Ambev,ABEV,447,439,8,262,260,2
 Equity,China Construction Bank,CICHY,302,308,6,387,385,2
 Equity,Nintendo,NTDOY,229,237,8,523,528,5
 Equity,Bridgestone,BRDCY,548,551,3,307,308,1
-Equity,SoftBank,SFTBY,455,457,2,608,605,3
+Equity,SoftBank,SFTBY,455,457,2,680,676,4
 Equity,Anglo American,NGLOY,638,636,2,510,510,0
 Equity,Commonwealth Bank,CBAUF,560,564,4,648,645,3
 Equity,CSL,CSLLY,374,368,6,513,510,3
-Equity,Wesfarmers,WFAFF,307,308,1,591,582,9
+Equity,Wesfarmers,WFAFF,175,179,4,307,308,1
 Equity,Woolworths,WOLWF,183,183,0,510,510,0
 Equity,American Express,AXP,495,493,2,659,659,0
 Equity,Shopify,SHOP,549,551,2,636,636,0
@@ -146,7 +146,7 @@ Equity,Norfolk Southern,NSC,559,564,5,329,331,2
 Equity,Waste Management,WM,652,653,1,522,528,6
 Equity,Duke Energy,DUK,626,622,4,299,291,8
 Equity,Southern Company,SO,394,385,9,498,493,5
-Equity,American Electric Power,AEP,533,534,1,275,273,2
+Equity,American Electric Power,AEP,533,534,1,678,676,2
 Equity,Charter Communications,CHTR,625,622,3,498,493,5
 Equity,Anheuser-Busch InBev,BUD,579,582,3,674,676,2
 Equity,Marriott International,MAR,410,408,2,564,564,0
@@ -154,19 +154,19 @@ Equity,Hilton Worldwide,HLT,410,408,2,669,676,7
 Equity,Kroger,KR,504,510,6,648,645,3
 Equity,Abbott Laboratories,ABT,659,659,0,506,510,4
 Equity,Bristol-Myers Squibb,BMY,440,439,1,301,308,7
-Equity,Exelon,EXC,299,291,8,433,439,6
+Equity,Exelon,EXC,299,291,8,177,179,2
 Equity,General Dynamics,GD,523,528,5,606,605,1
 Equity,Newmont Corporation,NEM,391,385,6,513,510,3
 Equity,Air Products & Chemicals,APD,199,196,3,659,659,0
 Equity,DuPont,DD,459,457,2,654,653,1
 Equity,Broadcom Inc.,AVGO,391,385,6,641,645,4
 Equity,Qualcomm Inc.,QCOM,576,582,6,364,362,2
-Equity,Applied Materials,AMAT,606,605,1,344,345,1
+Equity,Applied Materials,AMAT,606,605,1,678,676,2
 Equity,Lam Research,LRCX,642,645,3,454,457,3
 Equity,Micron Technology,MU,448,439,9,191,189,2
 Equity,KLA Corporation,KLAC,454,457,3,605,605,0
 Equity,Microchip Technology,MCHP,418,416,2,514,510,4
-Equity,ConocoPhillips,COP,572,564,8,386,385,1
+Equity,ConocoPhillips,COP,572,564,8,677,676,1
 Equity,Occidental Petroleum,OXY,610,605,5,402,403,1
 Equity,Phillips 66,PSX,181,179,2,378,385,7
 Equity,Marathon Petroleum,MPC,476,480,4,634,636,2
