@@ -8,9 +8,9 @@ Index,DAX Performance Index,^GDAXI,492,493,1,234,237,3
 Index,CAC 40,^FCHI,491,493,2,184,183,1
 Index,Euro Stoxx 50,^STOXX50E,556,551,5,194,196,2
 Index,Nikkei 225,^N225,194,196,2,307,308,1
-Index,Hang Seng,^HSI,361,362,1,223,220,3
-Index,Shanghai Composite,000001.SS,476,480,4,351,355,4
-Index,S&P/ASX 200,^AXJO,312,314,2,477,480,3
+Index,Hang Seng,^HSI,180,179,1,361,362,1
+Index,Shanghai Composite,000001.SS,476,480,4,180,179,1
+Index,S&P/ASX 200,^AXJO,180,179,1,312,314,2
 Index,TSX Composite,^GSPTSE,182,183,1,514,510,4
 Index,Bovespa Index,^BVSP,191,189,2,523,528,5
 Index,US Dollar Index,DX-Y.NYB,188,189,1,410,408,2
