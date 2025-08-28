@@ -9,7 +9,9 @@ This repository contains code and data for the whitepaper:
 - instrument_data/        - 245 instrument lists by asset class (eq-Equity, co-Commodity, ix-Index, fx-Forex, cr-Crypto)
 - psd_results/            - PSD match results (78.78% CAR, statistically significant)
 - pacf_results/           - PACF match results (71.19% CAR, not statistically significant)
-- misc_files/             - Auxiliary files (spiral.py, CAR output for Table 3)
+- psd_results.1980-2024/  - Same as folder psd_results/
+- psd_results.1990-2024/  - PSD match results for data window 1990-2024
+- psd_results.2000-2024/  - PSD match results for data window 2000-2024
 
 ## Reproducing Results
 ### 1. Install Requirements
