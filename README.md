@@ -1,5 +1,5 @@
 # Alersal Market Cycles Research Repository
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16730906.svg)](https://doi.org/10.5281/zenodo.16730906)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16994057.svg)](https://doi.org/10.5281/zenodo.16994057)
 
 This repository contains code and data for the whitepaper:  
 **"Deriving Market Cycles from the Plastic Number to Model Volatility"**
