@@ -7,18 +7,23 @@ This repository contains code and data for the whitepaper:
 ## Directory Structure
 - code/                   - Python implementation of PSD/PACF cycle detection and matching algorithm, CAR/p-value calculations
 - instrument_data/        - 245 instrument lists by asset class (eq-Equity, co-Commodity, ix-Index, fx-Forex, cr-Crypto)
-- psd_results/            - PSD match results (78.78% CAR, statistically significant)
-- pacf_results/           - PACF match results (71.19% CAR, not statistically significant)
-- psd_results.1980-2024/  - PSD match results for data window 1980-2024, same as the folder psd_results/
-- psd_results.1990-2024/  - PSD match results for data window 1990-2024
-- psd_results.2000-2024/  - PSD match results for data window 2000-2024
+- psd_results/            - Primary PSD match results (78.78% CAR, statistically significant, 1980-2024)
+- pacf_results/           - Cross-Method PACF match results (71.19% CAR, not statistically significant)
+- psd_results.1980-2024/  - Cross-window results: 1980-2024, same as the folder psd_results/
+- psd_results.1990-2024/  - Cross-window results: 1990-2024
+- psd_results.2000-2024/  - Cross-window results: 2000-2024
 
 ## Reproducing Results
 ### 1. Install Requirements
    - Ensure you have Python 3.7+ installed. Then install the required packages:
-   - `bash pip install pandas numpy scipy statsmodels`
+   - `pip install pandas numpy scipy statsmodels`
+     
+### 2. Data Requirements
+   - The scripts expect historical daily price data (CSV files with Date and close columns) for each instrument listed in the instrument_data/ files.
+   - Data files should be placed in a historical_data/ directory in the root of the repository.
+   - Data can be sourced from providers like Yahoo!Finance or Bloomberg, our data was sourced from Yahoo!Finance.
 
-### 2. For PSD Analysis
+### 3. For PSD Analysis
 - Run cycle detection command with eq | ix | co | cr | fx as argument one-by-one
    - `python code/compute_match_psd.py eq`
    - `python code/compute_match_psd.py ix`
@@ -30,7 +35,7 @@ This repository contains code and data for the whitepaper:
    - Run to generate CAR and p-value -t 1 | 2 | 3 (tolerance, default is -t=2)
    - `python code/CAR.py psd -t 2`
      
-### 3. For PACF Analysis
+### 4. For PACF Analysis
 - Similarly, run cycle detection command with eq | ix | co | cr | fx as argument one-by-one
    - `python code/compute_match_pacf.py eq`
    - `python code/compute_match_pacf.py ix`
