@@ -18,13 +18,14 @@ MAX_PERIOD = 680
 METHOD_RESULT_PATHS = {
     'psd': "psd_results/match_psd_results_{asset_class}.csv",
     'dft': "dft_results/match_dft_results_{asset_class}.csv",
-    'pacf': "pacf_results/match_pacf_results_{asset_class}.csv"
+    'pacf': "pacf_results/match_pacf_results_{asset_class}.csv",
+    'wavelet': "wavelet_results/match_wavelet_results_{asset_class}.csv"  # Added wavelet
 }
 
 def calculate_car(results_df, method='psd', tolerance=2):
     """
     Calculate Coverage Acceptance Ratio (CAR) with statistical significance
-    Handles multiple analysis methods (PSD, DFT, PACF)
+    Handles multiple analysis methods (PSD, DFT, PACF, WAVELET)
 
     Args:
         results_df: DataFrame with analysis results
@@ -127,8 +128,8 @@ def load_results(method='psd', asset_classes=['eq', 'ix', 'cr', 'co', 'fx']):
 if __name__ == "__main__":
     # Configure command-line arguments
     parser = argparse.ArgumentParser(description='Calculate CAR for cycle analysis methods')
-    parser.add_argument('method', nargs='?', default='psd', choices=['psd', 'dft', 'pacf'],
-                        help='Analysis method (psd, dft, pacf). Default: psd')
+    parser.add_argument('method', nargs='?', default='psd', choices=['psd', 'dft', 'pacf', 'wavelet'],
+                        help='Analysis method (psd, dft, pacf, wavelet). Default: psd')
     parser.add_argument('-t', '--tolerance', type=int, default=2, choices=[1,2,3],
                         help='Tolerance value for cycle matching (1, 2, or 3). Default: 2')
     args = parser.parse_args()
