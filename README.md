@@ -5,9 +5,10 @@ This repository contains code and data for the whitepaper:
 **"Deriving Market Cycles from the Plastic Number to Model Volatility"**
 
 ## Directory Structure
-- code/                   - Python implementation of PSD/PACF cycle detection and matching algorithm, CAR/p-value calculations
+- code/                   - Python implementation of PSD/PACF/Wavelet cycle detection and matching algorithm, CAR/p-value calculations
 - instrument_data/        - 245 instrument lists by asset class (eq-Equity, co-Commodity, ix-Index, fx-Forex, cr-Crypto)
 - psd_results/            - Primary PSD match results (78.78% CAR, statistically significant, 1980-2024)
+- wavelet_results/        - Cross-Method Wavelet match results (78.37% CAR, statistically significant, 1980-2024)
 - pacf_results/           - Cross-Method PACF match results (71.19% CAR, not statistically significant)
 - psd_results.1980-2024/  - Cross-window results: 1980-2024, same as the folder psd_results/
 - psd_results.1990-2024/  - Cross-window results: 1990-2024
@@ -16,7 +17,7 @@ This repository contains code and data for the whitepaper:
 ## Reproducing Results
 ### 1. Install Requirements
    - Ensure you have Python 3.7+ installed. Then install the required packages:
-   - `pip install pandas numpy scipy statsmodels`
+   - `pip install pandas numpy scipy statsmodels PyWavelets`
      
 ### 2. Data Requirements
    - The scripts expect historical daily price data (CSV files with Date and close columns) for each instrument listed in the instrument_data/ files.
@@ -35,7 +36,18 @@ This repository contains code and data for the whitepaper:
    - Run to generate CAR and p-value -t 1 | 2 | 3 (tolerance, default is -t=2)
    - `python code/CAR.py psd -t 2`
      
-### 4. For PACF Analysis
+### 4. For Wavelet Analysis
+- Similarly, run cycle detection command with eq | ix | co | cr | fx as argument one-by-one
+   - `python code/compute_match_wavelet.py eq`
+   - `python code/compute_match_wavelet.py ix`
+   - `python code/compute_match_wavelet.py co`
+   - `python code/compute_match_wavelet.py cr`
+   - `python code/compute_match_wavelet.py fx`
+   - This generates match_wavelet_results_*.csv files in the wavelet_results/ directory.
+- Calculate CAR and p-values (example with tolerance=2)
+   - `python code/CAR.py wavelet -t 2`
+     
+### 5. For PACF Analysis
 - Similarly, run cycle detection command with eq | ix | co | cr | fx as argument one-by-one
    - `python code/compute_match_pacf.py eq`
    - `python code/compute_match_pacf.py ix`
@@ -45,7 +57,6 @@ This repository contains code and data for the whitepaper:
    - This generates match_pacf_results_*.csv files in the pacf_results/ directory.
 - Calculate CAR and p-values (example with tolerance=2)
    - `python code/CAR.py pacf -t 2`
-   - CAR for PACF is 71.19% but is not statistically significant (p=0.491 for tolerance=2), indicating that cycles detected via PACF may not be reliable without further validation.
 
 ## Verification
 All empirical results in the whitepaper's Appendix D were generated using:
@@ -60,5 +71,17 @@ All empirical results in the whitepaper's Appendix D were generated using:
    - Expected random coverage: 173.7 instruments
    - Excess coverage: 7.88% points
    - Statistical significance: z=2.72, p=3.30e-03
+
+The wavelet and PACF analysis provide additional validation with:
+- CAR Results For Wavelet (tolerance=2):
+   - Wavelet Results (tolerance=2):
+   - Instruments with cycles detected: 245
+   - CAR: 78.37% (192 instruments)
+   - Statistical significance: p=0.00513
 - CAR Results For PACF (tolerance=2):
-   - CAR=71.19%, p=0.491 (not significant).
+   - PACF Results (tolerance=2):
+   - Instruments with cycles detected: 243
+   - CAR: 71.19% (173 instruments)
+   - Expected random coverage: 172.3 instruments
+   - Excess coverage: 0.30% points
+   - Statistical significance: z=0.10, p=4.91e-01
