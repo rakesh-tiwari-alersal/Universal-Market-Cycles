@@ -1,24 +1,4 @@
-#PACF 1980-2024  
-PACF Results (tolerance=1):
-Instruments with cycles detected: 243
-CAR: 48.56% (118 instruments)
-Expected random coverage: 116.6 instruments
-Excess coverage: 0.59% points
-Statistical significance: z=0.19, p=4.52e-01
-        
-PACF Results (tolerance=2):
-Instruments with cycles detected: 243
-CAR: 71.19% (173 instruments)
-Expected random coverage: 172.3 instruments
-Excess coverage: 0.30% points
-Statistical significance: z=0.10, p=4.91e-01
-          
-PACF Results (tolerance=3):
-Instruments with cycles detected: 243
-CAR: 87.24% (212 instruments)
-Expected random coverage: 206.9 instruments
-Excess coverage: 2.09% points
-Statistical significance: z=0.92, p=2.06e-01
+
 
 #1980-2024
 PSD Results (tolerance=1):
@@ -85,3 +65,47 @@ CAR: 86.94% (213 instruments)
 Expected random coverage: 208.6 instruments
 Excess coverage: 1.79% points
 Statistical significance: z=0.79, p=2.46e-01
+
+#PACF 1980-2024  
+PACF Results (tolerance=1):
+Instruments with cycles detected: 243
+CAR: 48.56% (118 instruments)
+Expected random coverage: 116.6 instruments
+Excess coverage: 0.59% points
+Statistical significance: z=0.19, p=4.52e-01
+        
+PACF Results (tolerance=2):
+Instruments with cycles detected: 243
+CAR: 71.19% (173 instruments)
+Expected random coverage: 172.3 instruments
+Excess coverage: 0.30% points
+Statistical significance: z=0.10, p=4.91e-01
+          
+PACF Results (tolerance=3):
+Instruments with cycles detected: 243
+CAR: 87.24% (212 instruments)
+Expected random coverage: 206.9 instruments
+Excess coverage: 2.09% points
+Statistical significance: z=0.92, p=2.06e-01
+
+#Wavelet 1980-2024  
+WAVELET Results (tolerance=1):
+Instruments with cycles detected: 245
+CAR: 49.80% (122 instruments)
+Expected random coverage: 117.5 instruments
+Excess coverage: 1.83% points
+Statistical significance: z=0.57, p=3.05e-01
+
+WAVELET Results (tolerance=2):
+Instruments with cycles detected: 245
+CAR: 78.37% (192 instruments)
+Expected random coverage: 173.7 instruments
+Excess coverage: 7.48% points
+Statistical significance: z=2.58, p=5.13e-03
+
+WAVELET Results (tolerance=3):
+Instruments with cycles detected: 245
+CAR: 90.61% (222 instruments)
+Expected random coverage: 208.6 instruments
+Excess coverage: 5.46% points
+Statistical significance: z=2.40, p=7.61e-03 
