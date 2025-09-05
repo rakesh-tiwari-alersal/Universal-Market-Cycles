@@ -13,7 +13,7 @@ This directory contains supporting code and data for the whitepaper:
 ## Reproducing Charts
 ### 1. Install Requirements
    - Ensure you have Python 3.7+ installed. Then install the required packages:
-   - `pip install pandas numpy scipy statsmodels sklearn`
+   - `pip install pandas numpy scipy statsmodels sklearn matplotlib`
 
 ### 2. Generating Charts 
 - Run the scripts from the code_charts directory. The generated images will be saved in the same directory:
