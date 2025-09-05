@@ -84,11 +84,12 @@ def create_model_and_plot(data_path, lag1, lag2):
         ha='center',
         va='top',
         transform=plt.gca().transAxes,
-        bbox=dict(boxstyle='round,pad=0.5', fc='white', alpha=0.8)
+        bbox=dict(boxstyle='round,pad=0.5', fc='white', alpha=0.8),
+        fontweight='bold'
     )
     
-    # NEW: Add the AR model equation in a separate box below the R² box
-    equation_text = f'$Y_t = {coef_lag1:.4f} \\cdot Y_{{t-{lag1}}} + {coef_lag2:.4f} \\cdot Y_{{t-{lag2}}}$'
+    # Add the AR model equation in a separate box below the R² box
+    equation_text = f'$\\mathbf{{Y_t = {coef_lag1:.4f} \\cdot Y_{{t-{lag1}}} + {coef_lag2:.4f} \\cdot Y_{{t-{lag2}}}}}$'
     plt.text(
         0.5,  # x-position (center)
         0.87,  # y-position (just below the R² box)
@@ -102,12 +103,12 @@ def create_model_and_plot(data_path, lag1, lag2):
 
     # Add titles and labels with requested formatting
     plt.title(f'Illustration: Bitcoin Price Series and Fitted Plastic Model\n', 
-              fontsize=18, fontweight='bold', pad=5)
-    plt.xlabel('Trading Date', fontsize=18, fontweight='bold')
-    plt.ylabel('Daily Close Price', fontsize=18, fontweight='bold')
+              fontsize=18, fontweight='bold', pad=0)
+    plt.xlabel('Trading Date →', fontsize=18, fontweight='bold',labelpad=10)
+    plt.ylabel('Daily Close Price →', fontsize=18, fontweight='bold',labelpad=10)
     
     # Move legend to upper left
-    plt.legend(loc='upper left')
+    plt.legend(loc='upper left', fontsize=14)
     
     plt.grid(True)
     plt.tight_layout()

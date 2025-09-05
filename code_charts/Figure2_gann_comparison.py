@@ -19,7 +19,7 @@ def generate_plot(df, low_points, title, filename, x_lim, y_lim=None):
     
     # Filter data for the plotting window and plot it
     plot_df = df.loc[x_lim[0]:x_lim[1]]
-    ax1.plot(plot_df.index, plot_df['close'], label='S&P 500 Close Price', color='black', linewidth=1.5)
+    ax1.plot(plot_df.index, plot_df['close'], label='S&P 500 Close Price', color='black', linewidth=1)
 
     # Calculate and plot the equilibrium lines
     for label, low_date in low_points.items():
@@ -33,8 +33,8 @@ def generate_plot(df, low_points, title, filename, x_lim, y_lim=None):
         # Define the lines to plot with their ratios, colors, and styles
         lines_to_plot = {
             # Gann Lines - changed from dotted to dashed
-            'Gann Equilibrium Line (1:1)': {'slope': 1.0, 'color': 'red', 'linestyle': '-', 'alpha': 1.0, 'linewidth': 1.5},
-            'Gann (1:2)': {'slope': 0.5, 'color': 'red', 'linestyle': '--', 'alpha': 1.0, 'linewidth': 1.5},  # More faded
+            'Gann Equilibrium Line (1:1)': {'slope': 1.0, 'color': 'red', 'linestyle': '-', 'alpha': 0.75, 'linewidth': 1.5},
+            'Gann (1:2)': {'slope': 0.5, 'color': 'red', 'linestyle': '--', 'alpha': 0.75, 'linewidth': 1.5},  # More faded
             
             # Plastic Lines
             'Plastic Equilibrium Line (1:1)': {'slope': 1.3247, 'color': 'blue', 'linestyle': '-', 'alpha': 1.0, 'linewidth': 1.5},
@@ -54,9 +54,9 @@ def generate_plot(df, low_points, title, filename, x_lim, y_lim=None):
             )
 
     # Add title with padding to create space between title and plot
-    ax1.set_title(title, fontdict={'weight': 'bold', 'size': 18}, pad=20)
-    ax1.set_xlabel('Time → (Trading Days)', fontdict={'weight': 'bold', 'size': 18})
-    ax1.set_ylabel('Price → (Daily Close)', fontdict={'weight': 'bold', 'size': 18})
+    ax1.set_title(title, fontdict={'weight': 'bold', 'size': 18}, pad=15)
+    ax1.set_xlabel('Time → (Trading Days)', fontdict={'weight': 'bold', 'size': 18}, labelpad=10)
+    ax1.set_ylabel('Price → (Daily Close)', fontdict={'weight': 'bold', 'size': 18}, labelpad=10)
     
     # Add legend
     ax1.legend(loc='upper left', fontsize=12)
