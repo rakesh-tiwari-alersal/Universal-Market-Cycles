@@ -5,10 +5,11 @@ This directory contains supporting code and data for the whitepaper:
 **"Deriving Market Cycles from the Plastic Number to Model Volatility"**
 
 ## Directory Structure
+- historical_data/             - Contains daily close prices for Bitcoin and S&P 500 as .csv
 - Figure1_spiral_comparison.py - Python implementation to generate Figure1
 - Figure2_gann_comparison.py   - Python implementation to generate Figure2
 - Figure3_bitcoin_model.py     - Python implementation to generate Figure3
-- historical_data/             - Contains daily close prices for Bitcoin and S&P 500 as .csv
+
 
 ## Reproducing Charts
 ### 1. Install Requirements
