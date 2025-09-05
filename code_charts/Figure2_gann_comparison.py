@@ -61,7 +61,7 @@ def generate_plot(df, low_points, title, filename, x_lim, y_lim=None):
     # Add legend
     ax1.legend(loc='upper left', fontsize=12)
     
-    ax1.grid(True, alpha=0.3)
+    ax1.grid(True, alpha=0.5)
     
     # Set the x-axis limits to the specified window
     ax1.set_xlim(x_lim[0], x_lim[1])

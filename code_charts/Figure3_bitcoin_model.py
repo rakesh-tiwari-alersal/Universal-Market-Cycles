@@ -80,7 +80,7 @@ def create_model_and_plot(data_path, lag1, lag2):
         0.5,  # x-position (0.5 = center)
         0.95,  # y-position (0.95 = near top)
         f'$\\mathbf{{R^2}}$ = {r_squared:.4f}',
-        fontsize=16,
+        fontsize=12,
         ha='center',
         va='top',
         transform=plt.gca().transAxes,
@@ -94,7 +94,7 @@ def create_model_and_plot(data_path, lag1, lag2):
         0.5,  # x-position (center)
         0.87,  # y-position (just below the R² box)
         equation_text,
-        fontsize=16,
+        fontsize=12,
         ha='center',
         va='top',
         transform=plt.gca().transAxes,
@@ -108,9 +108,9 @@ def create_model_and_plot(data_path, lag1, lag2):
     plt.ylabel('Daily Close Price →', fontsize=18, fontweight='bold',labelpad=10)
     
     # Move legend to upper left
-    plt.legend(loc='upper left', fontsize=14)
+    plt.legend(loc='upper left', fontsize=12)
     
-    plt.grid(True)
+    plt.grid(True, color='gray', alpha=0.5)
     plt.tight_layout()
     
     # Save the plot
