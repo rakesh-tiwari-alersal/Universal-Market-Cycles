@@ -100,7 +100,7 @@ def create_model_and_plot(data_path, lag1, lag2):
     )
     
     # Add the AR model equation in a separate box below the R² box
-    equation_text = f'$\\mathbf{{Y_t = {coef_lag1:.4f} \\cdot Y_{{t-{lag1}}} + {coef_lag2:.4f} \\cdot Y_{{t-{lag2}}}}}$'
+    equation_text = f'$\\mathbf{{Y_t = {coef_lag2:.4f} \\cdot Y_{{t-{lag2}}} + {coef_lag1:.4f} \\cdot Y_{{t-{lag1}}}}}$'
     plt.text(
         0.95,  # x-position 
         0.87,  # y-position (just below the R² box)
