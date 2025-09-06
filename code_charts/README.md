@@ -9,6 +9,7 @@ This directory contains supporting code and data for the whitepaper:
 - Figure1_spiral_comparison.py - Python implementation to generate Figure1
 - Figure2_bitcoin_model.py     - Python implementation to generate Figure2
 - Figure3_usdollar_model.py    - Python implementation to generate Figure3
+- Figure4_gold_model.py        - Python implementation to generate Figure4
 
 
 
