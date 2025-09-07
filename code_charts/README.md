@@ -12,8 +12,6 @@ This directory contains supporting code and data for the whitepaper:
 - Figure3_usdollar_model.py    - Python implementation to generate Figure3
 - Figure4_gold_model.py        - Python implementation to generate Figure4
 
-
-
 ## Reproducing Charts
 ### 1. Install Requirements
    - Ensure you have Python 3.7+ installed. Then install the required packages:
@@ -27,11 +25,14 @@ This directory contains supporting code and data for the whitepaper:
       - Run `python Figure2_bitcoin_model.py`
    - Generate Figure 3 (US Dollar Model):
       - Run `python Figure3_usdollar_model.py`
-   - Generate Figure 4 Gold Model):
+   - Generate Figure 4 (Gold Model):
       - Run `python Figure4_gold_model.py`
          
 ### 3. Calculating Yule Walker Coefficients
 - Run the scripts from the code_charts (this) directory. Output shows all coefficients in the input range, and the top 3 most significant lags.
-   - Basic usage with default differencing:  `python yule_walker/compute_yw_coeff_bitcoin.py 190 250`
-   - With second-order differencing: `python yule_walker/compute_yw_coeff_bitcoin.py 190 250 -d 2`
-   - Filtered to only show Plastic Number cycles: `python yule_walker/compute_yw_coeff_bitcoin.py 190 250 -p`
+   - Basic usage with default differencing:
+      - `python yule_walker/compute_yw_coeff_bitcoin.py 190 250`
+   - With second-order differencing:
+      - `python yule_walker/compute_yw_coeff_bitcoin.py 190 250 -d 2`
+   - Filtered to only show Plastic Number cycles:
+      - `python yule_walker/compute_yw_coeff_bitcoin.py 190 250 -p`
