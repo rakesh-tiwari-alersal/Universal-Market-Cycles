@@ -27,7 +27,7 @@ This directory contains supporting code and data for the whitepaper:
       - Run `python Figure2_bitcoin_model.py`
    - Generate Figure 3 (US Dollar Model):
       - Run `python Figure3_usdollar_model.py`
-      - 
+        
 ### 3. Calculating Yule Walker Coefficients
 - Run the scripts from the code_charts (this) directory. Output shows all coefficients in the input range, and top 3.
    - Basic usage with default differencing:  `python compute_yw_coeff_bitcoin.py 190 250`
