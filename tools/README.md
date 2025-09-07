@@ -33,7 +33,7 @@ Tests polynomial degrees 1, 3, and 4 for optimal fit assessment
 Usage: `python compute_yw_R2.py -f FILE.csv -l LAG1,LAG2,LAG3`
 
 ## Basic Workflow
-1. Add instruments to instrument_data.csv
+1. Add/Delete instruments to instrument_data.csv
 2. Download data: `python download_yf_data.py 1980 2024`
 3. Find cycles: `python compute_yw_coeff_generic.py -f BTC-USD.csv 190 250 -p`
 4. Validate model: `python compute_yw_R2.py -f GC=F.csv -l 24,291,385`
