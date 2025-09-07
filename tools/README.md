@@ -9,7 +9,7 @@ This directory contains general purpose tools for the whitepaper
 - download_yf_data.py          - Downloads historical data from Yahoo!Finance
 - compute_yw_coeff_generic.py  - Calculates Yule-Walker coefficients with Plastic Cycle filtering
 - compute_yw_R2.py             - Computes out-of-sample R-squared for model validation
-- instrument_data.csv          - Contains the list of 245 instruments
+- instrument_data.csv          - Contains initial list of 245 instruments
 
 ## Installation
 - Python 3.7+ required
