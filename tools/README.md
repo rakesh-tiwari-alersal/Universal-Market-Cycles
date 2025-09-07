@@ -5,21 +5,34 @@ This directory contains general purpose tools for the whitepaper
 **"Deriving Market Cycles from the Plastic Number to Model Volatility"**
 
 ## Directory Structure
-- historical_data/             - Contains daily close prices for Bitcoin, US Dollar Index, and Gold as .csv
-- yule_walker/                 - Python implementations to calculate Yule Walker coefficients
-- download_yf_data.py          - Python implementation download data from Yahoo!Finance.
-- 
+- download_yf_data.py          - Downloads historical data from Yahoo!Finance
+- compute_yw_coeff_generic.py  - Calculates Yule-Walker coefficients with Plastic Cycle filtering
+- compute_yw_R2.py             - Computes out-of-sample R-squared for model validation
+- instrument_data.csv          - Contains the list of 245 instruments
+
+## Installation
+- Python 3.7+ required
+- Install packages: `pip install pandas numpy scipy scikit-learn yfinance`
+
 ## Tools
-### 1. Install Requirements
-   - Ensure you have Python 3.7+ installed. Then install the required packages:
-   - `pip install pandas numpy scipy statsmodels sklearn`
 
-### 2. Downloading Data 
-- The script will download files into a folder called historical_data/ for instruments listed in instrument_data.csv file.
-   - Run `python download_yf_data.py <start_year> <end_year>`
-   - For example: `python download_yf_data.py 1980 2024`
-         
-### 3. Calculating Yule Walker Coefficients
+### 1. Data Download (download_yf_data.py)
+Downloads historical price data for instruments listed in instrument_data.csv
+Creates historical_data/ folder with CSV files and download_logs/ with reports
+Usage: `python download_yf_data.py [start_year] [end_year]`
 
+### 2. Coefficient Calculator (compute_yw_coeff_generic.py)
+Calculates Yule-Walker autoregressive coefficients for any financial instrument
+Optional filtering for 47 predefined Plastic Cycles with -p flag
+Usage: `python compute_yw_coeff_generic.py -f FILE.csv BEGIN END [-d N] [-p]`
 
+### 3. Model Validator (compute_yw_R2.py)
+Computes out-of-sample R-squared values for model validation
+Tests polynomial degrees 1, 3, and 4 for optimal fit assessment
+Usage: `python compute_yw_R2.py -f FILE.csv -l LAG1,LAG2,LAG3`
 
+## Basic Workflow
+1. Add instruments to instrument_data.csv
+2. Download data: `python download_yf_data.py 1980 2024`
+3. Find cycles: `python compute_yw_coeff_generic.py -f BTC-USD.csv 190 250 -p`
+4. Validate model: `python compute_yw_R2.py -f GC=F.csv -l 24,291,385`
