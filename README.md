@@ -7,13 +7,14 @@ This repository contains code and data for the whitepaper:
 ## Directory Structure
 - code/                   - Python implementation of PSD/PACF/Wavelet cycle detection and matching algorithm, CAR/p-value calculations
 - code_charts/            - Python implementations to generate Figures used in the whitepaper
-- instrument_data/        - 245 instrument lists by asset class (eq-Equity, co-Commodity, ix-Index, fx-Forex, cr-Crypto)
 - psd_results/            - Primary PSD match results (78.78% CAR, statistically significant, 1980-2024)
 - wavelet_results/        - Cross-Method Wavelet match results (78.37% CAR, statistically significant, 1980-2024)
 - pacf_results/           - Cross-Method PACF match results (71.19% CAR, not statistically significant, 1980-2024)
 - psd_results.1980-2024/  - Cross-window results: 1980-2024, same as the folder psd_results/
 - psd_results.1990-2024/  - Cross-window results: 1990-2024
 - psd_results.2000-2024/  - Cross-window results: 2000-2024
+- instrument_data_*.csv   - 245 instrument lists by asset class (eq-Equity, co-Commodity, ix-Index, fx-Forex, cr-Crypto)
+
 
 ## Reproducing Results
 ### 1. Install Requirements
@@ -21,7 +22,7 @@ This repository contains code and data for the whitepaper:
    - `pip install pandas numpy scipy statsmodels PyWavelets`
      
 ### 2. Data Requirements
-   - The scripts expect historical daily price data (CSV files with Date and close columns) for each instrument listed in the instrument_data/ files.
+   - The scripts expect historical daily price data (CSV files with Date and close columns) for each instrument listed in the instrument_data_*.csv files.
    - Data files should be placed in a historical_data/ directory in the root of the repository.
    - Data can be sourced from providers like Yahoo!Finance or Bloomberg, our data was sourced from Yahoo!Finance.
 
