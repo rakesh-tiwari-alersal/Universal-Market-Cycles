@@ -19,12 +19,13 @@ This repository contains code and data for the whitepaper:
 ## Reproducing Results
 ### 1. Install Requirements
    - Ensure you have Python 3.7+ installed. Then install the required packages:
-   - `pip install pandas numpy scipy statsmodels PyWavelets`
+   - `pip install pandas numpy scipy statsmodels PyWavelets yfinance`
      
 ### 2. Data Requirements
    - The scripts expect historical daily price data (CSV files with Date and close columns) for each instrument listed in the instrument_data_*.csv files.
-   - Data files should be placed in a historical_data/ directory in the root of the repository.
-   - Data can be sourced from providers like Yahoo!Finance or Bloomberg, our data was sourced from Yahoo!Finance.
+      - Data files should be placed in a historical_data/ directory in the root of the repository.
+   - Data can be sourced from providers like Yahoo!Finance or Bloomberg, our data was sourced from Yahoo!Finance. To use our version, run
+      - `python tools/download_yf_data 1980 2024`
 
 ### 3. For PSD Analysis
 - Run cycle detection command with eq | ix | co | cr | fx as argument one-by-one
