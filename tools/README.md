@@ -18,19 +18,19 @@ This directory contains general purpose tools for the whitepaper
 ## Tools
 
 ### 1. Data Download (download_yf_data.py)
-Downloads historical price data for instruments listed in instrument_data.csv
-Creates historical_data/ folder with CSV files and download_logs/ with reports
-Usage: `python download_yf_data.py [start_year] [end_year]`
+  - Downloads historical price data for instruments listed in instrument_data.csv
+  - Creates historical_data/ folder with CSV files and download_logs/ with reports
+  - Usage: `python download_yf_data.py [start_year] [end_year]`
 
 ### 2. Coefficient Calculator (compute_yw_coeff_generic.py)
-Calculates Yule-Walker autoregressive coefficients for any financial instrument
-Optional filtering for 47 predefined Plastic Cycles with -p flag
-Usage: `python compute_yw_coeff_generic.py -f FILE.csv BEGIN END [-d N] [-p]`
+  - Calculates Yule-Walker autoregressive coefficients for any financial instrument
+  - Optional filtering for 47 predefined Plastic Cycles with -p flag
+  - Usage: `python compute_yw_coeff_generic.py -f FILE.csv BEGIN END [-d N] [-p]`
 
 ### 3. Model Validator (compute_yw_R2.py)
-Computes out-of-sample R-squared values for model validation
-Tests polynomial degrees 1, 3, and 4 for optimal fit assessment
-Usage: `python compute_yw_R2.py -f FILE.csv -l LAG1,LAG2,LAG3`
+  - Computes out-of-sample R-squared values for model validation
+  - Tests polynomial degrees 1, 3, and 4 for optimal fit assessment
+  - Usage: `python compute_yw_R2.py -f FILE.csv -l LAG1,LAG2,LAG3`
 
 ## Basic Workflow
 1. Add/Delete instruments to instrument_data.csv
