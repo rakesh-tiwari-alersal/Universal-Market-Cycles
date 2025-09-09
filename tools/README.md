@@ -1,4 +1,4 @@
-# Alersal Market Cycles Research Repository
+# Alersal Market Cycles Research Repository - Tools
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16730905.svg)](https://doi.org/10.5281/zenodo.16730905)
 
 This directory contains general purpose tools for the whitepaper
