@@ -5,7 +5,7 @@ This directory contains supporting code and data for the whitepaper:
 **"Deriving Market Cycles from the Plastic Number to Model Volatility"**
 
 ## Directory Structure
-- historical_data/             - Contains daily close prices for Bitcoin, US Dollar Index, and Gold as .csv
+- historical_data/             - Contains daily close prices for Bitcoin and Gold as .csv
 - yule_walker/                 - Python implementations to calculate Yule Walker coefficients
 - Figure1_spiral_comparison.py - Python implementation to generate Figure1
 - Figure2_bitcoin_model.py     - Python implementation to generate Figure2
