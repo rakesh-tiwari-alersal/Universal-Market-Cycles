@@ -9,8 +9,7 @@ This directory contains supporting code and data for the whitepaper:
 - yule_walker/                 - Python implementations to calculate Yule Walker coefficients
 - Figure1_spiral_comparison.py - Python implementation to generate Figure1
 - Figure2_bitcoin_model.py     - Python implementation to generate Figure2
-- Figure3_usdollar_model.py    - Python implementation to generate Figure3
-- Figure4_gold_model.py        - Python implementation to generate Figure4
+- Figure3_gold_model.py        - Python implementation to generate Figure3
 
 ## Reproducing Charts
 ### 1. Install Requirements
@@ -23,16 +22,14 @@ This directory contains supporting code and data for the whitepaper:
       - Run `python Figure1_spiral_comparison.py`
    - Generate Figure 2 (Bitcoin Model):
       - Run `python Figure2_bitcoin_model.py`
-   - Generate Figure 3 (US Dollar Model):
-      - Run `python Figure3_usdollar_model.py`
-   - Generate Figure 4 (Gold Model):
-      - Run `python Figure4_gold_model.py`
+   - Generate Figure 3 (Gold Model):
+      - Run `python Figure3_gold_model.py`
          
 ### 3. Calculating Yule Walker Coefficients
 - Run the scripts from the code_charts (this) directory. Output shows all coefficients in the input range, and the top 3 most significant lags.
    - Basic usage with default differencing:
-      - `python yule_walker/compute_yw_coeff_bitcoin.py 190 250`
+      - `python yule_walker/compute_yw_coeff_bitcoin.py 17 54`
    - With second-order differencing:
-      - `python yule_walker/compute_yw_coeff_bitcoin.py 190 250 -d 2`
+      - `python yule_walker/compute_yw_coeff_bitcoin.py 190 250 -d 27`
    - Filtered to only show Plastic Number cycles:
-      - `python yule_walker/compute_yw_coeff_bitcoin.py 190 250 -p`
+      - `python yule_walker/compute_yw_coeff_bitcoin.py 190 250 -d 27 -p`
