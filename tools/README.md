@@ -36,4 +36,4 @@ This directory contains general purpose tools for the whitepaper
 1. Add/Delete instruments to instrument_data.csv
 2. Download data: `python download_yf_data.py 1980 2024`
 3. Find cycles: `python compute_yw_coeff_generic.py -f BTC-USD.csv 190 250 -p`
-4. Validate model: `python compute_yw_R2.py -f GC=F.csv -l 24,291,385`
+4. Validate model: `python compute_yw_R2.py -f GCF.csv -l 47,308,385`
