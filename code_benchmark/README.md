@@ -7,9 +7,9 @@ This directory contains supporting code and data for the whitepaper:
 ## Directory Structure
 - historical_data/             - Contains daily close prices for Bitcoin and Gold as .csv
 - compute_bitcoin_AIC.py       - Python implementation to generate AIC optimized lags for Bitcoin
-- compute_bitcoin_R2.py        - Python implementation to generate out-of-sample R^2 for AIC optimized lags
+- compute_bitcoin_R2.py        - Python implementation to generate out-of-sample R^2 using AIC optimized lags
 - compute_gold_AIC.py          - Python implementation to generate AIC optimized lags for Gold
-- compute_gold_R2.py           - Python implementation to generate out-of-sample R^2 for AIC optimized lags
+- compute_gold_R2.py           - Python implementation to generate out-of-sample R^2 using AIC optimized lags
 
 ## Reproducing Benchamark Table
 ### 1. Install Requirements
