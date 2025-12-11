@@ -6,20 +6,21 @@ This directory contains supporting code and data for the whitepaper:
 
 ## Directory Structure
 - historical_data/             - Contains daily close prices for Bitcoin and Gold as .csv
-- Figure1_spiral_comparison.py - Python implementation to generate Figure1
-- Figure2_bitcoin_model.py     - Python implementation to generate Figure2
-- Figure3_gold_model.py        - Python implementation to generate Figure3
+- compute_bitcoin_AIC.py       - Python implementation to generate AIC optimized lags for Bitcoin
+- compute_bitcoin_R2.py        - Python implementation to generate out-of-sample R^2 for AIC optimized lags
+- compute_gold_AIC.py          - Python implementation to generate AIC optimized lags for Gold
+- compute_gold_R2.py           - Python implementation to generate out-of-sample R^2 for AIC optimized lags
 
-## Reproducing Charts
+## Reproducing Benchamark Table
 ### 1. Install Requirements
    - Ensure you have Python 3.7+ installed. Then install the required packages:
-   - `pip install pandas numpy scipy statsmodels sklearn matplotlib`
+   - `pip install pandas numpy sklearn`
 
-### 2. Generating Charts 
-- Run the scripts from the code_charts (this) directory. The generated images will be saved in the same directory:
-   - Generate Figure 1 (Spiral Comparison):
-      - Run `python Figure1_spiral_comparison.py`
-   - Generate Figure 2 (Bitcoin Model):
-      - Run `python Figure2_bitcoin_model.py`
-   - Generate Figure 3 (Gold Model):
-      - Run `python Figure3_gold_model.py`
+### 2. Generating Benchmark Data 
+- Run the scripts from the code_benchmark (this) directory. The output will be displayed on the screen:
+   - Generate Bitcoin benchmark (Lags and R^2):
+      - Run `python .\compute_bitcoin_AIC.py`
+      - Run `python .\compute_bitcoin_R2.py`
+   - Generate gold benchmark (Lags and R^2):
+      - Run `python .\compute_gold_AIC.py`
+      - Run `python .\compute_gold_R2.py`
