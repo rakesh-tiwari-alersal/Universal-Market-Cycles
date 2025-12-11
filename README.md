@@ -7,6 +7,7 @@ This repository contains code and data for the whitepaper:
 ## Directory Structure
 - code/                   - Python implementation of PSD/PACF/Wavelet cycle detection and matching algorithm, CAR/p-value calculations
 - code_charts/            - Python implementations to generate Figures used in the whitepaper
+- code_benchmark/         - Python implementations to generate Benchmark data used in the whitepaper
 - psd_results/            - Primary PSD match results (78.78% CAR, statistically significant, 1980-2024)
 - wavelet_results/        - Cross-Method Wavelet match results (78.37% CAR, statistically significant, 1980-2024)
 - pacf_results/           - Cross-Method PACF match results (71.19% CAR, not statistically significant, 1980-2024)
