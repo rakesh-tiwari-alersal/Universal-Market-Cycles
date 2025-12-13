@@ -1,14 +1,14 @@
 # Alersal Market Cycles Research Repository - Tools
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16730905.svg)](https://doi.org/10.5281/zenodo.16730905)
 
-This directory contains general purpose tools for the whitepaper
+This directory contains general-purpose tools for the whitepaper
 
 **"Deriving Market Cycles from the Plastic Number to Model Volatility"**
 
 ## Directory Structure
 - download_yf_data.py          - Downloads historical data from Yahoo!Finance
 - compute_yw_coeff_generic.py  - Calculates Yule-Walker coefficients with Plastic Cycle filtering
-- compute_yw_R2.py             - Computes out-of-sample R-squared for model validation
+- compute_yw_R2.py             - Computes out-of-sample R-squared for AR model validation
 - instrument_data.csv          - Contains initial list of 245 instruments
 
 ## Installation
