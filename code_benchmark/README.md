@@ -11,7 +11,7 @@ This directory contains supporting code and data for the whitepaper:
 - compute_gold_AIC.py          - Python implementation to generate AIC optimized lags for Gold
 - compute_gold_R2.py           - Python implementation to generate out-of-sample R^2 using AIC optimized lags
 
-## Reproducing Benchamark Table
+## Reproducing Benchmark Table
 ### 1. Install Requirements
    - Ensure you have Python 3.7+ installed. Then install the required packages:
    - `pip install pandas numpy sklearn`
