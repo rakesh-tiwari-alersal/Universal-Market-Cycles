@@ -10,7 +10,7 @@ DATA_FILE_PATH = os.path.join('historical_data', 'GCF.csv')
 
 # Define the lags to be used in the model
 LAG_1 = 47
-LAG_2 = 308
+LAG_2 = 291
 LAG_3 = 385
 # ======================================================================
 
