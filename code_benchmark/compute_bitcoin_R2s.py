@@ -44,7 +44,7 @@ def compute_ar2_r2(data_path, lag1, lag2):
 if __name__ == '__main__':
 
     # Plastic lags
-    lagA1, lagA2 = 27, 237
+    lagA1, lagA2 = 19, 220
 
     # AIC Benchmark lags
     lagB1, lagB2 = 33, 253
