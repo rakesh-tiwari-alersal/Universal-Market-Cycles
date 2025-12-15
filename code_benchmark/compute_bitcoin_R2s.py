@@ -47,7 +47,7 @@ if __name__ == '__main__':
     lagA1, lagA2 = 19, 220
 
     # AIC Benchmark lags
-    lagB1, lagB2 = 33, 253
+    lagB1, lagB2 = 33, 505
 
     r2_plastic = compute_ar2_r2(DATA_FILE_PATH, lagA1, lagA2)
     r2_aic = compute_ar2_r2(DATA_FILE_PATH, lagB1, lagB2)
