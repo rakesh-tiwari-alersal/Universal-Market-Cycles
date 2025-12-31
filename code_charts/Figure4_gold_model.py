@@ -9,7 +9,7 @@ from sklearn.metrics import r2_score
 DATA_FILE_PATH = os.path.join('historical_data', 'GCF.csv')
 
 # Define the lags to be used in the model
-LAG_1 = 47
+LAG_1 = 31
 LAG_2 = 291
 LAG_3 = 385
 # ======================================================================

@@ -9,8 +9,8 @@ from sklearn.metrics import r2_score
 DATA_FILE_PATH = os.path.join('historical_data', 'BTC-USD.csv')
 
 # Define the lags to be used in the model
-LAG_1 = 19
-LAG_2 = 220
+LAG_1 = 41
+LAG_2 = 243
 # ======================================================================
 
 def create_model_and_plot(data_path, lag1, lag2):
