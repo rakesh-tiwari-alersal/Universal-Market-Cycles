@@ -30,6 +30,6 @@ This directory contains supporting code and data for the whitepaper:
    - Basic usage with default differencing:
       - `python yule_walker/compute_yw_coeff_bitcoin.py 17 54`
    - With second-order differencing:
-      - `python yule_walker/compute_yw_coeff_bitcoin.py 190 250 -d 27`
+      - `python yule_walker/compute_yw_coeff_bitcoin.py 189 251 -d 41`
    - Filtered to only show Plastic Number cycles:
-      - `python yule_walker/compute_yw_coeff_bitcoin.py 190 250 -d 27 -p`
+      - `python yule_walker/compute_yw_coeff_bitcoin.py 189 251 -d 41 -p`
