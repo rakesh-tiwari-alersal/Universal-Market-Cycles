@@ -104,13 +104,13 @@ def main():
         print(f"Error loading data from file: {e}")
         return
 
-    # Use raw series (aligned with Figure4_gold_model.py)
+    # Use raw series 
     series_raw = series
 
     # Calculate and print R-squared for each model type
     print(f"\n--- R-squared for file '{args.file}' with lags {lags} ---")
     
-    # Linear OLS (Degree 1, comparable to Figure4)
+    # Linear OLS (Degree 1)
     r_squared_1 = calculate_oos_r_squared_poly(series_raw, lags, 1)
     if not np.isnan(r_squared_1):
         print(f"Linear OLS (Polynomial Degree 1): {r_squared_1:.4f}")
