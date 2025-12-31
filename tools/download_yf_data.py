@@ -7,7 +7,7 @@ from datetime import datetime, date, timedelta
 
 # Handle command-line arguments
 start_year = 1990
-end_year = 2025
+end_year = 2024
 
 if len(sys.argv) == 3:
     try:
@@ -78,13 +78,23 @@ def download_instrument_data(ticker, instrument_name, start_date, end_date):
         if data is None or data.empty:
             return "Failed", "No data available"
         
-        # Select and rename columns - use raw Close prices
+        # FIXED: More robust column handling
+        # Handle columns explicitly to prevent Adj Close contamination
         if 'Close' in data.columns:
             # Standard columns when auto_adjust=False
             data = data[['Open', 'High', 'Low', 'Close', 'Volume']]
             data.columns = ['open', 'high', 'low', 'close', 'volume']
+        elif 'Adj Close' in data.columns:
+            # Explicitly avoid Adj Close contamination
+            # Use raw Close if available, otherwise fail
+            if 'Close' not in data.columns:
+                return "Failed", "Close column missing"
+            data = data[['Open', 'High', 'Low', 'Close', 'Volume']]
+            data.columns = ['open', 'high', 'low', 'close', 'volume']
         else:
-            # Fallback to first 5 columns if standard names not found
+            # Fallback with explicit column validation
+            if len(data.columns) < 5:
+                return "Failed", f"Not enough columns: {data.columns.tolist()}"
             data = data.iloc[:, :5]
             data.columns = ['open', 'high', 'low', 'close', 'volume'][:len(data.columns)]
         
