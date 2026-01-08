@@ -8,7 +8,7 @@ This repository contains code and data for the whitepaper:
 - code/                   - Python implementation of PSD/PACF/Wavelet cycle detection and matching algorithm, CAR/p-value calculations
 - code_benchmark/         - Python implementations to generate Benchmark data used in the whitepaper
 - code_charts/            - Python implementations to generate Figures used in the whitepaper
-- historical_data/        - Historical daily price data for instruments with corporate-action/delisted ONLY
+- historical_data/        - Historical daily price data for 245 instruments (frozen to prevent corporate-action/delisting effects)
 - psd_results/            - Primary PSD match results (78.78% CAR, statistically significant, 1980-2024)
 - wavelet_results/        - Cross-Method Wavelet match results (78.37% CAR, statistically significant, 1980-2024)
 - pacf_results/           - Cross-Method PACF match results (71.19% CAR, not statistically significant, 1980-2024)
@@ -25,11 +25,11 @@ This repository contains code and data for the whitepaper:
    - `pip install pandas numpy scipy statsmodels PyWavelets yfinance`
      
 ### 2. Data Requirements
-   - The scripts expect historical daily price data (CSV files with Date and close columns) for each instrument listed in the instrument_data_*.csv files.
-      - Data files should be placed in a historical_data/ directory.
-   - Data can be sourced from providers like Yahoo!Finance or Bloomberg, our data was sourced from Yahoo!Finance. To use our version, run
+   - The scripts expect historical daily price data (CSV files with Date and close columns) for each instrument listed in the instrument_data_*.csv files. Data files should be placed in a historical_data/ directory.
+   - Data can be sourced from providers like Yahoo!Finance or Bloomberg, our data was sourced from Yahoo!Finance.
       - `python tools/download_yf_data 1980 2024`
-   - Data for instruments with corporate-action/delisted post-analysis are provided in the historical_data/ directory of the repository.
+   - To use our frozen, most reliable version of data to prevent corporate-action/delisting from changing results
+      - Unzip historical_data_part_1.zip and historical_data_part_2.zip into historical_data/ directory.
    
 ### 3. For PSD Analysis
 - Run cycle detection command with eq | ix | co | cr | fx as argument one-by-one
