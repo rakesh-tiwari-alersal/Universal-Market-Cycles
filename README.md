@@ -8,7 +8,7 @@ This repository contains code and data for the whitepaper:
 - code/                   - Python implementation of PSD/PACF/Wavelet cycle detection and matching algorithm, CAR/p-value calculations
 - code_benchmark/         - Python implementations to generate Benchmark data used in the whitepaper
 - code_charts/            - Python implementations to generate Figures used in the whitepaper
-- historical_data/        - Historical daily price data for delisted instruments ONLY
+- historical_data/        - Historical daily price data for instruments with corporate-action/delisted ONLY
 - psd_results/            - Primary PSD match results (78.78% CAR, statistically significant, 1980-2024)
 - wavelet_results/        - Cross-Method Wavelet match results (78.37% CAR, statistically significant, 1980-2024)
 - pacf_results/           - Cross-Method PACF match results (71.19% CAR, not statistically significant, 1980-2024)
@@ -29,7 +29,7 @@ This repository contains code and data for the whitepaper:
       - Data files should be placed in a historical_data/ directory.
    - Data can be sourced from providers like Yahoo!Finance or Bloomberg, our data was sourced from Yahoo!Finance. To use our version, run
       - `python tools/download_yf_data 1980 2024`
-   - Data for instruments delisted post-analysis are provided in the historical_data/ directory of the repository.
+   - Data for instruments with corporate-action/delisted post-analysis are provided in the historical_data/ directory of the repository.
    
 ### 3. For PSD Analysis
 - Run cycle detection command with eq | ix | co | cr | fx as argument one-by-one
