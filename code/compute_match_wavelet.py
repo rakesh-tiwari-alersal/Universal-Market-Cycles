@@ -23,12 +23,11 @@ def main():
 
     # Unified cycle reference table
     TABLE_CYCLES = [
-        179, 183, 189, 196, 202, 206, 220, 237,
-        243, 250, 260, 268, 273, 291, 308, 314,
-        322, 331, 345, 355, 362, 368, 385, 403,
-        408, 416, 426, 439, 457, 470, 480, 487,
-        493, 510, 528, 534, 541, 551, 564, 582,
-        605, 622, 636, 645, 653, 659, 676
+        220, 237, 243, 251, 261, 268, 274,
+        291, 308, 314, 322, 332, 344, 354,
+        362, 368, 385, 402, 408, 416, 426,
+        469, 479, 487, 493, 510, 527, 533,
+        541, 551, 635, 645, 653, 659, 676
     ]
 
     # Configuration
@@ -37,7 +36,7 @@ def main():
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
     # Set range for universal cycle detection
-    MIN_PERIOD = 175
+    MIN_PERIOD = 216
     MAX_PERIOD = 680
 
     # Wavelet parameters - empirically optimized
@@ -124,15 +123,21 @@ def main():
             if len(data) < 1000:
                 raise ValueError(f"Insufficient data ({len(data)} rows < 1000)")
             
-            # Use log returns (same as PSD method)
+            # Calculate log returns
             closes = data['close'].values
-            if np.any(closes <= 0):
-                raise ValueError("Non-positive closing prices detected")
+            valid_mask = closes > 0
+            valid_closes = closes[valid_mask]
+            if len(valid_closes) < 1000:
+                raise ValueError("Insufficient positive closing prices after filtering")
+
+            log_returns = np.log(valid_closes[1:]) - np.log(valid_closes[:-1])
             
-            log_returns = np.log(closes[1:]) - np.log(closes[:-1])
-            
-            # Normalize returns
-            norm_returns = (log_returns - np.mean(log_returns)) / np.std(log_returns)
+            # Normalize returns safely against zero variance
+            std_dev = np.std(log_returns)
+            if std_dev == 0:
+                raise ValueError("Cannot compute wavelet transform on data with zero variance (flat price series)")
+
+            norm_returns = (log_returns - np.mean(log_returns)) / std_dev
 
             # Detect dominant market cycles using wavelet transform
             peak_periods = find_dominant_cycles_wavelet(
@@ -266,7 +271,7 @@ def find_dominant_cycles_wavelet(data, cycle_table, min_period, max_period, wave
         return []
 
     # Cycle selection core logic
-    MIN_CYCLE_DISTANCE = 71  # Minimum separation between cycles (days)
+    MIN_CYCLE_DISTANCE = 41  # Minimum separation between cycles (days)
     all_peaks = []
     
     # Prepare peak objects for processing

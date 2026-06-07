@@ -32,19 +32,18 @@ def main():
         sys.exit(1)
     
     # Universal cycle range matching PSD analysis (179-676 days)
-    MIN_LAG = 175
+    MIN_LAG = 216
     MAX_LAG = 680
     
     # Unified cycle table
     TABLE_CYCLES = [
-        179, 183, 189, 196, 202, 206, 220, 237,
-        243, 250, 260, 268, 273, 291, 308, 314,
-        322, 331, 345, 355, 362, 368, 385, 403,
-        408, 416, 426, 439, 457, 470, 480, 487,
-        493, 510, 528, 534, 541, 551, 564, 582,
-        605, 622, 636, 645, 653, 659, 676
-    ]   
-    
+        220, 237, 243, 251, 261, 268, 274,
+        291, 308, 314, 322, 332, 344, 354,
+        362, 368, 385, 402, 408, 416, 426,
+        469, 479, 487, 493, 510, 527, 533,
+        541, 551, 635, 645, 653, 659, 676
+    ]
+
     # Configuration
     DATA_DIR = "historical_data"
     OUTPUT_DIR = "pacf_results"
@@ -89,7 +88,7 @@ def main():
     
     # 95% confidence level (z=1.96)
     CONFIDENCE_Z = 1.96
-    MIN_CYCLE_DISTANCE = 71  # Minimum separation between cycles (days)
+    MIN_CYCLE_DISTANCE = 41  # Minimum separation between cycles (days)
 
     def log_entry(timestamp, asset_class, category, instrument, ticker, status, message):
         """Log processing status to central log file"""
@@ -148,12 +147,11 @@ def main():
             if len(valid_closes) < 1000:
                 raise ValueError("Insufficient positive closing prices")
                 
-            # Apply differencing (Yt - Yt-1) once
-            diff_series = valid_closes[1:] - valid_closes[:-1]
-            n = len(diff_series)
+            log_returns = np.log(valid_closes[1:]) - np.log(valid_closes[:-1])
+            n = len(log_returns)
             
             # Compute PACF with maximum lag set to MAX_LAG
-            pacf_vals = pacf(diff_series, nlags=MAX_LAG, method='ols')
+            pacf_vals = pacf(log_returns, nlags=MAX_LAG, method='ols')
                    
             # Calculate 99% confidence threshold
             ci_threshold = CONFIDENCE_Z / np.sqrt(n)

@@ -6,18 +6,18 @@ import argparse
 
 # Universal cycle table parameters
 TABLE_CYCLES = [
-    179, 183, 189, 196, 202, 206, 220, 237,
-    243, 250, 260, 268, 273, 291, 308, 314,
-    322, 331, 345, 355, 362, 368, 385, 403,
-    408, 416, 426, 439, 457, 470, 480, 487,
-    493, 510, 528, 534, 541, 551, 564, 582,
-    605, 622, 636, 645, 653, 659, 676
+    220, 237, 243, 251, 261, 268, 274,
+    291, 308, 314, 322, 332, 344, 354,
+    362, 368, 385, 402, 408, 416, 426,
+    469, 479, 487, 493, 510, 527, 533,
+    541, 551, 635, 645, 653, 659, 676
 ]
-MIN_PERIOD = 175
+
+MIN_PERIOD = 216
 MAX_PERIOD = 680
+
 METHOD_RESULT_PATHS = {
     'psd': "psd_results/match_psd_results_{asset_class}.csv",
-    'dft': "dft_results/match_dft_results_{asset_class}.csv",
     'pacf': "pacf_results/match_pacf_results_{asset_class}.csv",
     'wavelet': "wavelet_results/match_wavelet_results_{asset_class}.csv"  # Added wavelet
 }
@@ -128,8 +128,8 @@ def load_results(method='psd', asset_classes=['eq', 'ix', 'cr', 'co', 'fx']):
 if __name__ == "__main__":
     # Configure command-line arguments
     parser = argparse.ArgumentParser(description='Calculate CAR for cycle analysis methods')
-    parser.add_argument('method', nargs='?', default='psd', choices=['psd', 'dft', 'pacf', 'wavelet'],
-                        help='Analysis method (psd, dft, pacf, wavelet). Default: psd')
+    parser.add_argument('method', nargs='?', default='psd', choices=['psd', 'pacf', 'wavelet'],
+                        help='Analysis method (psd, pacf, wavelet). Default: psd')
     parser.add_argument('-t', '--tolerance', type=int, default=2, choices=[1,2,3],
                         help='Tolerance value for cycle matching (1, 2, or 3). Default: 2')
     args = parser.parse_args()
