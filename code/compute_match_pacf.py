@@ -151,9 +151,9 @@ def main():
             n = len(log_returns)
             
             # Compute PACF with maximum lag set to MAX_LAG
-            pacf_vals = pacf(log_returns, nlags=MAX_LAG, method='ols')
+            # pacf_vals = pacf(log_returns, nlags=MAX_LAG, method='ols')
+            pacf_vals = pacf(log_returns, nlags=MAX_LAG, method='ld')
                    
-            # Calculate 99% confidence threshold
             ci_threshold = CONFIDENCE_Z / np.sqrt(n)
             
             # Find significant lags within our range of interest
