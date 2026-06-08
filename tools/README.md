@@ -8,8 +8,7 @@ This directory contains general-purpose tools for the whitepaper
 ## Directory Structure
 - download_yf_data.py          - Downloads historical data from Yahoo!Finance
 - compute_yw_coeff_generic.py  - Calculates Yule-Walker coefficients with Plastic Cycle filtering
-- compute_yw_R2.py             - Computes out-of-sample R-squared for AR model validation
-- instrument_data.csv          - Contains initial list of 245 instruments
+- instrument_data.csv          - Contains initial list of 240 instruments
 
 ## Installation
 - Python 3.7+ required
@@ -24,16 +23,10 @@ This directory contains general-purpose tools for the whitepaper
 
 ### 2. Coefficient Calculator (compute_yw_coeff_generic.py)
   - Calculates Yule-Walker autoregressive coefficients for any financial instrument
-    - Optional filtering for 47 predefined Plastic Cycles with -p flag
+    - Optional filtering for 35 predefined Plastic Cycles with -p flag
   - Usage: `python compute_yw_coeff_generic.py -f FILE.csv -r BEGIN END [-d N] [-p]`
-
-### 3. Model Validator (compute_yw_R2.py)
-  - Computes out-of-sample R-squared values for model validation
-    - Tests polynomial degrees 1, 3, and 4 for optimal fit assessment
-  - Usage: `python compute_yw_R2.py -f FILE.csv -l LAG1,LAG2,LAG3`
 
 ## Basic Workflow
 1. Add/Delete instruments to instrument_data.csv
-2. Download data: `python download_yf_data.py 1980 2024`
-3. Find cycles: `python compute_yw_coeff_generic.py -f BTC-USD.csv 190 250 -p`
-4. Validate model: `python compute_yw_R2.py -f GCF.csv -l 47,291,385`
+2. Download data: `python download_yf_data.py 2000 2025`
+3. Find cycles: `python compute_yw_coeff_generic.py -f IBM.csv -r 250 500 -p`
