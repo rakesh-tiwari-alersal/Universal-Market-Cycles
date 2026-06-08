@@ -43,12 +43,11 @@ def nearest_plastic_cycles(lag, table):
 
 def main():
     TABLE_CYCLES = [
-        179, 183, 189, 196, 202, 206, 220, 237,
-        243, 250, 260, 268, 273, 291, 308, 314,
-        322, 331, 345, 355, 362, 368, 385, 403,
-        408, 416, 426, 439, 457, 470, 480, 487,
-        493, 510, 528, 534, 541, 551, 564, 582,
-        605, 622, 636, 645, 653, 659, 676
+        220, 237, 243, 251, 261, 268, 274,
+        291, 308, 314, 322, 332, 344, 354,
+        362, 368, 385, 402, 408, 416, 426,
+        469, 479, 487, 493, 510, 527, 533,
+        541, 551, 635, 645, 653, 659, 676
     ]
 
     parser = argparse.ArgumentParser(
@@ -57,11 +56,9 @@ def main():
 
     parser.add_argument("-f", "--file", required=True)
     parser.add_argument("-p", "--plastic_cycles", action="store_true")
-
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("-b", "--base", type=int)
     group.add_argument("-r", nargs=2, metavar=("BEGIN", "END"), type=int)
-
     parser.add_argument("-d", "--differencing_lag", type=int, default=1)
 
     args = parser.parse_args()
@@ -70,22 +67,29 @@ def main():
 
     try:
         df = pd.read_csv(file_path)
-        series = df.iloc[:, 6].dropna()
+        if 'close' in df.columns:
+            time_series = df['close'].dropna()
+        elif 'Close' in df.columns:
+            time_series = df['Close'].dropna()
+        else:
+            time_series = df.iloc[:, 6].dropna()
+
     except Exception as e:
         print(f"Error loading data: {e}")
         return
 
-    differenced = series.diff(periods=args.differencing_lag).dropna()
+    # Apply log transformation and difference to compute stationary log returns
+    differenced_series = np.log(time_series).diff(periods=args.differencing_lag).dropna() 
 
     # Select lags
     if args.base is not None:
         base = args.base
         lags_to_compute = [
             c for c in TABLE_CYCLES
-            if base - 31 <= c <= base + 31
+            if base - 41 <= c <= base + 41
         ]
         if not lags_to_compute:
-            print(f"No TABLE cycles found within ±31 of base {base}.")
+            print(f"No TABLE cycles found within ±41 of base {base}.")
             return
     else:
         begin, end = args.r
@@ -95,7 +99,7 @@ def main():
         lags_to_compute = list(range(begin, end + 1))
 
     ar_order = max(lags_to_compute)
-    coeffs = yule_walker_solver(differenced, ar_order)
+    coeffs = yule_walker_solver(differenced_series, ar_order)
 
     if len(coeffs) == 0:
         print("Could not compute coefficients.")
