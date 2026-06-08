@@ -4,28 +4,27 @@ import os
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score
 
-# Same folder + filename pattern
-DATA_FILE_PATH = os.path.join('historical_data', 'GCF.csv')
+# Same filename and folders
+DATA_FILE_PATH = os.path.join('historical_data', 'IBM.csv')
 
 # ----------------------------------------------------------------------
-# FUNCTION: Compute Out-of-Sample R^2 for AR(3) with custom lags
+# FUNCTION: Compute Out‑of‑Sample R^2 for AR(2) with custom lags
 # ----------------------------------------------------------------------
-def compute_ar3_r2(data_path, lag1, lag2, lag3):
+def compute_ar2_r2(data_path, lag1, lag2):
     df = pd.read_csv(data_path)
     df['Date'] = pd.to_datetime(df['Date'])
     # prices = df['close']
     # data = pd.DataFrame({'Yt': prices})
-
+    
     # Calculate stationary log returns first
     log_returns = np.log(df['close']).diff().dropna()
     data = pd.DataFrame({'Yt': log_returns})
 
     data[f'Yt-{lag1}'] = data['Yt'].shift(lag1)
     data[f'Yt-{lag2}'] = data['Yt'].shift(lag2)
-    data[f'Yt-{lag3}'] = data['Yt'].shift(lag3)
     data.dropna(inplace=True)
 
-    X = data[[f'Yt-{lag1}', f'Yt-{lag2}', f'Yt-{lag3}']]
+    X = data[[f'Yt-{lag1}', f'Yt-{lag2}']]
     y = data['Yt']
 
     # 80/20 split
@@ -33,12 +32,12 @@ def compute_ar3_r2(data_path, lag1, lag2, lag3):
     X_train, X_test = X[:split], X[split:]
     y_train, y_test = y[:split], y[split:]
 
-    # Fit AR(3)
+    # Fit AR(2)
     model = LinearRegression(fit_intercept=False)
     model.fit(X_train, y_train)
     y_pred_test = model.predict(X_test)
 
-    # Out-of-sample R^2
+    # Out‑of‑sample R^2
     r2 = r2_score(y_test, y_pred_test)
     return r2
 
@@ -48,13 +47,13 @@ def compute_ar3_r2(data_path, lag1, lag2, lag3):
 if __name__ == '__main__':
 
     # Plastic lags
-    p1, p2, p3 = 41, 291, 402
+    lagA1, lagA2 = 23, 402
 
     # AIC Benchmark lags
-    a1, a2, a3 = 28, 234, 512
+    lagB1, lagB2 = 22, 466
 
-    r2_plastic = compute_ar3_r2(DATA_FILE_PATH, p1, p2, p3)
-    r2_aic = compute_ar3_r2(DATA_FILE_PATH, a1, a2, a3)
+    r2_plastic = compute_ar2_r2(DATA_FILE_PATH, lagA1, lagA2)
+    r2_aic = compute_ar2_r2(DATA_FILE_PATH, lagB1, lagB2)
 
-    print(f"Plastic AR({p1},{p2},{p3}) R^2 = {r2_plastic:.6f}")
-    print(f"AIC Benchmark AR({a1},{a2},{a3}) R^2 = {r2_aic:.6f}")
+    print(f"Plastic AR({lagA1},{lagA2}) R^2 = {r2_plastic:.6f}")
+    print(f"AIC Benchmark AR({lagB1},{lagB2}) R^2 = {r2_aic:.6f}")

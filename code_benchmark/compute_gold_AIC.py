@@ -9,8 +9,8 @@ TICKER = "GCF"
 DATA_FILE_PATH = os.path.join('historical_data', f'{TICKER}.csv') 
 
 # --- LAG SEARCH WINDOWS ---
-P1_MIN, P1_MAX = 17, 54           # Short-term lag window (p1)
-P_LONG_MIN, P_LONG_MAX = 175, 680 # Long-term lag window (p2 and p3)
+P1_MIN, P1_MAX = 17, 41           # Short-term lag window (p1)
+P_LONG_MIN, P_LONG_MAX = 216, 680 # Long-term lag window (p2 and p3)
 MAX_MODEL_LAG = P_LONG_MAX        # Maximum lag needed for data alignment (680)
 
 # ====================================================================
