@@ -25,7 +25,7 @@ This repository contains code and data for the whitepaper:
 ### 2. Data Requirements
    - The scripts expect historical daily price data (CSV files with Date and close columns) for each instrument listed in the instrument_data_*.csv files. Data files should be placed in a historical_data/ directory.
    - Data can be sourced from providers like Yahoo!Finance or Bloomberg, our data was sourced from Yahoo!Finance.
-      - `python tools/download_yf_data 2000 2025`
+      - `python tools/download_yf_data.py 2000 2025`
  
 ### 3. For PSD Analysis
 - Run cycle detection command with eq | ix | co | cr | fx as argument one-by-one
