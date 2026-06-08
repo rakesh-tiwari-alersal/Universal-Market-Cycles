@@ -5,9 +5,9 @@ This directory contains supporting code and data for the whitepaper:
 **"Deriving Market Cycles from the Plastic Number to Model Volatility"**
 
 ## Directory Structure
-- historical_data/             - Contains daily close prices for Bitcoin and Gold as .csv
-- compute_bitcoin_AIC.py       - Python implementation to generate AIC optimized lags for Bitcoin
-- compute_bitcoin_R2.py        - Python implementation to generate out-of-sample R^2 using AIC optimized lags
+- historical_data/             - Contains daily close prices for IBM and Gold as .csv
+- compute_ibm_AIC.py       - Python implementation to generate AIC optimized lags for IBM
+- compute_ibm_R2.py        - Python implementation to generate out-of-sample R^2 using AIC optimized lags
 - compute_gold_AIC.py          - Python implementation to generate AIC optimized lags for Gold
 - compute_gold_R2.py           - Python implementation to generate out-of-sample R^2 using AIC optimized lags
 
@@ -18,9 +18,9 @@ This directory contains supporting code and data for the whitepaper:
 
 ### 2. Generating Benchmark Data 
 - Run the scripts from the code_benchmark (this) directory. The output will be displayed on the screen:
-   - Generate Bitcoin benchmark (Lags and R^2):
-      - Run `python .\compute_bitcoin_AIC.py`
-      - Run `python .\compute_bitcoin_R2.py`
-   - Generate gold benchmark (Lags and R^2):
+   - Generate IBM benchmark (Lags and R^2):
+      - Run `python .\compute_ibm_AIC.py`
+      - Run `python .\compute_ibm_R2.py`
+   - Generate Gold benchmark (Lags and R^2):
       - Run `python .\compute_gold_AIC.py`
       - Run `python .\compute_gold_R2.py`
