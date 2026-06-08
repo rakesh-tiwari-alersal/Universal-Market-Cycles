@@ -2,6 +2,7 @@ Category,Instrument,Ticker
 Equity,Apple,AAPL
 Equity,Microsoft,MSFT
 Equity,Amazon,AMZN
+Equity,Alphabet,GOOG
 Equity,Tesla,TSLA
 Equity,JPMorgan Chase,JPM
 Equity,Johnson & Johnson,JNJ
@@ -77,7 +78,6 @@ Equity,Philip Morris,PM
 Equity,Lowe's,LOW
 Equity,Schlumberger,SLB
 Equity,BlackRock,BLK
-Equity,Stryker,SYK
 Equity,Booking Holdings,BKNG
 Equity,Canadian Natural Resources,CNQ
 Equity,Enbridge,ENB
@@ -89,9 +89,6 @@ Equity,AstraZeneca,AZN
 Equity,GlaxoSmithKline,GSK
 Equity,HSBC,HSBC
 Equity,Mitsubishi UFJ Financial,MUFG
-Equity,NTT,NTTYY
-Equity,Hitachi,HTHIY
-Equity,Hyundai,HYMTF
 Equity,Baidu,BIDU
 Equity,JD.com,JD
 Equity,Meituan,MPNGF
@@ -116,7 +113,6 @@ Equity,Intuit,INTU
 Equity,Vertex Pharmaceuticals,VRTX
 Equity,Regeneron,REGN
 Equity,Moderna,MRNA
-Equity,Zoetis,ZTS
 Equity,Charles Schwab,SCHW
 Equity,Blackstone,BX
 Equity,S&P Global,SPGI
@@ -194,3 +190,12 @@ Equity,Airbus ,AIR.PA
 Equity,Vodafone Group,VOD
 Equity,Vinci SA,DG.PA
 Equity ,PNC Financial Services ,PNC
+Equity,Communication Services Sector ETF,XLC
+Equity,Energy Services Sector ETF,XLE
+Equity,Consumer Staples Sector ETF,XLP
+Equity,Consumer Discretionary Sector ETF,XLY
+Equity,Financial Sector ETF,XLF
+Equity,Health Care Sector ETF,XLV
+Equity,Industrial Sector ETF,XLI
+Equity,Technology Sector ETF,XLK
+Equity,Utilities Sector ETF,XLU

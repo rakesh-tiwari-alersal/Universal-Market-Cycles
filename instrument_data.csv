@@ -1,7 +1,48 @@
 Category,Instrument,Ticker
+Commodity,Gold,GC=F
+Commodity,Silver,SI=F
+Commodity,Brent Crude,BZ=F
+Commodity,Natural Gas,NG=F
+Commodity,Copper,HG=F
+Commodity,Soybean Meal,ZM=F
+Commodity,Cotton,CT=F
+Commodity,Sugar,SB=F
+Commodity,Coffee,KC=F
+Commodity,Platinum,PL=F
+Crypto,Bitcoin,BTC-USD
+Crypto,Ethereum,ETH-USD
+Crypto,Tether,USDT-USD
+Crypto,BNB,BNB-USD
+Crypto,XRP,XRP-USD
+Forex,EUR/USD,EURUSD=X
+Forex,USD/JPY,JPY=X
+Forex,GBP/USD,GBPUSD=X
+Forex,USD/CHF,CHF=X
+Forex,USD/CAD,CAD=X
+Forex,AUD/USD,AUDUSD=X
+Forex,NZD/USD,NZDUSD=X
+Forex,EUR/GBP,EURGBP=X
+Forex,EUR/JPY,EURJPY=X
+Forex,GBP/JPY,GBPJPY=X
+Index,S&P 500,^GSPC
+Index,Nasdaq Composite,^IXIC
+Index,Dow Jones Industrial Average,^DJI
+Index,Russell 2000,^RUT
+Index,FTSE 100,^FTSE
+Index,DAX Performance Index,^GDAXI
+Index,CAC 40,^FCHI
+Index,Euro Stoxx 50,^STOXX50E
+Index,Nikkei 225,^N225
+Index,Hang Seng,^HSI
+Index,Shanghai Composite,000001.SS
+Index,S&P/ASX 200,^AXJO
+Index,TSX Composite,^GSPTSE
+Index,Bovespa Index,^BVSP
+Index,US Dollar Index,DX-Y.NYB
 Equity,Apple,AAPL
 Equity,Microsoft,MSFT
 Equity,Amazon,AMZN
+Equity,Alphabet,GOOG
 Equity,Tesla,TSLA
 Equity,JPMorgan Chase,JPM
 Equity,Johnson & Johnson,JNJ
@@ -77,7 +118,6 @@ Equity,Philip Morris,PM
 Equity,Lowe's,LOW
 Equity,Schlumberger,SLB
 Equity,BlackRock,BLK
-Equity,Stryker,SYK
 Equity,Booking Holdings,BKNG
 Equity,Canadian Natural Resources,CNQ
 Equity,Enbridge,ENB
@@ -89,9 +129,6 @@ Equity,AstraZeneca,AZN
 Equity,GlaxoSmithKline,GSK
 Equity,HSBC,HSBC
 Equity,Mitsubishi UFJ Financial,MUFG
-Equity,NTT,NTTYY
-Equity,Hitachi,HTHIY
-Equity,Hyundai,HYMTF
 Equity,Baidu,BIDU
 Equity,JD.com,JD
 Equity,Meituan,MPNGF
@@ -116,7 +153,6 @@ Equity,Intuit,INTU
 Equity,Vertex Pharmaceuticals,VRTX
 Equity,Regeneron,REGN
 Equity,Moderna,MRNA
-Equity,Zoetis,ZTS
 Equity,Charles Schwab,SCHW
 Equity,Blackstone,BX
 Equity,S&P Global,SPGI
@@ -194,53 +230,12 @@ Equity,Airbus ,AIR.PA
 Equity,Vodafone Group,VOD
 Equity,Vinci SA,DG.PA
 Equity ,PNC Financial Services ,PNC
-Commodity,Gold,GC=F
-Commodity,Silver,SI=F
-Commodity,Brent Crude,BZ=F
-Commodity,Natural Gas,NG=F
-Commodity,Copper,HG=F
-Commodity,Aluminum,ALI=F
-Commodity,Zinc,ZNC=F
-Commodity,Wheat,ZW=F
-Commodity,Corn,ZC=F
-Commodity,Soybeans,ZS=F
-Commodity,Soybean Meal,ZM=F
-Commodity,Cotton,CT=F
-Commodity,Sugar,SB=F
-Commodity,Coffee,KC=F
-Commodity,Platinum,PL=F
-Crypto,Bitcoin,BTC-USD
-Crypto,Ethereum,ETH-USD
-Crypto,Tether,USDT-USD
-Crypto,BNB,BNB-USD
-Crypto,Cardano,ADA-USD
-Crypto,XRP,XRP-USD
-Crypto,Dogecoin,DOGE-USD
-Crypto,Solana,SOL-USD
-Crypto,Polkadot,DOT-USD
-Crypto,Polygon,MATIC-USD
-Forex,EUR/USD,EURUSD=X
-Forex,USD/JPY,JPY=X
-Forex,GBP/USD,GBPUSD=X
-Forex,USD/CHF,CHF=X
-Forex,USD/CAD,CAD=X
-Forex,AUD/USD,AUDUSD=X
-Forex,NZD/USD,NZDUSD=X
-Forex,EUR/GBP,EURGBP=X
-Forex,EUR/JPY,EURJPY=X
-Forex,GBP/JPY,GBPJPY=X
-Index,S&P 500,^GSPC
-Index,Nasdaq Composite,^IXIC
-Index,Dow Jones Industrial Average,^DJI
-Index,Russell 2000,^RUT
-Index,FTSE 100,^FTSE
-Index,DAX Performance Index,^GDAXI
-Index,CAC 40,^FCHI
-Index,Euro Stoxx 50,^STOXX50E
-Index,Nikkei 225,^N225
-Index,Hang Seng,^HSI
-Index,Shanghai Composite,000001.SS
-Index,S&P/ASX 200,^AXJO
-Index,TSX Composite,^GSPTSE
-Index,Bovespa Index,^BVSP
-Index,US Dollar Index,DX-Y.NYB
+Equity,Communication Services Sector ETF,XLC
+Equity,Energy Services Sector ETF,XLE
+Equity,Consumer Staples Sector ETF,XLP
+Equity,Consumer Discretionary Sector ETF,XLY
+Equity,Financial Sector ETF,XLF
+Equity,Health Care Sector ETF,XLV
+Equity,Industrial Sector ETF,XLI
+Equity,Technology Sector ETF,XLK
+Equity,Utilities Sector ETF,XLU
