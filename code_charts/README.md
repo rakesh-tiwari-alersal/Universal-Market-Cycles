@@ -5,10 +5,9 @@ This directory contains supporting code and data for the whitepaper:
 **"Deriving Market Cycles from the Plastic Number to Model Volatility"**
 
 ## Directory Structure
-- historical_data/             - Contains daily close prices for Bitcoin and Gold as .csv
-- yule_walker/                 - Python implementations to calculate Yule Walker coefficients
+- historical_data/             - Contains daily close prices for IBM and Gold as .csv
 - Figure1_spiral_comparison.py - Python implementation to generate Figure 1
-- Figure3_bitcoin_model.py     - Python implementation to generate Figure 3
+- Figure3_ibm_model.py     - Python implementation to generate Figure 3
 - Figure4_gold_model.py        - Python implementation to generate Figure 4
 
 ## Reproducing Charts
@@ -20,16 +19,14 @@ This directory contains supporting code and data for the whitepaper:
 - Run the scripts from the code_charts (this) directory. The generated images will be saved in the same directory:
    - Generate Figure 1 (Spiral Comparison):
       - Run `python Figure1_spiral_comparison.py`
-   - Generate Figure 3 (Bitcoin Model):
-      - Run `python Figure3_bitcoin_model.py`
+   - Generate Figure 3 (IBM Model):
+      - Run `python Figure3_ibm_model.py`
    - Generate Figure 4 (Gold Model):
       - Run `python Figure4_gold_model.py`
          
 ### 3. Calculating Yule Walker Coefficients
 - Run the scripts from the code_charts (this) directory. Output shows all coefficients in the input range, and the top 3 most significant lags.
    - Basic usage with default differencing:
-      - `python yule_walker/compute_yw_coeff_bitcoin.py 17 54`
+      - `python compute_yw_coeff_generic.py -f IBM.csv -r 354 426`
    - With second-order differencing:
-      - `python yule_walker/compute_yw_coeff_bitcoin.py 189 251 -d 41`
-   - Filtered to only show Plastic Number cycles:
-      - `python yule_walker/compute_yw_coeff_bitcoin.py 189 251 -d 41 -p`
+      - `python compute_yw_coeff_generic.py -f IBM.csv -d 23 -r 354 426`
