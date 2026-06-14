@@ -23,20 +23,21 @@ def main():
 
     # Unified cycle reference table
     TABLE_CYCLES = [
-        220, 237, 243, 251, 261, 268, 274,
-        291, 308, 314, 322, 332, 344, 354,
-        362, 368, 385, 402, 408, 416, 426,
-        469, 479, 487, 493, 510, 527, 533,
-        541, 551, 635, 645, 653, 659, 676
+        219, 237, 243, 250, 259, 267, 273,
+        290, 308, 314, 322, 332, 344, 354,
+        362, 368, 385, 403, 408, 416, 426,
+        440, 456, 469, 479, 487, 493, 510,
+        528, 534, 541, 551, 565, 622, 635,
+        645, 653, 659, 676
     ]
-
+    
     # Configuration
     DATA_DIR = "historical_data"
     OUTPUT_DIR = "wavelet_results"
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
     # Set range for universal cycle detection
-    MIN_PERIOD = 216
+    MIN_PERIOD = 215
     MAX_PERIOD = 680
 
     # Wavelet parameters - empirically optimized
