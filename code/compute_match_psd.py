@@ -133,8 +133,7 @@ def find_dominant_cycles(frequencies, psd, min_period=MIN_PERIOD, max_period=MAX
     if top_10_cycles.empty:
         return []
 
-    # ============== CYCLE SELECTION CORE LOGIC ==============
-    MIN_CYCLE_DISTANCE = 41  # Minimum separation between cycles (days)
+    # Cycle selection core logic
     all_peaks = []
     
     # Prepare peak objects for processing
@@ -143,39 +142,9 @@ def find_dominant_cycles(frequencies, psd, min_period=MIN_PERIOD, max_period=MAX
             'period': row['period'],
             'power': row['power']
         })
-    
-    # Case 1: Fewer than 3 peaks - use all available
-    if len(all_peaks) <= 2:
-        candidate_periods = [p['period'] for p in all_peaks]
-    
-    # Case 2: More than 2 peaks - apply separation logic
-    else:
-        candidate_periods = []
-        
-        # Always include strongest peak
-        candidate_periods.append(all_peaks[0]['period'])
-        
-        # Find next strongest peak meeting separation requirement
-        found_valid = False
-        for i in range(1, len(all_peaks)):
-            valid = True
-            # Check against all selected cycles
-            for existing in candidate_periods:
-                if abs(all_peaks[i]['period'] - existing) < MIN_CYCLE_DISTANCE:
-                    valid = False
-                    break
-            if valid:
-                candidate_periods.append(all_peaks[i]['period'])
-                found_valid = True
-                break
-        
-        # Fallback: use second strongest if no valid peak found
-        if not found_valid:
-            candidate_periods.append(all_peaks[1]['period'])
-    
+      
     # Return integer periods (max 2 cycles)
-    return [int(round(p)) for p in candidate_periods[:2]]
-
+    return [int(round(p['period'])) for p in all_peaks[:2]]
 
 # Main processing loop
 for inst in instruments:

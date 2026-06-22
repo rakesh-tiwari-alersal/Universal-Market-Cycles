@@ -31,14 +31,14 @@ def main():
         645, 653, 659, 676
     ]
     
+    # Set range for universal cycle detection
+    MIN_PERIOD = 215
+    MAX_PERIOD = 680
+
     # Configuration
     DATA_DIR = "historical_data"
     OUTPUT_DIR = "wavelet_results"
     os.makedirs(OUTPUT_DIR, exist_ok=True)
-
-    # Set range for universal cycle detection
-    MIN_PERIOD = 215
-    MAX_PERIOD = 680
 
     # Wavelet parameters - empirically optimized
     WAVELET = 'cmor1.5-1.0'  # Complex Morlet wavelet
@@ -272,7 +272,6 @@ def find_dominant_cycles_wavelet(data, cycle_table, min_period, max_period, wave
         return []
 
     # Cycle selection core logic
-    MIN_CYCLE_DISTANCE = 41  # Minimum separation between cycles (days)
     all_peaks = []
     
     # Prepare peak objects for processing
@@ -282,37 +281,8 @@ def find_dominant_cycles_wavelet(data, cycle_table, min_period, max_period, wave
             'power': row['power']
         })
     
-    # Case 1: Fewer than 3 peaks - use all available
-    if len(all_peaks) <= 2:
-        candidate_periods = [p['period'] for p in all_peaks]
-    
-    # Case 2: More than 2 peaks - apply separation logic
-    else:
-        candidate_periods = []
-        
-        # Always include strongest peak
-        candidate_periods.append(all_peaks[0]['period'])
-        
-        # Find next strongest peak meeting separation requirement
-        found_valid = False
-        for i in range(1, len(all_peaks)):
-            valid = True
-            # Check against all selected cycles
-            for existing in candidate_periods:
-                if abs(all_peaks[i]['period'] - existing) < MIN_CYCLE_DISTANCE:
-                    valid = False
-                    break
-            if valid:
-                candidate_periods.append(all_peaks[i]['period'])
-                found_valid = True
-                break
-        
-        # Fallback: use second strongest if no valid peak found
-        if not found_valid:
-            candidate_periods.append(all_peaks[1]['period'])
-    
     # Return integer periods (max 2 cycles)
-    return [int(round(p)) for p in candidate_periods[:2]]
+    return [int(round(p['period'])) for p in all_peaks[:2]]
 
 if __name__ == "__main__":
     main()

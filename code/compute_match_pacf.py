@@ -45,6 +45,9 @@ def main():
         645, 653, 659, 676
     ]
 
+    # 95% confidence level (z=1.96)
+    CONFIDENCE_Z = 1.96
+
     # Configuration
     DATA_DIR = "historical_data"
     OUTPUT_DIR = "pacf_results"
@@ -87,9 +90,6 @@ def main():
     start_time = time.time()
     processed_count = 0
     
-    # 95% confidence level (z=1.96)
-    CONFIDENCE_Z = 1.96
-    MIN_CYCLE_DISTANCE = 41  # Minimum separation between cycles (days)
 
     def log_entry(timestamp, asset_class, category, instrument, ticker, status, message):
         """Log processing status to central log file"""
@@ -168,24 +168,8 @@ def main():
             
             # Sort by significance
             significant_lags.sort(key=lambda x: x[1], reverse=True)
-            
-            # Get top 2 lags with minimum 71-day separation
-            top_lags = []
-            if significant_lags:
-                # Add strongest peak
-                top_lags.append(significant_lags[0][0])
-                
-                # Find next strongest peak with minimum separation
-                for lag, significance in significant_lags[1:]:
-                    if all(abs(lag - existing_lag) >= MIN_CYCLE_DISTANCE for existing_lag in top_lags):
-                        top_lags.append(lag)
-                        if len(top_lags) >= 2:
-                            break
-                
-                # If we couldn't find a sufficiently separated second peak, use the second strongest anyway
-                if len(top_lags) == 1 and len(significant_lags) > 1:
-                    top_lags.append(significant_lags[1][0])
-                                
+            top_lags = [lag for lag, significance in significant_lags[:2]]
+                                          
             # Store and match PACF results
             if top_lags:
                 match_result['Cycle1'] = top_lags[0] if len(top_lags) > 0 else None
