@@ -9,8 +9,8 @@ TICKER = "IBM"
 DATA_FILE_PATH = os.path.join('historical_data', f'{TICKER}.csv') 
 
 # --- DUAL-LAG SEARCH WINDOWS ---
-P1_MIN, P1_MAX = 17, 41       # Short-term lag window
-P2_MIN, P2_MAX = 216, 680     # Long-term lag window
+P1_MIN, P1_MAX = 17, 54       # Short-term lag window
+P2_MIN, P2_MAX = 215, 680     # Long-term lag window
 MAX_MODEL_LAG = P2_MAX        # Maximum lag needed for data alignment
 
 # ====================================================================
@@ -106,7 +106,6 @@ def main():
     
     print(f"\nData Used: Log Returns (Stationary)")
     print(f"Optimal AR Lags (p1*, p2*): {best_lag1}, {best_lag2}")
-    print(f"Minimum AIC Value: {best_aic:.4f}")
 
 if __name__ == "__main__":
     main()
