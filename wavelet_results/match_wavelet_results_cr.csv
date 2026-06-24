@@ -1,6 +1,6 @@
 Category,Instrument,Ticker,Cycle1,Cycle1_Match,Cycle1_Delta,Cycle2,Cycle2_Match,Cycle2_Delta
-Crypto,Bitcoin,BTC-USD,434,426,8,359,362,3
-Crypto,Ethereum,ETH-USD,439,426,13,508,510,2
-Crypto,Tether,USDT-USD,475,479,4,343,344,1
+Crypto,Bitcoin,BTC-USD,434,440,6,464,469,5
+Crypto,Ethereum,ETH-USD,439,440,1,508,510,2
+Crypto,Tether,USDT-USD,475,479,4,434,440,6
 Crypto,BNB,BNB-USD,420,416,4,339,344,5
-Crypto,XRP,XRP-USD,286,291,5,650,653,3
+Crypto,XRP,XRP-USD,286,290,4,650,653,3

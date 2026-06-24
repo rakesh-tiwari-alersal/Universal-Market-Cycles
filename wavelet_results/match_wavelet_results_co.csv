@@ -1,11 +1,11 @@
 Category,Instrument,Ticker,Cycle1,Cycle1_Match,Cycle1_Delta,Cycle2,Cycle2_Match,Cycle2_Delta
-Commodity,Gold,GC=F,271,268,3,328,332,4
-Commodity,Silver,SI=F,347,344,3,531,533,2
-Commodity,Brent Crude,BZ=F,283,291,8,259,261,2
+Commodity,Gold,GC=F,271,273,2,328,332,4
+Commodity,Silver,SI=F,347,344,3,531,528,3
+Commodity,Brent Crude,BZ=F,283,290,7,259,259,0
 Commodity,Natural Gas,NG=F,335,332,3,550,551,1
-Commodity,Copper,HG=F,520,527,7,224,220,4
-Commodity,Soybean Meal,ZM=F,562,551,11,335,332,3
-Commodity,Cotton,CT=F,331,332,1,537,533,4
-Commodity,Sugar,SB=F,568,551,17,410,408,2
-Commodity,Coffee,KC=F,415,416,1,556,551,5
-Commodity,Platinum,PL=F,608,635,27,265,268,3
+Commodity,Copper,HG=F,520,528,8,224,219,5
+Commodity,Soybean Meal,ZM=F,562,565,3,335,332,3
+Commodity,Cotton,CT=F,331,332,1,537,534,3
+Commodity,Sugar,SB=F,568,565,3,410,408,2
+Commodity,Coffee,KC=F,415,416,1,444,440,4
+Commodity,Platinum,PL=F,608,622,14,265,267,2
