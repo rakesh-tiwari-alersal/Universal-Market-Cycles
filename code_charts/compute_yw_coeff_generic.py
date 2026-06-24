@@ -42,14 +42,15 @@ def nearest_plastic_cycles(lag, table):
 
 
 def main():
-    TABLE_CYCLES = [
-        220, 237, 243, 251, 261, 268, 274,
-        291, 308, 314, 322, 332, 344, 354,
-        362, 368, 385, 402, 408, 416, 426,
-        469, 479, 487, 493, 510, 527, 533,
-        541, 551, 635, 645, 653, 659, 676
+    PLASTIC_CYCLES = [
+        219, 237, 243, 250, 259, 267, 273,
+        290, 308, 314, 322, 332, 344, 354,
+        362, 368, 385, 403, 408, 416, 426,
+        440, 456, 469, 479, 487, 493, 510,
+        528, 534, 541, 551, 565, 622, 635,
+        645, 653, 659, 676
     ]
-
+    
     parser = argparse.ArgumentParser(
         description="Generate Yule-Walker coefficients (plastic-aligned annotation for Top-3 only)."
     )
@@ -78,18 +79,18 @@ def main():
         print(f"Error loading data: {e}")
         return
 
-    # Apply log transformation and difference to compute stationary log returns
-    differenced_series = np.log(time_series).diff(periods=args.differencing_lag).dropna() 
+    # Compute stationary detrended series via raw short-cycle differencing
+    differenced_series = time_series.diff(periods=args.differencing_lag).dropna()
 
     # Select lags
     if args.base is not None:
         base = args.base
         lags_to_compute = [
-            c for c in TABLE_CYCLES
-            if base - 41 <= c <= base + 41
+            c for c in PLASTIC_CYCLES
+            if base - 31 <= c <= base + 31
         ]
         if not lags_to_compute:
-            print(f"No TABLE cycles found within ±41 of base {base}.")
+            print(f"No PLASTIC cycles found within ±31 of base {base}.")
             return
     else:
         begin, end = args.r
@@ -113,7 +114,7 @@ def main():
 
     # Apply plastic display filter ONLY if -p is supplied
     if args.plastic_cycles:
-        results = {k: v for k, v in results.items() if k in TABLE_CYCLES}
+        results = {k: v for k, v in results.items() if k in PLASTIC_CYCLES}
 
     # ---- OUTPUT ----
 
@@ -132,7 +133,7 @@ def main():
 
             # Plastic annotation ONLY when -p is NOT supplied
             if not args.plastic_cycles:
-                lower, upper = nearest_plastic_cycles(lag, TABLE_CYCLES)
+                lower, upper = nearest_plastic_cycles(lag, PLASTIC_CYCLES)
                 if lower is not None and upper is not None:
                     print(f"Lag {lag} ({lower},{upper}) : {coef:.6f}")
                 elif lower is not None:
