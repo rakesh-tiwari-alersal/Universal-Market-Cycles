@@ -8,9 +8,9 @@ This repository contains code and data for the whitepaper:
 - code/                   - Python implementation of PSD/PACF/Wavelet cycle detection and matching algorithm, CAR/p-value calculations
 - code_benchmark/         - Python implementations to generate Benchmark data used in the whitepaper
 - code_charts/            - Python implementations to generate Figures used in the whitepaper
-- psd_results/            - Primary PSD match results (74.90% CAR, statistically significant, 2000-2025)
-- wavelet_results/        - Cross-Method Wavelet match results (74.58% CAR, statistically significant, 2000-2025)
-- pacf_results/           - Cross-Method PACF match results (67.08% CAR, statistically significant, 2000-2025)
+- psd_results/            - Primary PSD match results (statistically significant, 2000-2025)
+- wavelet_results/        - Cross-Method Wavelet match results (statistically significant, 2000-2025)
+- pacf_results/           - Cross-Method PACF match results (statistically insignificant, 2000-2025)
 - psd_results.1990-2025/  - Cross-window results: 1990-2025
 - psd_results.2010-2025/  - Cross-window results: 2010-2025
 - instrument_data_*.csv   - 240 instrument lists by asset class (eq-Equity, co-Commodity, ix-Index, fx-Forex, cr-Crypto)
@@ -35,9 +35,9 @@ This repository contains code and data for the whitepaper:
    - `python code/compute_match_psd.py cr`
    - `python code/compute_match_psd.py fx`
    - This generates match_psd_results_*.csv files in the psd_results/ directory.
-- Calculate CAR and p-values (default tolerance=2)
-   - Run to generate CAR and p-value -t 1 | 2 | 3 (tolerance, default is -t=2)
-   - `python code/CAR.py psd -t 2`
+- Calculate CAR and p-values (default tolerance=1)
+   - Run to generate CAR and p-value -t 1 | 2 | 3 (tolerance, default is -t=1)
+   - `python code/CAR.py psd -t 1`
      
 ### 4. For Wavelet Analysis
 - Similarly, run cycle detection command with eq | ix | co | cr | fx as argument one-by-one
@@ -58,8 +58,8 @@ This repository contains code and data for the whitepaper:
    - `python code/compute_match_pacf.py cr`
    - `python code/compute_match_pacf.py fx`
    - This generates match_pacf_results_*.csv files in the pacf_results/ directory.
-- Calculate CAR and p-values (example with tolerance=2)
-   - `python code/CAR.py pacf -t 2`
+- Calculate CAR and p-values (example with tolerance=3)
+   - `python code/CAR.py pacf -t 3`
 
 ## Verification
 All empirical results in the whitepaper's Appendix D were generated using:
@@ -67,25 +67,25 @@ All empirical results in the whitepaper's Appendix D were generated using:
 - Input instrument metadata in files `instrument_data*.csv`
 - Input historical data used from 2000-2025 (not included due to size)
 - Output match_psd_results_*.csv files in folder `psd_results`, each file contains universal cycle matches and corresponding deltas 
-- CAR PSD Results (tolerance=2):
-   - Instruments with cycles detected: 239
-   - CAR: 74.90% (179 instruments)
-   - Expected random coverage: 146.0 instruments
-   - Excess coverage: 13.79% points
-   - Statistical significance: z=4.37, p=4.73e-06
-
+- CAR PSD Results (tolerance=1):
+   - Instruments with cycles detected: 240
+   - CAR: 67.92% (163 instruments)
+   - Expected random coverage: 105.4 instruments
+   - Excess coverage: 24.01% points
+   - Statistical significance: z=7.49, p=5.55e-14
+ 
 The wavelet and PACF analysis provide additional validation with:
-- CAR Results For Wavelet (tolerance=2):
+- CAR Results For Wavelet (tolerance=1):
+   - WAVELET Results (tolerance=1):
    - Instruments with cycles detected: 240
-   - CAR: 74.58% (179 instruments)
-   - Expected random coverage: 146.7 instruments
-   - Excess coverage: 13.48% points
-   - Statistical significance: z=4.28, p=7.36e-06
-- CAR Results For PACF (tolerance=2):
+   - CAR: 55.00% (132 instruments)
+   - Expected random coverage: 105.4 instruments
+   - Excess coverage: 11.09% points
+   - Statistical significance: z=3.46, p=3.61e-04
+- CAR Results For PACF (tolerance=1):
+   - PACF Results (tolerance=1):
    - Instruments with cycles detected: 240
-   - CAR: 67.08% (161 instruments)
-   - Expected random coverage: 146.7 instruments
-   - Excess coverage: 5.98% points
-   - Statistical significance: z=1.90, p=3.24e-02
-
-
+   - CAR: 45.42% (109 instruments)
+   - Expected random coverage: 105.4 instruments
+   - Excess coverage: 1.51% points
+   - Statistical significance: z=0.47, p=3.42e-01
