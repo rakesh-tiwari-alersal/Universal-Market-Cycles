@@ -19,8 +19,8 @@ This directory contains supporting code and data for the whitepaper:
 ### 2. Generating Benchmark Data 
 - Run the scripts from the code_benchmark (this) directory. The output will be displayed on the screen:
    - Generate IBM benchmark (Lags and R^2):
-      - Run `python .\compute_ibm_AIC.py`
-      - Run `python .\compute_ibm_R2.py`
+      - Run `python compute_ibm_AIC.py`
+      - Run `python compute_ibm_R2.py`
    - Generate DAX Index benchmark (Lags and R^2):
-      - Run `python .\compute_daxindex_AIC.py`
-      - Run `python .\compute_daxindex_R2.py`
+      - Run `python compute_daxindex_AIC.py`
+      - Run `python compute_daxindex_R2.py`
