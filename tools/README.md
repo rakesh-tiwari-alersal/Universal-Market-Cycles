@@ -23,7 +23,7 @@ This directory contains general-purpose tools for the whitepaper
 
 ### 2. Coefficient Calculator (compute_yw_coeff_generic.py)
   - Calculates Yule-Walker autoregressive coefficients for any financial instrument
-    - Optional filtering for 35 predefined Plastic Cycles with -p flag
+    - Optional filtering for 39 predefined Plastic Cycles with -p flag
   - Usage: `python compute_yw_coeff_generic.py -f FILE.csv -r BEGIN END [-d N] [-p]`
 
 ## Basic Workflow
