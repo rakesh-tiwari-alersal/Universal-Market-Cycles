@@ -131,8 +131,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Calculate CAR for cycle analysis methods')
     parser.add_argument('method', nargs='?', default='psd', choices=['psd', 'pacf', 'wavelet'],
                         help='Analysis method (psd, pacf, wavelet). Default: psd')
-    parser.add_argument('-t', '--tolerance', type=int, default=2, choices=[1,2,3],
-                        help='Tolerance value for cycle matching (1, 2, or 3). Default: 2')
+    parser.add_argument('-t', '--tolerance', type=int, default=1, choices=[1,2,3],
+                        help='Tolerance value for cycle matching (1, 2, or 3). Default: 1')
     args = parser.parse_args()
 
     # Load and process specified method
