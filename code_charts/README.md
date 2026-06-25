@@ -5,10 +5,10 @@ This directory contains supporting code and data for the whitepaper:
 **"Deriving Market Cycles from the Plastic Number to Model Volatility"**
 
 ## Directory Structure
-- historical_data/             - Contains daily close prices for IBM and Gold as .csv
-- Figure1_spiral_comparison.py - Python implementation to generate Figure 1
-- Figure3_ibm_model.py     - Python implementation to generate Figure 3
-- Figure4_gold_model.py        - Python implementation to generate Figure 4
+- historical_data/                - Contains daily close prices for IBM and DAX Index as .csv
+- Figure1_spiral_comparison.py    - Python implementation to generate Figure 1
+- Figure3_ibm_model.py            - Python implementation to generate Figure 3
+- Figure4_daxindex_model.py       - Python implementation to generate Figure 4
 
 ## Reproducing Charts
 ### 1. Install Requirements
@@ -21,8 +21,8 @@ This directory contains supporting code and data for the whitepaper:
       - Run `python Figure1_spiral_comparison.py`
    - Generate Figure 3 (IBM Model):
       - Run `python Figure3_ibm_model.py`
-   - Generate Figure 4 (Gold Model):
-      - Run `python Figure4_gold_model.py`
+   - Generate Figure 4 (DAX Index Model):
+      - Run `python Figure4_daxindex_model.py`
          
 ### 3. Calculating Yule Walker Coefficients
 - Run the scripts from the code_charts (this) directory. Output shows all coefficients in the input range, and the top 3 most significant lags.
