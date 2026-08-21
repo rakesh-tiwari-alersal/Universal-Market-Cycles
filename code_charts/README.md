@@ -7,7 +7,7 @@ This directory contains supporting code and data for the whitepaper:
 ## Directory Structure
 - historical_data/                - Contains daily close prices for IBM and DAX Index as .csv
 - Figure1_spiral_comparison.py    - Python implementation to generate Figure 1
-- Figure3_ibm_model.py            - Python implementation to generate Figure 3
+- Figure2_ibm_riskprice_model.py  - Python implementation to generate Figure 2
 - Figure4_daxindex_model.py       - Python implementation to generate Figure 4
 
 ## Reproducing Charts
@@ -19,7 +19,7 @@ This directory contains supporting code and data for the whitepaper:
 - Run the scripts from the code_charts (this) directory. The generated images will be saved in the same directory:
    - Generate Figure 1 (Spiral Comparison):
       - Run `python Figure1_spiral_comparison.py`
-   - Generate Figure 3 (IBM Model):
-      - Run `python Figure3_ibm_model.py`
+   - Generate Figure 2 (IBM Model):
+      - Run `python Figure2_ibm_riskprice_model.py`
    - Generate Figure 4 (DAX Index Model):
       - Run `python Figure4_daxindex_model.py`
