@@ -31,7 +31,8 @@ This directory contains general-purpose tools for the whitepaper
   - Calculates alpha, or the relative weight between the short- and long-term lags, used for creating market equilibrium curve.
   - Usage: `python compute_EQ_alpha.py -f FILE` 
 
-## Basic Workflow
+## Basic Usage
 1. Add/Delete instruments to instrument_data.csv
 2. Download data: `python download_yf_data.py 2000 2025`
 3. Find cycles: `python compute_yw_coeff_generic.py -f IBM.csv -r 250 500 -p`
+4. Compute alpha: `python compute_EQ_alpha.py -f IBM.csv`
