@@ -18,13 +18,17 @@ This directory contains general-purpose tools for the whitepaper
 
 ### 1. Data Download (download_yf_data.py)
   - Downloads historical price data for instruments listed in instrument_data.csv
-    - Creates historical_data/ folder with CSV files and download_logs/ with reports
+  - Creates historical_data/ folder with CSV files and download_logs/ with reports
   - Usage: `python download_yf_data.py [start_year] [end_year]`
 
 ### 2. Coefficient Calculator (compute_yw_coeff_generic.py)
-  - Calculates Yule-Walker autoregressive coefficients for any financial instrument
-    - Optional filtering for 39 predefined Plastic Cycles with -p flag
-  - Usage: compute_yw_coeff_generic.py [-h] -f FILE [-p] (-b BASE | -r BEGIN END) [-d DIFFERENCING_LAG]
+  - Calculates Yule-Walker autoregressive coefficients for a financial instrument
+  - Optional filtering for 39 predefined Plastic Cycles with -p flag
+  - Usage: `compute_yw_coeff_generic.py [-h] -f FILE [-p] (-b BASE | -r BEGIN END) [-d DIFFERENCING_LAG]`
+    
+### 3. Equilibrium Alpha Calculator (compute_EQ_alpha.py)
+  - Calculates alpha, or the relative weight between the short- and long-term lags, used for creating market equilibrium curve.
+  - Usage: `python compute_ibm_alpha.py -f FILE` 
 
 ## Basic Workflow
 1. Add/Delete instruments to instrument_data.csv
