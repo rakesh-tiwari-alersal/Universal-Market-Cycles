@@ -61,12 +61,22 @@ DEFAULT_N_YEARS = 5
 # --------------------------
 # Plastic dislocation bands
 # --------------------------
-# Upper band: equilibrium * (1 + UPPER_BAND)
-# Lower band: equilibrium * (1 - LOWER_BAND)
-DEFAULT_UPPER_BAND1 = 0.1397       # +13.97%
-DEFAULT_LOWER_BAND1 = 0.1054       # -10.54%
-DEFAULT_UPPER_BAND2 = 0.3247       # +32.47%
-DEFAULT_LOWER_BAND2 = 0.3247       # -32.47%
+# Band fractions indexed by Plastic k.
+PLASTIC_BAND_VALUES = (
+    0.3247,
+    0.2451,
+    0.1850,
+    0.1397,
+    0.1054,
+    0.0796,
+    0.0600,
+)
+
+# Defaults expressed as Plastic k values.
+DEFAULT_UPPER_BAND1_K = 3       # 0.1397 = +13.97%
+DEFAULT_LOWER_BAND1_K = 4       # 0.1054 = -10.54%
+DEFAULT_UPPER_BAND2_K = 0       # 0.3247 = +32.47%
+DEFAULT_LOWER_BAND2_K = 0       # 0.3247 = -32.47%
 
 # --------------------------
 # Allowed cycle ranges
@@ -131,12 +141,15 @@ def parse_lags(value: str) -> tuple[int, int]:
     return short_cycle, long_cycle
 
 
-def validate_band(value: float, name: str) -> None:
-    """Validate a dislocation-band fraction."""
-    if not 0 < value < 2:
+def get_band_value(k: int, name: str) -> float:
+    """Return the dislocation-band fraction for Plastic k."""
+    if not 0 <= k < len(PLASTIC_BAND_VALUES):
         raise ValueError(
-            f"{name} must satisfy 0 < value < 2; got {value}"
+            f"{name} must be an integer k between "
+            f"0 and {len(PLASTIC_BAND_VALUES) - 1}; got {k}"
         )
+
+    return PLASTIC_BAND_VALUES[k]
 
 
 # ==========================================================
@@ -294,6 +307,10 @@ def create_plot(
     lower_band1: float,
     upper_band2: float,
     lower_band2: float,
+    upper_band1_k: int,
+    lower_band1_k: int,
+    upper_band2_k: int,
+    lower_band2_k: int,
     output_path: str,
 ) -> None:
     """Create and save the thesis/book-quality figure."""
@@ -392,7 +409,7 @@ def create_plot(
         color="black",
         linestyle="--",
         linewidth=BAND_LINEWIDTH,
-        label=f"Upper Plastic Bands (+{upper_band1:.2%},+{upper_band2:.2%})",
+        label=f"Upper Plastic Bands (k={upper_band1_k},k={upper_band2_k})",
         zorder=2,
     )
 
@@ -405,7 +422,7 @@ def create_plot(
         color="black",
         linestyle="--",
         linewidth=BAND_LINEWIDTH,
-        label=f"Lower Plastic Bands (-{lower_band1:.2%},-{lower_band2:.2%})",
+        label=f"Lower Plastic Bands (k={lower_band1_k},k={lower_band2_k})",
         zorder=2,
     )
 
@@ -635,48 +652,44 @@ def main() -> None:
     parser.add_argument(
         "-u1",
         "--upper1",
-        type=float,
-        default=DEFAULT_UPPER_BAND1,
+        type=int,
+        default=DEFAULT_UPPER_BAND1_K,
         help=(
-            "Upper dislocation band 1 fraction; "
-            "0 < u1 < 2; "
-            f"default: {DEFAULT_UPPER_BAND1}"
+            "Upper dislocation band 1 Plastic k; "
+            f"default: {DEFAULT_UPPER_BAND1_K}"
         ),
     )
 
     parser.add_argument(
         "-w1",
         "--lower1",
-        type=float,
-        default=DEFAULT_LOWER_BAND1,
+        type=int,
+        default=DEFAULT_LOWER_BAND1_K,
         help=(
-            "Lower dislocation band 1 fraction; "
-            "0 < w1 < 2; "
-            f"default: {DEFAULT_LOWER_BAND1}"
+            "Lower dislocation band 1 Plastic k; "
+            f"default: {DEFAULT_LOWER_BAND1_K}"
         ),
     )
 
     parser.add_argument(
         "-u2",
         "--upper2",
-        type=float,
-        default=DEFAULT_UPPER_BAND2,
+        type=int,
+        default=DEFAULT_UPPER_BAND2_K,
         help=(
-            "Upper dislocation band 2 fraction; "
-            "0 < u2 < 2; "
-            f"default: {DEFAULT_UPPER_BAND2}"
+            "Upper dislocation band 2 Plastic k; "
+            f"default: {DEFAULT_UPPER_BAND2_K}"
         ),
     )
 
     parser.add_argument(
         "-w2",
         "--lower2",
-        type=float,
-        default=DEFAULT_LOWER_BAND2,
+        type=int,
+        default=DEFAULT_LOWER_BAND2_K,
         help=(
-            "Lower dislocation band 2 fraction; "
-            "0 < w2 < 2; "
-            f"default: {DEFAULT_LOWER_BAND2}"
+            "Lower dislocation band 2 Plastic k; "
+            f"default: {DEFAULT_LOWER_BAND2_K}"
         ),
     )
 
@@ -726,22 +739,10 @@ def main() -> None:
         )
 
     try:
-        validate_band(
-            args.upper1,
-            "-u1/--upper1",
-        )
-        validate_band(
-            args.lower1,
-            "-w1/--lower1",
-        )
-        validate_band(
-            args.upper2,
-            "-u2/--upper2",
-        )
-        validate_band(
-            args.lower2,
-            "-w2/--lower2",
-        )
+        upper_band1 = get_band_value(args.upper1, "-u1/--upper1")
+        lower_band1 = get_band_value(args.lower1, "-w1/--lower1")
+        upper_band2 = get_band_value(args.upper2, "-u2/--upper2")
+        lower_band2 = get_band_value(args.lower2, "-w2/--lower2")
     except ValueError as exc:
         parser.error(str(exc))
 
@@ -834,10 +835,14 @@ def main() -> None:
             df=df,
             symbol=symbol,
             n_years=args.years,
-            upper_band1=args.upper1,
-            lower_band1=args.lower1,
-            upper_band2=args.upper2,
-            lower_band2=args.lower2,
+            upper_band1=upper_band1,
+            lower_band1=lower_band1,
+            upper_band2=upper_band2,
+            lower_band2=lower_band2,
+            upper_band1_k=args.upper1,
+            lower_band1_k=args.lower1,
+            upper_band2_k=args.upper2,
+            lower_band2_k=args.lower2,
             output_path=output_path,
         )
 
@@ -865,10 +870,10 @@ def main() -> None:
     print(f"Polynomial      : {args.poly}")
     print(f"Alpha           : {args.alpha}")
     print(f"Years plotted   : {args.years}")
-    print(f"Upper band 1    : +{args.upper1:.2%}")
-    print(f"Lower band 1    : -{args.lower1:.2%}")
-    print(f"Upper band 2    : +{args.upper2:.2%}")
-    print(f"Lower band 2    : -{args.lower2:.2%}")
+    print(f"Upper band 1    : k={args.upper1} ({upper_band1:.2%})")
+    print(f"Lower band 1    : k={args.lower1} ({lower_band1:.2%})")
+    print(f"Upper band 2    : k={args.upper2} ({upper_band2:.2%})")
+    print(f"Lower band 2    : k={args.lower2} ({lower_band2:.2%})")
     print(f"Output          : {output_path}")
     print("============================")
     print()
