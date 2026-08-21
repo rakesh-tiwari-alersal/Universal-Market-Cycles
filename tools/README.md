@@ -8,6 +8,7 @@ This directory contains general-purpose tools for the whitepaper
 ## Directory Structure
 - download_yf_data.py          - Downloads historical data from Yahoo!Finance
 - compute_yw_coeff_generic.py  - Calculates Yule-Walker coefficients with Plastic Cycle filtering
+- compute_EQ_alpha.py          - Calculates relative weight between short- and long-term lags
 - instrument_data.csv          - Contains initial list of 240 instruments
 
 ## Installation
@@ -28,7 +29,7 @@ This directory contains general-purpose tools for the whitepaper
     
 ### 3. Equilibrium Alpha Calculator (compute_EQ_alpha.py)
   - Calculates alpha, or the relative weight between the short- and long-term lags, used for creating market equilibrium curve.
-  - Usage: `python compute_ibm_alpha.py -f FILE` 
+  - Usage: `python compute_EQ_alpha.py -f FILE` 
 
 ## Basic Workflow
 1. Add/Delete instruments to instrument_data.csv
