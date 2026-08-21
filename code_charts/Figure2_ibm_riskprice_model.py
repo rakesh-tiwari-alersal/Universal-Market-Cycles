@@ -63,8 +63,10 @@ DEFAULT_N_YEARS = 5
 # --------------------------
 # Upper band: equilibrium * (1 + UPPER_BAND)
 # Lower band: equilibrium * (1 - LOWER_BAND)
-DEFAULT_UPPER_BAND = 0.1397       # +13.97%
-DEFAULT_LOWER_BAND = 0.1054       # -10.54%
+DEFAULT_UPPER_BAND1 = 0.1397       # +13.97%
+DEFAULT_LOWER_BAND1 = 0.1054       # -10.54%
+DEFAULT_UPPER_BAND2 = 0.3247       # +32.47%
+DEFAULT_LOWER_BAND2 = 0.3247       # -32.47%
 
 # --------------------------
 # Allowed cycle ranges
@@ -288,8 +290,10 @@ def create_plot(
     df: pd.DataFrame,
     symbol: str,
     n_years: int,
-    upper_band: float,
-    lower_band: float,
+    upper_band1: float,
+    lower_band1: float,
+    upper_band2: float,
+    lower_band2: float,
     output_path: str,
 ) -> None:
     """Create and save the thesis/book-quality figure."""
@@ -319,12 +323,20 @@ def create_plot(
     # ------------------------------------------------------
     # Plastic dislocation bands
     # ------------------------------------------------------
-    plot_df["Upper_Band"] = (
-        plot_df["E_trend"] * (1.0 + upper_band)
+    plot_df["Upper_Band1"] = (
+        plot_df["E_trend"] * (1.0 + upper_band1)
     )
 
-    plot_df["Lower_Band"] = (
-        plot_df["E_trend"] * (1.0 - lower_band)
+    plot_df["Lower_Band1"] = (
+        plot_df["E_trend"] * (1.0 - lower_band1)
+    )
+
+    plot_df["Upper_Band2"] = (
+        plot_df["E_trend"] * (1.0 + upper_band2)
+    )
+
+    plot_df["Lower_Band2"] = (
+        plot_df["E_trend"] * (1.0 - lower_band2)
     )
 
     # ------------------------------------------------------
@@ -336,7 +348,6 @@ def create_plot(
     )
 
     ax.set_facecolor("white")
-    ax.set_xlim(plot_df["Date"].min(), plot_df["Date"].max())
 
     # ------------------------------------------------------
     # DAILY CLOSE PRICE
@@ -377,11 +388,11 @@ def create_plot(
     # ------------------------------------------------------
     ax.plot(
         plot_df["Date"],
-        plot_df["Upper_Band"],
+        plot_df["Upper_Band1"],
         color="black",
         linestyle="--",
         linewidth=BAND_LINEWIDTH,
-        label=f"Upper Plastic Band (+{upper_band:.2%})",
+        label=f"Upper Plastic Bands (+{upper_band1:.2%},+{upper_band2:.2%})",
         zorder=2,
     )
 
@@ -390,17 +401,46 @@ def create_plot(
     # ------------------------------------------------------
     ax.plot(
         plot_df["Date"],
-        plot_df["Lower_Band"],
+        plot_df["Lower_Band1"],
         color="black",
         linestyle="--",
         linewidth=BAND_LINEWIDTH,
-        label=f"Lower Plastic Band (-{lower_band:.2%})",
+        label=f"Lower Plastic Bands (-{lower_band1:.2%},-{lower_band2:.2%})",
+        zorder=2,
+    )
+
+    # ------------------------------------------------------
+    # UPPER PLASTIC DISLOCATION BAND 2
+    # ------------------------------------------------------
+    ax.plot(
+        plot_df["Date"],
+        plot_df["Upper_Band2"],
+        color="black",
+        linestyle="--",
+        linewidth=BAND_LINEWIDTH,
+        label="_nolegend_",
+        zorder=2,
+    )
+
+    # ------------------------------------------------------
+    # LOWER PLASTIC DISLOCATION BAND 2
+    # ------------------------------------------------------
+    ax.plot(
+        plot_df["Date"],
+        plot_df["Lower_Band2"],
+        color="black",
+        linestyle="--",
+        linewidth=BAND_LINEWIDTH,
+        label="_nolegend_",
         zorder=2,
     )
 
     # ------------------------------------------------------
     # X AXIS
     # ------------------------------------------------------
+    # YEARLY labels ONLY.
+    #
+    # No quarterly/monthly labels are ever used.
     ax.xaxis.set_major_locator(
         mdates.YearLocator()
     )
@@ -443,7 +483,7 @@ def create_plot(
     )
 
     ax.set_title(
-        f"Illustration: {symbol} Asymmetric Risk-Price Structure with Plastic Bands",
+        f"Illustration: {symbol} Price Series and Fitted Plastic Model",
         fontsize=TITLE_FONTSIZE,
         fontweight="bold",
         pad=14,
@@ -456,8 +496,10 @@ def create_plot(
         [
             plot_df["Close"],
             plot_df["E_trend"],
-            plot_df["Upper_Band"],
-            plot_df["Lower_Band"],
+            plot_df["Upper_Band1"],
+            plot_df["Lower_Band1"],
+            plot_df["Upper_Band2"],
+            plot_df["Lower_Band2"],
         ]
     ).dropna()
 
@@ -591,26 +633,50 @@ def main() -> None:
     )
 
     parser.add_argument(
-        "-u",
-        "--upper",
+        "-u1",
+        "--upper1",
         type=float,
-        default=DEFAULT_UPPER_BAND,
+        default=DEFAULT_UPPER_BAND1,
         help=(
-            "Upper dislocation band fraction; "
-            "0 < u < 2; "
-            f"default: {DEFAULT_UPPER_BAND}"
+            "Upper dislocation band 1 fraction; "
+            "0 < u1 < 2; "
+            f"default: {DEFAULT_UPPER_BAND1}"
         ),
     )
 
     parser.add_argument(
-        "-w",
-        "--lower",
+        "-w1",
+        "--lower1",
         type=float,
-        default=DEFAULT_LOWER_BAND,
+        default=DEFAULT_LOWER_BAND1,
         help=(
-            "Lower dislocation band fraction; "
-            "0 < w < 2; "
-            f"default: {DEFAULT_LOWER_BAND}"
+            "Lower dislocation band 1 fraction; "
+            "0 < w1 < 2; "
+            f"default: {DEFAULT_LOWER_BAND1}"
+        ),
+    )
+
+    parser.add_argument(
+        "-u2",
+        "--upper2",
+        type=float,
+        default=DEFAULT_UPPER_BAND2,
+        help=(
+            "Upper dislocation band 2 fraction; "
+            "0 < u2 < 2; "
+            f"default: {DEFAULT_UPPER_BAND2}"
+        ),
+    )
+
+    parser.add_argument(
+        "-w2",
+        "--lower2",
+        type=float,
+        default=DEFAULT_LOWER_BAND2,
+        help=(
+            "Lower dislocation band 2 fraction; "
+            "0 < w2 < 2; "
+            f"default: {DEFAULT_LOWER_BAND2}"
         ),
     )
 
@@ -661,12 +727,20 @@ def main() -> None:
 
     try:
         validate_band(
-            args.upper,
-            "-u/--upper",
+            args.upper1,
+            "-u1/--upper1",
         )
         validate_band(
-            args.lower,
-            "-w/--lower",
+            args.lower1,
+            "-w1/--lower1",
+        )
+        validate_band(
+            args.upper2,
+            "-u2/--upper2",
+        )
+        validate_band(
+            args.lower2,
+            "-w2/--lower2",
         )
     except ValueError as exc:
         parser.error(str(exc))
@@ -760,8 +834,10 @@ def main() -> None:
             df=df,
             symbol=symbol,
             n_years=args.years,
-            upper_band=args.upper,
-            lower_band=args.lower,
+            upper_band1=args.upper1,
+            lower_band1=args.lower1,
+            upper_band2=args.upper2,
+            lower_band2=args.lower2,
             output_path=output_path,
         )
 
@@ -789,8 +865,10 @@ def main() -> None:
     print(f"Polynomial      : {args.poly}")
     print(f"Alpha           : {args.alpha}")
     print(f"Years plotted   : {args.years}")
-    print(f"Upper band      : +{args.upper:.2%}")
-    print(f"Lower band      : -{args.lower:.2%}")
+    print(f"Upper band 1    : +{args.upper1:.2%}")
+    print(f"Lower band 1    : -{args.lower1:.2%}")
+    print(f"Upper band 2    : +{args.upper2:.2%}")
+    print(f"Lower band 2    : -{args.lower2:.2%}")
     print(f"Output          : {output_path}")
     print("============================")
     print()
