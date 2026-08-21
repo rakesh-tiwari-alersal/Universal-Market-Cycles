@@ -409,7 +409,7 @@ def create_plot(
         color="black",
         linestyle="--",
         linewidth=BAND_LINEWIDTH,
-        label=f"Upper Plastic Bands (k={upper_band1_k},k={upper_band2_k})",
+        label=f"Upper Plastic Bands (k={upper_band1_k}, k={upper_band2_k})",
         zorder=2,
     )
 
@@ -422,7 +422,7 @@ def create_plot(
         color="black",
         linestyle="--",
         linewidth=BAND_LINEWIDTH,
-        label=f"Lower Plastic Bands (k={lower_band1_k},k={lower_band2_k})",
+        label=f"Lower Plastic Bands (k={lower_band1_k}, k={lower_band2_k})",
         zorder=2,
     )
 
@@ -464,6 +464,7 @@ def create_plot(
     ax.xaxis.set_major_formatter(
         mdates.DateFormatter("%Y")
     )
+    ax.set_xlim(plot_df["Date"].min(), plot_df["Date"].max())
 
     ax.tick_params(
         axis="both",
@@ -500,7 +501,7 @@ def create_plot(
     )
 
     ax.set_title(
-        f"Illustration: {symbol} Price Series and Fitted Plastic Model",
+        f"Illustration: {symbol} Asymmetric Risk-Price Structure with Plastic Bands",
         fontsize=TITLE_FONTSIZE,
         fontweight="bold",
         pad=14,
