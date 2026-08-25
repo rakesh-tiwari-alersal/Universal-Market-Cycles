@@ -29,7 +29,7 @@ This directory contains general-purpose tools for the whitepaper
     
 ### 3. Equilibrium Alpha Calculator (compute_EQ_alpha.py)
   - Calculates alpha, or the relative weight between the short- and long-term lags, used for creating market equilibrium curve.
-  - Usage: `python compute_EQ_alpha.py -f FILE -l SHORT,LONG` 
+  - Usage: `python compute_EQ_alpha.py [-h] -f FILE [-l SHORT,LONG] [-d DATA SLICE]` 
 
 ## Basic Usage
 1. Add/Delete instruments to instrument_data.csv
