@@ -16,9 +16,9 @@ DATA_SLICE = 3 * LONG_CYCLE          # training window length, in trading days
 SHORT_MIN, SHORT_MAX = 17, 54        # plastic short-lag range
 LONG_MIN, LONG_MAX = 219, 676        # plastic long-lag range
 
-N_YEARS = 16                         # how far back we're willing to look
+N_YEARS = 25                         # how far back we're willing to look
 TRADING_DAYS_PER_YEAR = 252
-NUM_SLICES = 10                      # evenly-spaced windows, aggregated
+NUM_SLICES = 20                      # evenly-spaced windows, aggregated
 
 ALPHA_MIN, ALPHA_MAX, ALPHA_STEP = 0.01, 0.99, 0.01
 
@@ -35,9 +35,10 @@ DATE_COL = 'Date'
 
 def slice_rss_by_alpha(Y, slice_start, data_slice, short_cycle, long_cycle, alphas):
     """
-    For one DATA_SLICE-length window starting at slice_start, compute
-    RSS(alpha) = sum_t (Y_t - [alpha*Y_(t-short) + (1-alpha)*Y_(t-long)])^2
-    across the given alpha grid. Vectorized over alpha.
+    For one DATA_SLICE-length window starting at slice_start, and for each
+    alpha, build E = alpha*Y_(t-short) + (1-alpha)*Y_(t-long), regress
+    Y_current ~ m*E + b (OLS, single predictor + intercept), and return the
+    residual sum of squares. Vectorized across the whole alpha grid at once.
 
     Requires slice_start - long_cycle >= 0 in the caller's coordinate space.
     """
@@ -50,9 +51,24 @@ def slice_rss_by_alpha(Y, slice_start, data_slice, short_cycle, long_cycle, alph
     Y_long = Y[idx_long]
 
     a = alphas[:, None]                              # (n_alpha, 1)
-    E = a * Y_short[None, :] + (1 - a) * Y_long[None, :]   # (n_alpha, data_slice)
-    resid = Y_current[None, :] - E
-    return np.sum(resid ** 2, axis=1)                 # (n_alpha,)
+    E = a * Y_short[None, :] + (1 - a) * Y_long[None, :]   # (n_alpha, data_slice)  == X in LINEST(Y, X)
+
+    # OLS single-predictor regression per alpha: Y_current ~ m*E + b,
+    # then SSresid, matching Excel LINEST(Y_current, E, TRUE, TRUE) row 5 col 2.
+    mean_Y = Y_current.mean()
+    mean_E = E.mean(axis=1)                                        # (n_alpha,)
+    dY = Y_current[None, :] - mean_Y                                # (1, data_slice)
+    dE = E - mean_E[:, None]                                        # (n_alpha, data_slice)
+
+    cov_EY = np.sum(dE * dY, axis=1)                                # (n_alpha,)
+    var_E = np.sum(dE ** 2, axis=1)                                 # (n_alpha,)
+
+    slope = np.where(var_E > 0, cov_EY / var_E, 0.0)
+    intercept = mean_Y - slope * mean_E
+
+    pred = slope[:, None] * E + intercept[:, None]
+    resid = Y_current[None, :] - pred
+    return np.sum(resid ** 2, axis=1)                               # (n_alpha,) == SSresid per alpha
 
 
 def find_crossing(alphas, ratio, target):
