@@ -96,8 +96,8 @@ def find_crossing(alphas, ratio, target):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Detect the PCU / PCU-over-rho plastic knee (alpha) from historical price data")
     parser.add_argument("-f", "--filename", required=True, help="Filename of the historical CSV data file")
-    parser.add_argument("-l", "--lags", help="Override as short,long (e.g. 27,510)")
-    parser.add_argument("-d", "--data_slice", type=int, help="Override DATA_SLICE (days per training window)")
+    parser.add_argument("-l", "--lags", help="Override as short,long (e.g. 23,416)")
+    parser.add_argument("-d", "--data_slice", type=int, help="Override DATA_SLICE (days per training window, default = 3 x long-lag)")
 
     args = parser.parse_args()
 
@@ -106,7 +106,7 @@ if __name__ == "__main__":
     if args.lags:
         parts = args.lags.split(',')
         if len(parts) != 2:
-            print("Error: -l must be short,long (e.g. 27,510)")
+            print("Error: -l must be short,long (e.g. 23,416)")
             sys.exit(1)
         short_cycle, long_cycle = int(parts[0]), int(parts[1])
         if not (SHORT_MIN <= short_cycle <= SHORT_MAX):
@@ -154,7 +154,7 @@ if __name__ == "__main__":
               f"(need {data_slice} usable days, have {usable_len}).")
         sys.exit(1)
 
-    # --- 10 evenly-spaced slice start positions across the usable range ---
+    # --- 20 evenly-spaced slice start positions across the usable range ---
     last_possible_start = usable_end - data_slice + 1
     if last_possible_start <= usable_start:
         slice_starts = [usable_start]
