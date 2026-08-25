@@ -19,7 +19,7 @@ This directory contains supporting code and data for the whitepaper:
 - Run the scripts from the code_charts (this) directory. The generated images will be saved in the same directory:
    - Generate Figure 1 (Spiral Comparison):
       - Run `python Figure1_spiral_comparison.py`
-   - Generate Figure 2 (IBM Model):
+   - Generate Figure 2 (IBM Risk-Price Structure):
       - Run `python Figure2_ibm_riskprice_structure.py`
    - Generate Figure 4 (DAX Index Model):
       - Run `python Figure4_daxindex_model.py`
