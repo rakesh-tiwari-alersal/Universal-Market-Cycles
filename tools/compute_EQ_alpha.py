@@ -1,5 +1,5 @@
 """
-compute_alpha_grid.py
+compute_EQ_alpha.py
 
 Single-purpose EQ alpha* estimator:
   - grid (min-max) normalized RSS(alpha) curve only -- no ratio-to-baseline method
@@ -8,8 +8,8 @@ Single-purpose EQ alpha* estimator:
   - 26-year lookback, 20 aggregated windows (cutoff lands ~Aug 2000)
 
 Usage:
-  python compute_EQ_Alpha.py -f GSPC.csv -l 23,528 -d 1346
-  python compute_EQ_Alpha.py -f GSPC.csv -l 23,528 -d 1346 --verbose
+  python compute_EQ_alpha.py -f GSPC.csv -l 23,528 -d 1346
+  python compute_EQ_alpha.py -f GSPC.csv -l 23,528 -d 1346 --verbose
 """
 
 import pandas as pd
