@@ -2,7 +2,7 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16730905.svg)](https://doi.org/10.5281/zenodo.16730905)
 
 This directory contains supporting code and data for the whitepaper:  
-**"Deriving Market Cycles from the Plastic Number to Model Volatility"**
+**"Deriving Market Cycles from the Plastic Number to Model Risk-Price Geometry"**
 
 ## Directory Structure
 - historical_data/                - Contains daily close prices for IBM and DAX Index as .csv
