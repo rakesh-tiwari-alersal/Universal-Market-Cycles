@@ -3,7 +3,7 @@
 
 This directory contains general-purpose tools for the whitepaper
 
-**"Deriving Market Cycles from the Plastic Number to Model Volatility"**
+**"Deriving Market Cycles from the Plastic Number to Model Risk-Price Geometry"**
 
 ## Directory Structure
 - download_yf_data.py          - Downloads historical data from Yahoo!Finance
