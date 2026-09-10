@@ -2,7 +2,7 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16730905.svg)](https://doi.org/10.5281/zenodo.16730905)
 
 This repository contains code and data for the whitepaper:  
-**"Deriving Market Cycles from the Plastic Number to Model Volatility"**
+**"Deriving Market Cycles from the Plastic Number to Model Risk-Price Geometry"**
 
 ## Directory Structure
 - code/                   - Python implementation of PSD/PACF/Wavelet cycle detection and matching algorithm, CAR/p-value calculations
@@ -65,15 +65,15 @@ This repository contains code and data for the whitepaper:
    
 ### 6. For Null PSD Analysis
 - Run null cycle detection command with eq | ix | co | cr | fx as argument one-by-one
-   - `python code_randomized_test/compute_null_psd.py eq`
-   - `python code_randomized_test/compute_null_psd.py ix`
-   - `python code_randomized_test/compute_null_psd.py co`
-   - `python code_randomized_test/compute_null_psd.py cr`
-   - `python code_randomized_test/compute_null_psd.py fx`
-   - This generates GBM synthatic *.csv files in the psd_results/null_panels directory.
+   - `python code_randomized_tests/compute_null_psd.py eq`
+   - `python code_randomized_tests/compute_null_psd.py ix`
+   - `python code_randomized_tests/compute_null_psd.py co`
+   - `python code_randomized_tests/compute_null_psd.py cr`
+   - `python code_randomized_tests/compute_null_psd.py fx`
+   - This generates GBM synthetic *.csv files in the psd_results/null_panels directory.
 - Calculate CAR and z-scores (tolerance=1) for random data and random table tests respectively.
-   - `python code_randomized_test/CAR_Random_Data.py`
-   - `python code_randomized_test/CAR_Random_Table.py`
+   - `python code_randomized_test/CAR_RandomData.py --car-script code/CAR.py`
+   - `python code_randomized_test/CAR_RandomTable.py --car-script code/CAR.py`
 
 ## Verification - CAR 
 All empirical results in the whitepaper's Appendix D were generated using:
