@@ -8,8 +8,8 @@ Single-purpose EQ alpha* estimator:
   - 26-year lookback, 20 aggregated windows (cutoff lands ~Aug 2000)
 
 Usage:
-  python compute_EQ_alpha.py -f GSPC.csv -l 23,528 -d 1346
-  python compute_EQ_alpha.py -f GSPC.csv -l 23,528 -d 1346 --verbose
+  python compute_EQ_alpha.py -f IBM.csv -l 23,528 -d 1000
+  python compute_EQ_alpha.py -f IBM.csv -l 23,528 -d 1000 --verbose
 """
 
 import pandas as pd
@@ -27,6 +27,7 @@ NUM_SLICES = 20
 ALPHA_MIN, ALPHA_MAX, ALPHA_STEP = 0.00, 1.00, 0.01
 
 RHO = 1.32471795
+PTL = (RHO**3)
 LAMBDA = 1 - (1 / RHO)      # ~PCU/ρ numerically, equation (3) in the paper -- 0.245122
 TARGET = 1 - LAMBDA         # 1/ρ numerically, 0.754878 -- but stated
                             
@@ -94,7 +95,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-f", "--filename", required=True)
     parser.add_argument("-l", "--lags", required=True, help="short,long")
-    parser.add_argument("-d", "--data_slice", type=int, help="Override data_slice (days per training window, default = 3 x long-lag)")
+    parser.add_argument("-d", "--data_slice", type=int, help="Override data_slice (days per training window, default = PTL x long-lag)")
     parser.add_argument("--verbose", action="store_true", help="show peak location and full crossing list")
     args = parser.parse_args()
 
@@ -106,7 +107,7 @@ if __name__ == "__main__":
         print(f"Error: long lag {long_cycle} outside plastic range [{LONG_MIN},{LONG_MAX}]")
         sys.exit(1)
 
-    data_slice = args.data_slice if args.data_slice is not None else 3 * long_cycle
+    data_slice = int(args.data_slice if args.data_slice is not None else PTL * long_cycle)
     if not (long_cycle < data_slice <= 5 * long_cycle):
         print(f"Error: data_slice={data_slice} must satisfy long_cycle({long_cycle}) < data_slice <= 5*long_cycle({5*long_cycle})")
         sys.exit(1)
