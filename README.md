@@ -72,8 +72,8 @@ This repository contains code and data for the whitepaper:
    - `python code_randomized_tests/compute_null_psd.py fx`
    - This generates GBM synthetic *.csv files in the psd_results/null_panels directory.
 - Calculate CAR and z-scores (tolerance=1) for random data and random table tests respectively.
-   - `python code_randomized_test/CAR_RandomData.py --car-script code/CAR.py`
-   - `python code_randomized_test/CAR_RandomTable.py --car-script code/CAR.py`
+   - `python code_randomized_tests/CAR_RandomData.py --car-script code/CAR.py`
+   - `python code_randomized_tests/CAR_RandomTable.py --car-script code/CAR.py`
 
 ## Verification - CAR 
 All empirical results in the whitepaper's Appendix D were generated using:
