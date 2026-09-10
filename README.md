@@ -62,8 +62,20 @@ This repository contains code and data for the whitepaper:
    - This generates match_pacf_results_*.csv files in the pacf_results/ directory.
 - Calculate CAR and p-values (example with tolerance=3)
    - `python code/CAR.py pacf -t 3`
+   
+### 6. For Null PSD Analysis
+- Run null cycle detection command with eq | ix | co | cr | fx as argument one-by-one
+   - `python code_randomized_test/compute_null_psd.py eq`
+   - `python code_randomized_test/compute_null_psd.py ix`
+   - `python code_randomized_test/compute_null_psd.py co`
+   - `python code_randomized_test/compute_null_psd.py cr`
+   - `python code_randomized_test/compute_null_psd.py fx`
+   - This generates GBM synthatic *.csv files in the psd_results/null_panels directory.
+- Calculate CAR and z-scores (tolerance=1) for random data and random table tests respectively.
+   - `python code_randomized_test/CAR_Random_Data.py`
+   - `python code_randomized_test/CAR_Random_Table.py`
 
-## Verification
+## Verification - CAR 
 All empirical results in the whitepaper's Appendix D were generated using:
 - `compute_match_psd.py` and `CAR.py` in folder `code`
 - Input instrument metadata in files `instrument_data*.csv`
@@ -75,3 +87,15 @@ All empirical results in the whitepaper's Appendix D were generated using:
    - Expected random coverage: 105.4 instruments
    - Excess coverage: 24.01% points
    - Statistical significance: z=7.49, p=5.55e-14
+   
+## Verification - Randomized CAR
+- CAR Random Data Results
+   - REAL CAR:  67.92%  (analytic z=7.49, p=5.55e-14)
+   - NULL CAR:  mean=57.08%  std=3.41%  range=[48.75%, 64.58%]  (n=50 panels)
+   - Real CAR is 3.18 null-standard-deviations above the synthetic-noise mean
+   - Null panels reaching or exceeding real CAR: 0/50
+- CAR Random Table Results
+   - Table 3 CAR:  67.92%
+   - Random tables CAR:  mean=43.06%  std=12.59%  range=[14.17%, 71.67%]  (n=200)
+   - Table 3 is 1.97 standard deviations above the random-table mean
+   - Random tables reaching or exceeding Table 3's CAR: 4/200  (empirical p <= 0.0200)
