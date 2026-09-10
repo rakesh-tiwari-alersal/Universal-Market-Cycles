@@ -88,7 +88,7 @@ All empirical results in the whitepaper's Appendix D were generated using:
    - Excess coverage: 24.01% points
    - Statistical significance: z=7.49, p=5.55e-14
    
-## Verification - Randomized CAR
+## Verification - Randomized Data CAR
 - CAR Random Data Results
    - REAL CAR:  67.92%  (analytic z=7.49, p=5.55e-14)
    - NULL CAR:  mean=57.08%  std=3.41%  range=[48.75%, 64.58%]  (n=50 panels)
